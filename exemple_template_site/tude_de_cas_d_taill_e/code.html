@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>L'Élite Cinétique - Étude de cas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#79545d",
+                      "surface-container-low": "#f4f3f1",
+                      "primary-fixed": "#cfeace",
+                      "secondary-container": "#e2dfde",
+                      "on-primary-fixed": "#0a200f",
+                      "surface-container-highest": "#e3e2e0",
+                      "outline-variant": "#c3c8c0",
+                      "surface-bright": "#faf9f7",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#434842",
+                      "surface-container": "#efeeec",
+                      "on-background": "#1a1c1b",
+                      "inverse-primary": "#b3cdb3",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#364c38",
+                      "inverse-on-surface": "#f1f1ef",
+                      "inverse-surface": "#2f3130",
+                      "tertiary-fixed": "#ffd9e0",
+                      "tertiary-fixed-dim": "#e9bbc4",
+                      "surface-tint": "#4d644e",
+                      "surface-variant": "#e3e2e0",
+                      "secondary": "#5f5e5e",
+                      "surface-container-high": "#e9e8e6",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#e5e2e1",
+                      "outline": "#737971",
+                      "surface-dim": "#dadad8",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "tertiary-container": "#bf949d",
+                      "on-tertiary-fixed-variant": "#5f3d45",
+                      "primary-fixed-dim": "#b3cdb3",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#636262",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#8da68d",
+                      "on-secondary-fixed-variant": "#474746",
+                      "on-tertiary-fixed": "#2e131a",
+                      "primary": "#4d644e",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-tertiary-container": "#4c2d35",
+                      "on-surface": "#1a1c1b",
+                      "error": "#ba1a1a",
+                      "surface": "#faf9f7",
+                      "on-primary-container": "#263b28",
+                      "background": "#faf9f7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Noto Serif"
+                      ],
+                      "body": [
+                              "Manrope"
+                      ],
+                      "label": [
+                              "Manrope"
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+            font-family: theme('fontFamily.body');
+        }
+        
+        .font-headline {
+            font-family: theme('fontFamily.headline');
+        }
+        
+        .shadow-ambient {
+            box-shadow: 0 10px 32px 0 rgba(26, 28, 27, 0.04);
+        }
+        
+        .border-ghost {
+            border: 1px solid rgba(195, 200, 192, 0.2);
+        }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, theme('colors.primary'), theme('colors.primary-container'));
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pt-24">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm dark:shadow-none tonal shift bg-stone-100 dark:bg-zinc-900 flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto hidden md:flex">
+<div class="font-headline text-2xl font-bold italic text-zinc-900 dark:text-zinc-50">L'Élite Cinétique</div>
+<div class="flex gap-8 items-center">
+<a class="font-headline text-lg tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 hover:opacity-80 scale-95 active:scale-90 duration-200" href="#">Accueil</a>
+<a class="font-headline text-lg tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 hover:opacity-80 scale-95 active:scale-90 duration-200" href="#">Portfolio</a>
+<a class="font-headline text-lg tracking-tight text-[#4D644E] dark:text-[#8DA68D] border-b border-[#4D644E] pb-1 transition-all duration-300 hover:opacity-80 scale-95 active:scale-90 duration-200" href="#">Études de cas</a>
+<a class="font-headline text-lg tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 hover:opacity-80 scale-95 active:scale-90 duration-200" href="#">Offres</a>
+<a class="font-headline text-lg tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 hover:opacity-80 scale-95 active:scale-90 duration-200" href="#">FAQ</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-md font-medium text-sm tracking-wide transition-all hover:bg-primary-container hover:text-on-primary-container">Prendre un RDV</button>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-7 space-y-8">
+<img alt="Brand Logo" class="h-16 w-auto object-contain mb-8 rounded-DEFAULT" data-alt="minimalist modern tech brand logo printed on thick textured cardstock with soft lighting and natural shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVjyiDwCiRwqrBpcOuCTcoLKAUZXVFFy_WX1nApKeFN2ieYHnEA0lsDRhOlvY06eINDr2Nzj7IjhHPctUYi5_PvU9kT4g3sWOKw4V4csjW6grgN0T8cQKQpWRSKBP8gIqBn6YEZuodycICKV-AL3ARUWdlRt5Ta4-qGkWkHUwK9qgtsBPYsPpAypUPc5MRv8MGnuBUiXo69-fS7iua2bzS3ajx9oGm6_hqEd2Y33Td-b0OEOIZd51ZYbwn_TQi7t2beTJ3vaXMYgwh"/>
+<h1 class="font-headline text-5xl md:text-6xl font-bold leading-tight tracking-tight text-on-surface">
+                        Comment <span class="text-gradient">Lumina</span> a triplé son ROAS via TikTok Ads
+                    </h1>
+<p class="text-xl text-on-surface-variant font-medium leading-relaxed max-w-2xl">
+                        Une stratégie éditoriale agressive combinée à des créations cinétiques pour percer le bruit d'un marché saturé.
+                    </p>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-[9/16] w-full max-w-sm mx-auto rounded-xl overflow-hidden shadow-ambient bg-surface-container-highest border-ghost">
+<img alt="TikTok Ad Preview" class="w-full h-full object-cover" data-alt="vertical mobile screen showing a dynamic fast-paced video advertisement with bold typography and vibrant neon lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkJQX_nXVPlYKhfkw8cP2Pbts4cbFBXXu8uULGFfEaUDrCDi-8vhWWq2nBIaSh3hh5zNzlrHvmFsqed_-pKA8xazhAs7D03Gp6SHshBPDqYJhzVDe67aoEaKszY8Y0sLHaOB3uYEBdexmbRoc-yjUps6TJGwR3puWbUZ270CB6_BNwu6Sut-2Sy11iA0pM3kwO8U6p0UcpsO0XinHLxxJOQUDuTeEAJ3MNp4ocwBzHzylsZioMOtjF_gm0-d4Gdl8CcD3TkTTXeH91"/>
+<!-- Video Overlay Controls -->
+<div class="absolute inset-0 bg-surface/10 backdrop-blur-sm flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center text-on-primary shadow-lg">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Challenge & Strategy / KPIs -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+<!-- Left Col: Content -->
+<div class="space-y-16">
+<!-- Challenge -->
+<div class="space-y-6">
+<h2 class="font-headline text-3xl font-bold text-on-surface">Le Challenge</h2>
+<div class="h-px w-12 bg-primary"></div>
+<p class="text-on-surface-variant text-lg leading-loose">
+                                Lumina faisait face à des coûts d'acquisition grimpants sur Meta, avec un CPA en hausse de 40% sur le dernier trimestre. Leur approche "produit d'abord" manquait de résonance émotionnelle sur les plateformes de contenu court. Ils devaient pivoter vers une narration plus brute et authentique sans perdre leur positionnement premium.
+                            </p>
+</div>
+<!-- Stratégie -->
+<div class="space-y-6">
+<h2 class="font-headline text-3xl font-bold text-on-surface">La Stratégie</h2>
+<div class="h-px w-12 bg-primary"></div>
+<div class="space-y-8">
+<div class="bg-surface p-8 rounded-lg border-ghost shadow-ambient">
+<h3 class="font-bold text-xl mb-3">1. L'Angle "Behind the Scenes"</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                        Nous avons abandonné les tournages en studio pour des séquences brutes filmées à l'iPhone, montrant le processus de fabrication avec une esthétique documentaire rapide.
+                                    </p>
+</div>
+<div class="bg-surface p-8 rounded-lg border-ghost shadow-ambient">
+<h3 class="font-bold text-xl mb-3">2. L'Accroche Cinétique</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                        Implémentation de "hooks" visuels dans les 1.5 premières secondes, combinant texte asymétrique et transitions sonores brusques pour interrompre le défilement.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Col: Results -->
+<div class="space-y-12">
+<h2 class="font-headline text-4xl font-bold text-on-surface mb-8">Le Résultat</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- KPI Card 1 -->
+<div class="bg-surface-container-highest p-8 rounded-xl border-ghost shadow-ambient flex flex-col justify-between aspect-square">
+<span class="text-on-surface-variant text-sm font-bold uppercase tracking-widest">ROAS Global</span>
+<div>
+<span class="font-headline text-6xl font-bold text-primary block mb-2">3.2x</span>
+<span class="text-on-surface text-sm font-medium">+210% vs Période Précédente</span>
+</div>
+</div>
+<!-- KPI Card 2 -->
+<div class="bg-surface-container-highest p-8 rounded-xl border-ghost shadow-ambient flex flex-col justify-between aspect-square">
+<span class="text-on-surface-variant text-sm font-bold uppercase tracking-widest">Coût Par Clic</span>
+<div>
+<span class="font-headline text-6xl font-bold text-on-surface block mb-2">-45%</span>
+<span class="text-on-surface text-sm font-medium">Réduction immédiate sur TikTok</span>
+</div>
+</div>
+<!-- KPI Card 3 -->
+<div class="bg-surface-container-highest p-8 rounded-xl border-ghost shadow-ambient flex flex-col justify-between sm:col-span-2">
+<span class="text-on-surface-variant text-sm font-bold uppercase tracking-widest mb-6">Conversions directes</span>
+<div class="flex items-end justify-between">
+<span class="font-headline text-7xl font-bold text-on-surface">1,240</span>
+<span class="text-primary-container text-lg font-medium flex items-center pb-2">
+<span class="material-symbols-outlined mr-1" data-icon="trending_up">trending_up</span> En 30 jours
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonial Section -->
+<section class="py-32 bg-surface">
+<div class="max-w-4xl mx-auto px-6 text-center space-y-12">
+<span class="material-symbols-outlined text-6xl text-primary/40" data-icon="format_quote">format_quote</span>
+<p class="font-headline text-3xl md:text-4xl font-medium leading-relaxed text-on-surface italic">
+                    "L'Élite Cinétique n'a pas seulement produit des vidéos ; ils ont réécrit notre manière de communiquer. Le niveau de détail éditorial couplé à leur compréhension algorithmique a transformé notre rentabilité."
+                </p>
+<div class="flex items-center justify-center space-x-4">
+<img alt="Founder" class="w-16 h-16 rounded-full object-cover" data-alt="close up portrait of a confident male founder with a short beard wearing a dark minimalist t-shirt against a soft grey studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDseMJe8ijplV9sEhOr0pGYJQN0_a5x4bUKwWpUMU63VtG-78NnxMnULINqB11tQnQGnblof81ow6N_fsaRl_QshS_Dm44RK84QPUJcPS4aWPQI765njDAmPvbJUND4uhHZ2jrsH9mEptmNnWX91xDRpkZg2QXKztN0tYvyhi5cRfcUdT0NKVMVyKyl4EGNYbkr0VRxf5fewtvVe3Dfz05qyrXHqAtxJ9rW91Swmu1nkm6MjHO2VvvD33qWln4dRrX7ZaZjTSEAb01J"/>
+<div class="text-left">
+<div class="font-bold text-on-surface">Marc Dupont</div>
+<div class="text-sm text-on-surface-variant">Fondateur, Lumina</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="bg-surface-container-high py-32 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-surface-container-highest z-0"></div>
+<div class="max-w-3xl mx-auto px-6 text-center relative z-10 space-y-10">
+<h2 class="font-headline text-4xl md:text-5xl font-bold text-on-surface leading-tight">
+                    Prêt à injecter cette dynamique dans votre marque ?
+                </h2>
+<p class="text-xl text-on-surface-variant font-medium">
+                    Réservez un audit créatif de 30 minutes. Nous disséquerons vos campagnes actuelles.
+                </p>
+<button class="bg-primary text-on-primary px-10 py-4 rounded-md font-bold text-lg tracking-wide shadow-ambient transition-all hover:bg-primary-container hover:text-on-primary-container transform hover:-translate-y-1">
+                    Obtenez les mêmes résultats
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-zinc-900 w-full rounded-t-none no-line boundary shift flat no shadows grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-20 mt-auto">
+<div>
+<div class="font-['Noto_Serif'] text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-6">L'Élite Cinétique</div>
+<p class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 dark:text-zinc-500">© 2024 L'Élite Cinétique. Tous droits réservés.</p>
+</div>
+<div class="md:col-span-2 flex flex-wrap gap-8 md:justify-end">
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4 opacity-100 hover:opacity-70 transition-opacity" href="#">Contact</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4 opacity-100 hover:opacity-70 transition-opacity" href="#">Instagram</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4 opacity-100 hover:opacity-70 transition-opacity" href="#">LinkedIn</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4 opacity-100 hover:opacity-70 transition-opacity" href="#">Mentions Légales</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4 opacity-100 hover:opacity-70 transition-opacity" href="#">Confidentialité</a>
+</div>
+</footer>
+</body></html>

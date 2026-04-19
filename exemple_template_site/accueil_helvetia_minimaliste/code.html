@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>L'AGENCE - La performance verticale.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-dim": "#4b5738",
+                        "surface-container-highest": "#dbe4e7",
+                        "on-surface-variant": "#586064",
+                        "on-tertiary-container": "#546040",
+                        "outline-variant": "#abb3b7",
+                        "surface": "#f8f9fa",
+                        "tertiary-container": "#ebf9d0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#3a584a",
+                        "primary-fixed-dim": "#badccb",
+                        "surface-container-low": "#f1f4f6",
+                        "on-background": "#2b3437",
+                        "on-tertiary-fixed": "#424e2f",
+                        "on-secondary-fixed": "#403f3f",
+                        "error-container": "#fe8983",
+                        "on-primary-fixed-variant": "#436254",
+                        "surface-container-high": "#e3e9ec",
+                        "outline": "#737c7f",
+                        "on-primary": "#e0ffee",
+                        "on-secondary-fixed-variant": "#5c5b5b",
+                        "error": "#9f403d",
+                        "on-surface": "#2b3437",
+                        "on-secondary": "#fbf8f8",
+                        "secondary-container": "#e5e2e1",
+                        "inverse-on-surface": "#9b9d9e",
+                        "background": "#f8f9fa",
+                        "on-primary-fixed": "#274538",
+                        "primary-container": "#c8ead8",
+                        "tertiary-fixed-dim": "#ddebc2",
+                        "error-dim": "#4e0309",
+                        "on-tertiary-fixed-variant": "#5e6a4a",
+                        "on-error": "#fff7f6",
+                        "secondary": "#605f5f",
+                        "surface-dim": "#d1dce0",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-primary": "#d9fce9",
+                        "tertiary": "#576343",
+                        "surface-variant": "#dbe4e7",
+                        "on-tertiary": "#f1fed5",
+                        "surface-container": "#eaeff1",
+                        "secondary-fixed-dim": "#d6d4d3",
+                        "on-error-container": "#752121",
+                        "on-secondary-container": "#525151",
+                        "primary-dim": "#3a594b",
+                        "inverse-surface": "#0c0f10",
+                        "primary-fixed": "#c8ead8",
+                        "secondary-dim": "#545353",
+                        "surface-tint": "#466557",
+                        "secondary-fixed": "#e5e2e1",
+                        "primary": "#466557",
+                        "tertiary-fixed": "#ebf9d0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9fa; /* surface */
+            color: #2b3437; /* on-surface */
+        }
+        
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8f9fa; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dbe4e7; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #abb3b7; 
+        }
+    </style>
+</head>
+<body class="font-body antialiased text-on-surface bg-surface selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-slate-900/80 backdrop-blur-md fixed top-0 w-full z-50 border-b-0" style="box-shadow: 0 1px 0 0 rgba(171, 179, 183, 0.15);">
+<div class="flex justify-between items-center px-8 py-6 max-w-[1440px] mx-auto">
+<a class="font-['Manrope'] font-bold text-xl tracking-tighter text-[#2b3437] dark:text-slate-100 hover:opacity-70 transition-opacity duration-300" href="#">
+                L'AGENCE
+            </a>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-['Manrope'] uppercase tracking-widest text-[0.6875rem] font-semibold text-[#2b3437] dark:text-slate-400 hover:text-[#466557] transition-colors" href="#">Expertise</a>
+<a class="font-['Manrope'] uppercase tracking-widest text-[0.6875rem] font-semibold text-[#2b3437] dark:text-slate-400 hover:text-[#466557] transition-colors" href="#">Études de cas</a>
+<a class="font-['Manrope'] uppercase tracking-widest text-[0.6875rem] font-semibold text-[#2b3437] dark:text-slate-400 hover:text-[#466557] transition-colors" href="#">Méthodologie</a>
+<a class="font-['Manrope'] uppercase tracking-widest text-[0.6875rem] font-semibold text-[#2b3437] dark:text-slate-400 hover:text-[#466557] transition-colors" href="#">Contact</a>
+</nav>
+<button class="hidden md:inline-flex items-center justify-center bg-primary text-on-primary font-label text-sm font-medium px-6 py-2.5 rounded hover:bg-primary-dim transition-colors duration-300 active:scale-95">
+                Démarrer un projet
+            </button>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow pt-24">
+<!-- Hero Section: Intentional Asymmetry & Aggressive Whitespace -->
+<section class="min-h-[819px] flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-[1440px] mx-auto w-full mb-32">
+<div class="grid grid-cols-12 gap-6 w-full">
+<div class="col-span-12 lg:col-span-10 lg:col-start-2 pt-16 md:pt-32">
+<p class="font-label text-sm uppercase tracking-[0.2em] text-primary mb-8 font-medium">Création Verticale Haute Définition</p>
+<h1 class="font-headline font-extrabold text-5xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tighter text-on-surface mb-12 max-w-4xl">
+                        La performance<br/>verticale.
+                    </h1>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+<div class="md:col-span-5 md:col-start-8">
+<p class="font-body text-base md:text-lg text-on-surface-variant leading-relaxed mb-8">
+                                Nous concevons des architectures narratives verticales pour les marques qui exigent de la rigueur algorithmique et une esthétique éditoriale intransigeante.
+                            </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary font-label text-sm font-medium px-8 py-4 rounded hover:bg-primary-dim transition-colors duration-300">
+                                    Découvrir l'Expertise
+                                </button>
+<button class="bg-transparent text-on-surface font-label text-sm font-medium px-8 py-4 rounded border border-outline-variant/20 hover:border-outline-variant/40 transition-colors duration-300">
+                                    Voir les Cas
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metric Cards: Tonal Shift & Minimalist Separation -->
+<section class="py-24 bg-surface-container-low">
+<div class="px-8 md:px-16 lg:px-24 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-px bg-outline-variant/15 rounded-lg overflow-hidden">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-10 md:p-14 flex flex-col justify-between min-h-[300px]">
+<div class="flex items-start justify-between mb-8">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">trending_up</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Métrique 01</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-4xl md:text-5xl text-on-surface tracking-tight mb-3">X2.4</h3>
+<p class="font-body text-sm text-on-surface-variant">Taux d'engagement moyen généré sur les campagnes d'acquisition T1.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-10 md:p-14 flex flex-col justify-between min-h-[300px]">
+<div class="flex items-start justify-between mb-8">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">speed</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Métrique 02</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-4xl md:text-5xl text-on-surface tracking-tight mb-3">-40%</h3>
+<p class="font-body text-sm text-on-surface-variant">Réduction du coût par acquisition (CPA) sur les formats verticaux natifs.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-10 md:p-14 flex flex-col justify-between min-h-[300px]">
+<div class="flex items-start justify-between mb-8">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">visibility</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Métrique 03</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-4xl md:text-5xl text-on-surface tracking-tight mb-3">+85%</h3>
+<p class="font-body text-sm text-on-surface-variant">Taux de complétion vidéo (VTR) supérieur aux standards de l'industrie.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Showcase: Editorial Layout -->
+<section class="py-32 bg-surface">
+<div class="px-8 md:px-16 lg:px-24 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-12 gap-6 mb-20">
+<div class="col-span-12 md:col-span-8">
+<h2 class="font-headline font-bold text-3xl md:text-5xl tracking-tight text-on-surface mb-6">Études de cas.</h2>
+<p class="font-body text-lg text-on-surface-variant max-w-2xl">Analyses de campagnes performantes. Une approche clinique de la conversion par le format vertical.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+<!-- Case Study 1 -->
+<article class="group cursor-pointer">
+<div class="aspect-[4/5] bg-surface-container-low rounded overflow-hidden relative mb-8">
+<img alt="Étude de cas 1" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out" data-alt="abstract architectural details in pure white concrete with sharp diagonal shadows creating a minimalist geometric composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-E2UlJeVGEgJmYaAWge94XIvPz2PGt1pC_PiimUNExLbfon45q2oV1Xab0Ah9m4aDheYSZlLJjMvZhq4-yZ-pzmdRcqvTHdjsSoovvB1BCSR9Gp5fBJ_0HN9S9J1dWnCWjQwFeNoggQZFooAJdYZetDfn5skUsrRpfsEkElPBRLtvP6TGZNVwgkr8a8DZcGk5VY9d_bSZ-7XrN_wZSq1UIjLHeOX1ETSUeI0SCkUl3YxCBk1pIEMIAuov0NXpiY5Xjii1dWfzpvEH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<span class="font-label text-xs uppercase tracking-widest text-primary font-semibold">Mode</span>
+<span class="w-1 h-1 bg-outline-variant/50 rounded-full"></span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Acquisition</span>
+</div>
+<h3 class="font-headline font-bold text-2xl text-on-surface mb-3 group-hover:text-primary transition-colors">Campagne Hiver '24</h3>
+<p class="font-body text-sm text-on-surface-variant">Stratégie verticale pour la nouvelle collection. Optimisation du tunnel de conversion et direction artistique éditoriale.</p>
+</article>
+<!-- Case Study 2 -->
+<article class="group cursor-pointer lg:mt-24">
+<div class="aspect-[4/5] bg-surface-container-low rounded overflow-hidden relative mb-8">
+<img alt="Étude de cas 2" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out" data-alt="sleek modern interior space with soft diffused light falling on minimal furniture and highly textured stone walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVMc4ACIcjIDKXnTbEiXs1EYXgRmGp6tp4FL3gcj6GWd4vRiDRCFrVVipIBdB8CsHcRkeLN_bmEJz9hADaC5GUDuOz9eS2WbQu8n6w8tyohs1tx5qKvH1FVrrtssx-hGPAKnJMYFAFq35XrPw2yzafsKcwKGSGO7ZZEWk7I5sUDVvFknnxQoaJzdnH2xJLPtSyVbQMqYa_zI3EbmauBbOxrIPcyvYJnYumukM-66OPqdGXm1vObb8EftQ3tPz2Wr_JJvoJV7Gu7UjH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<span class="font-label text-xs uppercase tracking-widest text-primary font-semibold">Horlogerie</span>
+<span class="w-1 h-1 bg-outline-variant/50 rounded-full"></span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Notoriété</span>
+</div>
+<h3 class="font-headline font-bold text-2xl text-on-surface mb-3 group-hover:text-primary transition-colors">Lancement Calibre 9</h3>
+<p class="font-body text-sm text-on-surface-variant">Narrative macro-vidéo pour une manufacture suisse. Focus sur la précision technique et l'héritage.</p>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-slate-950 w-full border-t border-[#abb3b7]/15">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-8 py-16 max-w-[1440px] mx-auto">
+<div>
+<a class="font-['Manrope'] font-bold text-lg text-[#2b3437] dark:text-slate-100 mb-6 inline-block" href="#">L'AGENCE</a>
+<p class="font-['Inter'] text-sm tracking-tight text-[#2b3437] dark:text-slate-400">© 2024 L'AGENCE. Excellence Verticale.</p>
+</div>
+<div class="flex flex-col md:items-end justify-end gap-4">
+<nav class="flex gap-6">
+<a class="font-['Inter'] text-sm tracking-tight text-[#2b3437]/60 dark:text-slate-500 hover:text-[#466557] dark:hover:text-white transition-colors relative group" href="#">
+                        Mentions Légales
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#466557] transition-all duration-300 group-hover:w-full"></span>
+</a>
+<a class="font-['Inter'] text-sm tracking-tight text-[#2b3437]/60 dark:text-slate-500 hover:text-[#466557] dark:hover:text-white transition-colors relative group" href="#">
+                        Confidentialité
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#466557] transition-all duration-300 group-hover:w-full"></span>
+</a>
+<a class="font-['Inter'] text-sm tracking-tight text-[#2b3437]/60 dark:text-slate-500 hover:text-[#466557] dark:hover:text-white transition-colors relative group" href="#">
+                        LinkedIn
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#466557] transition-all duration-300 group-hover:w-full"></span>
+</a>
+<a class="font-['Inter'] text-sm tracking-tight text-[#2b3437]/60 dark:text-slate-500 hover:text-[#466557] dark:hover:text-white transition-colors relative group" href="#">
+                        Instagram
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#466557] transition-all duration-300 group-hover:w-full"></span>
+</a>
+</nav>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio - L'Élite Cinétique</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#79545d",
+                      "surface-container-low": "#f4f3f1",
+                      "primary-fixed": "#cfeace",
+                      "secondary-container": "#e2dfde",
+                      "on-primary-fixed": "#0a200f",
+                      "surface-container-highest": "#e3e2e0",
+                      "outline-variant": "#c3c8c0",
+                      "surface-bright": "#faf9f7",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#434842",
+                      "surface-container": "#efeeec",
+                      "on-background": "#1a1c1b",
+                      "inverse-primary": "#b3cdb3",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#364c38",
+                      "inverse-on-surface": "#f1f1ef",
+                      "inverse-surface": "#2f3130",
+                      "tertiary-fixed": "#ffd9e0",
+                      "tertiary-fixed-dim": "#e9bbc4",
+                      "surface-tint": "#4d644e",
+                      "surface-variant": "#e3e2e0",
+                      "secondary": "#5f5e5e",
+                      "surface-container-high": "#e9e8e6",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#e5e2e1",
+                      "outline": "#737971",
+                      "surface-dim": "#dadad8",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "tertiary-container": "#bf949d",
+                      "on-tertiary-fixed-variant": "#5f3d45",
+                      "primary-fixed-dim": "#b3cdb3",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#636262",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#8da68d",
+                      "on-secondary-fixed-variant": "#474746",
+                      "on-tertiary-fixed": "#2e131a",
+                      "primary": "#4d644e",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-tertiary-container": "#4c2d35",
+                      "on-surface": "#1a1c1b",
+                      "error": "#ba1a1a",
+                      "surface": "#faf9f7",
+                      "on-primary-container": "#263b28",
+                      "background": "#faf9f7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Noto Serif"
+                      ],
+                      "body": [
+                              "Manrope"
+                      ],
+                      "label": [
+                              "Manrope"
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .shadow-soft-long {
+            box-shadow: 0 10px 32px 0 rgba(26, 28, 27, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar Component -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b-0 shadow-sm dark:shadow-none tonal shift bg-stone-100 dark:bg-zinc-900 transition-all duration-300">
+<div class="flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto">
+<div class="font-['Noto_Serif'] text-2xl font-bold italic text-zinc-900 dark:text-zinc-50 tracking-tight">
+                L'Élite Cinétique
+            </div>
+<nav class="hidden md:flex space-x-8">
+<a class="font-['Noto_Serif'] text-lg tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 hover:opacity-80" href="#">Accueil</a>
+<a class="font-['Noto_Serif'] text-lg tracking-tight text-[#4D644E] dark:text-[#8DA68D] border-b border-[#4D644E] pb-1 transition-all duration-300 hover:opacity-80" href="#">Portfolio</a>
+<a class="font-['Noto_Serif'] text-lg tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 hover:opacity-80" href="#">Études de cas</a>
+<a class="font-['Noto_Serif'] text-lg tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 hover:opacity-80" href="#">Offres</a>
+<a class="font-['Noto_Serif'] text-lg tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300 hover:opacity-80" href="#">FAQ</a>
+</nav>
+<a class="hidden md:inline-flex items-center justify-center bg-primary text-on-primary font-body text-sm font-semibold px-6 py-3 rounded-md transition-all duration-300 hover:opacity-80 scale-95 active:scale-90 duration-200" href="#">
+                Prendre un RDV
+            </a>
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-24 px-6 md:px-12 max-w-[1920px] mx-auto w-full">
+<!-- Header Section -->
+<section class="mb-16 md:mb-24 mt-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-3xl">
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter text-on-surface mb-6 leading-tight">
+                    Notre Portfolio
+                </h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+                    L'art du montage vertical au service de la performance. Une curation de nos meilleures réalisations pour des marques ambitieuses.
+                </p>
+</div>
+</section>
+<!-- Filter Chips -->
+<section class="mb-16 overflow-x-auto pb-4 hide-scrollbar">
+<div class="flex space-x-3 w-max">
+<button class="font-body text-sm font-medium px-6 py-2.5 rounded-full bg-primary text-on-primary transition-colors">
+                    Tout
+                </button>
+<button class="font-body text-sm font-medium px-6 py-2.5 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+                    E-commerce
+                </button>
+<button class="font-body text-sm font-medium px-6 py-2.5 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+                    SaaS
+                </button>
+<button class="font-body text-sm font-medium px-6 py-2.5 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+                    Restaurants
+                </button>
+<button class="font-body text-sm font-medium px-6 py-2.5 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+                    Marques Personnelles
+                </button>
+</div>
+</section>
+<!-- Video Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 mb-32">
+<!-- Video Card 1 -->
+<article class="group relative flex flex-col w-full aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low shadow-soft-long">
+<img alt="Soin de la peau" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="vertical video thumbnail showing premium skincare product application with elegant lighting and soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5y623qwHD_fO7cAEu5si2hCoSP17Gkz12J-pOzpjEilYByTMQqkWP_zm2w8aqVnd8sBM2Q7KBCvYZq85mOQcTldWovRBoiFJJw3nETViexenvm2NQjhpWbSd-TEfD5HNLdaq20UQ6swj8o_WQY103kWuCd5e_FoT-Ge89521bNInph3ZhcxThFuL3FDpoQSgkLDv_85AcmXRev3Vr91ZMTb0XROHNUf3ZhUVc3wZ5T6xpxyRHFou7S7ZcE91y3ZxYWuiB1XZY2743"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+<div class="relative h-full flex flex-col justify-between p-6 z-10">
+<div class="self-end bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-white/20">
+                        E-commerce
+                    </div>
+<div class="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+<h3 class="font-headline text-2xl font-bold text-white mb-2 tracking-tight">Lumina Skincare</h3>
+<div class="flex items-center space-x-4 text-white/80 font-body text-sm">
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">visibility</span> 1.2M</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">thumb_up</span> 85K</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Video Card 2 -->
+<article class="group relative flex flex-col w-full aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low shadow-soft-long md:translate-y-12">
+<img alt="Restaurant plat" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="vertical video thumbnail showing dramatic overhead shot of a gourmet culinary dish with steam rising in a dim restaurant setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb-_IZcQ4NBFHuWscCmhXeiFun-HxNOeyHy1V9zHKp81Gcls5EtseyPgCl5gIRkw65r90HwLL39WxjzFg1Y9uskUnvHU2WABImE8IPGXwkDNYGnYVfKSkZ1wGV6owX4_-5CgJWeDOX3OpJszg1zeWPlspCA1Z0-yLccxY9XOQiEbGlB8UFP0Q6RviO3w9VfPklAi9IQ0zMyEc0AbuyiQV2yRTE8wqO5eYU5s_TlphywEYQXSjgk-Pv9qs6zBpd0RbnQKN5Gm2oZp2I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+<div class="relative h-full flex flex-col justify-between p-6 z-10">
+<div class="self-end bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-white/20">
+                        Restaurants
+                    </div>
+<div class="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+<h3 class="font-headline text-2xl font-bold text-white mb-2 tracking-tight">Le Petit Chef</h3>
+<div class="flex items-center space-x-4 text-white/80 font-body text-sm">
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">visibility</span> 450K</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">thumb_up</span> 32K</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Video Card 3 -->
+<article class="group relative flex flex-col w-full aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low shadow-soft-long">
+<img alt="Dashboard SaaS" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="vertical video thumbnail showing dynamic modern software interface with glowing charts and analytics on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwNZTqwYdeQRSjvFF68Ufv4qVeMgz2F1Z2_YqoM89jRGz_q1VZvvkDWLT7lq7WQ3Z0y7Ol9S6-qSrNN5iVkjJ01ijIhn8H_ENCCTINOCu9K9yWguTZ8fiRDAAGXrgguO-TAN25Mvnih5YTOztGviK6Ys8e9m_piqg4eoulUThOFAfNDWJd61q2vj0BFyF8fb7Lq4cylhpfW0Whd_QOxwMvor0rzJn8tTFN-fuItCtXT-3hdty4m2sBVW0idlZR8ZFVA7oHewQGZMeG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+<div class="relative h-full flex flex-col justify-between p-6 z-10">
+<div class="self-end bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-white/20">
+                        SaaS
+                    </div>
+<div class="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+<h3 class="font-headline text-2xl font-bold text-white mb-2 tracking-tight">MetricFlow App</h3>
+<div class="flex items-center space-x-4 text-white/80 font-body text-sm">
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">visibility</span> 890K</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">thumb_up</span> 64K</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Video Card 4 -->
+<article class="group relative flex flex-col w-full aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low shadow-soft-long md:translate-y-12">
+<img alt="Marque personnelle" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="vertical video thumbnail showing confident young male entrepreneur speaking directly to camera in stylish minimalist office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCCTH8ljT2zqHkeBO373zGQJBAWhr7v60NPTo5zoXqJpcQUKxWgZaVG7Zi6dVIe8w4DOYUuO4Or3lp8hjuY5mjZwCGE_VA3wjn0nXpTYNjSokQEDtvEyIcGb5gilOYJWZcrmGFqU8SKLl-eAyZs6BrOnVkMLQ4NUwQ3z_jp-KtNT6Jss15ctUNhw8gC5K_Z-buVFuRnhqgz18ISxNOJwLDfbnvzokp4Bi-cDKhQuREwuVOR4vV5TqmO8d_yke12OlD1JlMPFZe1M5K"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+<div class="relative h-full flex flex-col justify-between p-6 z-10">
+<div class="self-end bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-white/20">
+                        Marques Personnelles
+                    </div>
+<div class="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+<h3 class="font-headline text-2xl font-bold text-white mb-2 tracking-tight">Alexandre M.</h3>
+<div class="flex items-center space-x-4 text-white/80 font-body text-sm">
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">visibility</span> 2.1M</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">thumb_up</span> 150K</span>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Bottom CTA -->
+<section class="mt-24 mb-12 max-w-4xl mx-auto text-center bg-surface-container-low rounded-xl p-12 md:p-24 shadow-soft-long relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary-container"></div>
+<h2 class="font-headline text-4xl md:text-5xl font-bold text-on-surface mb-6 tracking-tight">Prêt à dominer les algorithmes ?</h2>
+<p class="font-body text-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                Transformez votre vision en performances mesurables. Nous concevons des vidéos verticales qui captivent et convertissent.
+            </p>
+<a class="inline-flex items-center justify-center bg-primary text-on-primary font-body text-lg font-semibold px-8 py-4 rounded-md transition-all duration-300 hover:bg-primary-container shadow-soft-long" href="#">
+                Discutons de votre projet
+                <span class="material-symbols-outlined ml-2 text-xl">arrow_forward</span>
+</a>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="mt-auto bg-stone-100 dark:bg-zinc-900 text-[#4D644E] dark:text-[#8DA68D] font-['Manrope'] text-sm tracking-widest uppercase w-full rounded-t-none no-line boundary shift flat no shadows opacity-100 hover:opacity-70 transition-opacity">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-20 w-full max-w-[1920px] mx-auto">
+<div class="flex flex-col space-y-4">
+<span class="font-['Noto_Serif'] text-xl font-bold text-zinc-900 dark:text-zinc-50 normal-case tracking-normal">L'Élite Cinétique</span>
+<p class="text-zinc-500 dark:text-zinc-500 normal-case tracking-normal mt-2">© 2024 L'Élite Cinétique. Tous droits réservés.</p>
+</div>
+<div class="flex flex-col space-y-4">
+<h4 class="font-bold mb-2">Navigation</h4>
+<a class="text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4" href="#">Contact</a>
+<a class="text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4" href="#">Mentions Légales</a>
+<a class="text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4" href="#">Confidentialité</a>
+</div>
+<div class="flex flex-col space-y-4">
+<h4 class="font-bold mb-2">Social</h4>
+<a class="text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4" href="#">Instagram</a>
+<a class="text-zinc-500 dark:text-zinc-500 hover:underline decoration-[#4D644E] underline-offset-4" href="#">LinkedIn</a>
+</div>
+</div>
+</footer>
+</body></html>

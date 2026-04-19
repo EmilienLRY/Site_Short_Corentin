@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Comédia - Montage Vidéo Premium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary": "#ffffff",
+          "tertiary": "#79545d",
+          "surface-container-low": "#f4f3f1",
+          "primary-fixed": "#cfeace",
+          "secondary-container": "#e2dfde",
+          "on-primary-fixed": "#0a200f",
+          "surface-container-highest": "#e3e2e0",
+          "outline-variant": "#c3c8c0",
+          "surface-bright": "#faf9f7",
+          "on-primary": "#ffffff",
+          "on-surface-variant": "#434842",
+          "surface-container": "#efeeec",
+          "on-background": "#1a1c1b",
+          "inverse-primary": "#b3cdb3",
+          "surface-tint": "#4d644e",
+          "surface-variant": "#e3e2e0",
+          "secondary": "#5f5e5e",
+          "surface-container-high": "#e9e8e6",
+          "surface-container-lowest": "#ffffff",
+          "outline": "#737971",
+          "surface-dim": "#dadad8",
+          "on-secondary": "#ffffff",
+          "error-container": "#ffdad6",
+          "primary-container": "#8da68d",
+          "on-surface": "#1a1c1b",
+          "error": "#ba1a1a",
+          "surface": "#faf9f7",
+          "on-primary-container": "#263b28",
+          "background": "#faf9f7",
+          "primary": "#4d644e",
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "2xl": "0.75rem",
+          "full": "9999px",
+        },
+        fontFamily: {
+          "headline": ["Noto Serif"],
+          "body": ["Manrope"],
+          "label": ["Manrope"],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0; }
+  .material-symbols-outlined[data-weight="fill"] { font-variation-settings: 'FILL' 1; }
+
+  html { scroll-behavior: smooth; }
+
+  /* Carousel */
+  .carousel-track { display: flex; gap: 2rem; animation: marquee 30s linear infinite; width: max-content; }
+  .carousel-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* FAQ accordion */
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+  .faq-answer.open { max-height: 500px; }
+  .faq-icon { transition: transform 0.3s ease; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  /* Process step reveal */
+  .step-card { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .step-card.visible { opacity: 1; transform: translateY(0); }
+
+  /* Pricing toggle */
+  .pricing-option { transition: all 0.3s ease; }
+
+  /* Hide scrollbar for carousel */
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* -- HOVER CARTES PORTFOLIO -- */
+  .portfolio-card {
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+  }
+  .portfolio-card:hover {
+    transform: scale(1.04) translateY(-6px);
+    box-shadow: 0 24px 48px rgba(26,28,27,0.15);
+  }
+  .portfolio-card .play-btn {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+  }
+  .portfolio-card:hover .play-btn {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+  /* -- HOVER PHOTOS ÉTUDES DE CAS -- */
+  .proof-card {
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+    overflow: hidden;
+  }
+  .proof-card:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 20px 40px rgba(26,28,27,0.12);
+  }
+  .proof-card img {
+    transition: transform 0.5s ease;
+  }
+  .proof-card:hover img {
+    transform: scale(1.08);
+  }
+  .proof-card .proof-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .proof-card:hover .proof-overlay {
+    opacity: 1;
+  }
+
+  /* -- CARTES YOUTUBE -- */
+  .yt-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .yt-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(26,28,27,0.12); }
+
+  /* -- HOVER BOUTONS -- */
+  /* Boutons primaires remplis (fond vert) */
+  a[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]),
+  button[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]) {
+    transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease !important;
+  }
+  a[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]):hover,
+  button[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]):hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 32px rgba(77,100,78,0.40) !important;
+    filter: brightness(1.12);
+  }
+
+  /* Bouton blanc sur carte offre (fond blanc, texte vert) */
+  a[class*="bg-on-primary"]:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 32px rgba(255,255,255,0.25) !important;
+    filter: brightness(0.94);
+  }
+
+  /* Boutons secondaires offres (fond surface-container) */
+  a[href="#calendly"][class*="bg-surface-container"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(26,28,27,0.12) !important;
+    filter: brightness(0.88);
+    color: #4d644e !important;
+  }
+
+  /* Bouton ghost (bordure outline-variant, fond transparent) */
+  a[class*="border-outline-variant"]:hover {
+    background-color: rgba(77,100,78,0.07) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(77,100,78,0.15) !important;
+    border-color: rgba(77,100,78,0.5) !important;
+  }
+
+  /* Chips de filtre portfolio */
+  button[class*="filter-btn"]:hover,
+  .filter-btn:hover {
+    background-color: #4d644e !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+  }
+
+  /* Boutons navigation calendrier */
+  button[onclick*="prevMonth"]:hover,
+  button[onclick*="nextMonth"]:hover {
+    background-color: rgba(77,100,78,0.12) !important;
+    color: #4d644e;
+  }
+
+  /* FAQ toggles */
+  button[onclick*="toggleFaq"]:hover {
+    background-color: #dce6dc !important;
+    padding-left: 28px !important;
+    transition: padding-left 0.2s ease, background-color 0.2s ease !important;
+  }
+  button[onclick*="toggleFaq"] {
+    transition: padding-left 0.2s ease, background-color 0.2s ease !important;
+  }
+
+  /* Lien "retour" calendrier */
+  button[onclick*="goStep"]:hover {
+    color: #4d644e !important;
+    transform: translateX(-3px);
+  }
+
+  /* Lien texte souligné */
+  a[class*="underline"]:hover {
+    letter-spacing: 0.02em;
+  }
+
+  /* Nav CTA */
+  nav a[href="#calendly"]:hover,
+  header a[href="#calendly"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(77,100,78,0.30) !important;
+    filter: brightness(1.10);
+  }
+
+  /* -- HERO ORBES -- */
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(72px); pointer-events: none; z-index: 0;
+    animation: orb-float 8s ease-in-out infinite;
+  }
+  @keyframes orb-float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-28px) scale(1.06); }
+  }
+
+
+  /* -- WORD REVEAL -- */
+  .word-reveal span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .word-reveal span.show { opacity: 1; transform: translateY(0); }
+
+  /* -- HERO SECTION relative pour les orbes -- */
+  #hero { position: relative; }
+  #hero > .grid { position: relative; z-index: 1; }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+
+<!-- ============================================================ -->
+<!-- NAV -->
+<!-- ============================================================ -->
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-surface/80 backdrop-blur-xl">
+  <div class="flex justify-between items-center px-6 md:px-12 py-5 max-w-7xl mx-auto">
+    <a href="#hero" class="font-headline text-2xl font-bold italic text-on-surface tracking-tight hover:opacity-80 transition-opacity">
+      Comédia
+    </a>
+    <div class="hidden md:flex space-x-8 items-center">
+      <a href="#portfolio" class="font-body text-sm tracking-wide text-on-surface-variant hover:text-on-surface transition-colors duration-200">Portfolio</a>
+      <a href="#process" class="font-body text-sm tracking-wide text-on-surface-variant hover:text-on-surface transition-colors duration-200">Comment ça marche</a>
+      <a href="#offres" class="font-body text-sm tracking-wide text-on-surface-variant hover:text-on-surface transition-colors duration-200">Offres</a>
+      <a href="#faq" class="font-body text-sm tracking-wide text-on-surface-variant hover:text-on-surface transition-colors duration-200">FAQ</a>
+    </div>
+    <a href="#calendly" class="hidden md:inline-flex bg-primary text-on-primary px-5 py-2.5 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all">
+      Prendre un RDV
+    </a>
+    <button class="md:hidden text-on-surface" id="mobile-menu-btn" aria-label="Menu">
+      <span class="material-symbols-outlined text-3xl">menu</span>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-outline-variant/20 px-6 py-6 space-y-4">
+    <a href="#portfolio" class="block font-body text-sm text-on-surface-variant py-2">Portfolio</a>
+    <a href="#process" class="block font-body text-sm text-on-surface-variant py-2">Comment ça marche</a>
+    <a href="#offres" class="block font-body text-sm text-on-surface-variant py-2">Offres</a>
+    <a href="#faq" class="block font-body text-sm text-on-surface-variant py-2">FAQ</a>
+    <a href="#calendly" class="block bg-primary text-on-primary text-center px-5 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold mt-4">Prendre un RDV</a>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- HERO -->
+<!-- ============================================================ -->
+<section id="hero" class="h-screen max-h-screen pt-20 pb-8 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex items-center overflow-hidden">
+
+  <!-- Orbes de fond -->
+  <div class="hero-orb w-[480px] h-[480px] bg-primary/8 -top-48 right-1/4" style="animation-delay:0s"></div>
+  <div class="hero-orb w-[320px] h-[320px] bg-primary-container/25 bottom-0 left-1/3" style="animation-delay:2.5s"></div>
+  <div class="hero-orb w-[200px] h-[200px] bg-primary/6 top-1/3 -left-16" style="animation-delay:4.8s"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center w-full">
+
+    <!-- Left -->
+    <div class="lg:col-span-7 space-y-8">
+      <h1 id="hero-title" class="word-reveal font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-on-surface"></h1>
+
+      <p class="font-body text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+        Boostez votre visibilité grâce à des vidéos impactantes.
+      </p>
+
+      <div class="flex flex-wrap gap-5 text-on-surface-variant font-body text-sm">
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">verified</span> 100&nbsp;% de clients satisfaits</span>
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">group</span> +150 créateurs accompagnés</span>
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">visibility</span> +10M de vues cumulées</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 pt-2">
+        <a href="#calendly" class="inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all shadow-[0_4px_32px_rgba(77,100,78,0.18)]">
+          <span class="material-symbols-outlined text-lg">calendar_today</span>
+          Réserver un appel gratuit
+        </a>
+        <a href="#portfolio" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-outline-variant/30 rounded-md font-label text-sm uppercase tracking-widest font-semibold text-on-surface hover:bg-surface-container-low transition-all">
+          Voir le portfolio
+        </a>
+      </div>
+    </div>
+
+    <!-- Right - VSL embed -->
+    <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center">
+      <div class="relative max-w-[260px] w-full mx-auto" style="aspect-ratio:9/16; max-height: calc(100vh - 160px)">
+        <a
+          href="https://youtube.com/shorts/BoUePGudoUw?si=asPK8h_o-_hYcaFF"
+          target="_blank"
+          rel="noopener"
+          aria-label="Ouvrir le short YouTube"
+          class="absolute inset-0 block rounded-2xl overflow-hidden bg-[#1f1f1f] shadow-[0_16px_56px_rgba(26,28,27,0.1)] group"
+        >
+          <img
+            src="https://i.ytimg.com/vi/BoUePGudoUw/maxresdefault.jpg"
+            alt="Aperçu du short YouTube"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/15"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-20 h-20 rounded-full bg-white/18 backdrop-blur-md border border-white/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+              <span class="material-symbols-outlined text-white text-4xl" data-weight="fill">play_arrow</span>
+            </div>
+          </div>
+          <div class="absolute bottom-0 inset-x-0 p-6">
+            <p class="font-headline text-2xl font-bold text-white leading-tight">Voir le short</p>
+            <p class="font-body text-sm text-white/85 mt-2">Ouverture directe sur YouTube</p>
+          </div>
+          <div class="absolute top-4 right-4 bg-surface/85 backdrop-blur-md text-on-surface-variant font-label text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-outline-variant/20 pointer-events-none">
+            Short
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CRÉATEURS CAROUSEL -->
+<!-- ============================================================ -->
+<section class="bg-surface-container-low py-16 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mb-8 text-center">
+    <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Ils nous font confiance</p>
+  </div>
+  <div class="relative overflow-hidden">
+    <div class="carousel-track">
+      <!-- Photos réelles depuis le dossier photos/ -->
+      <div class="flex gap-6 items-center">
+        <img src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="flex gap-6 items-center">
+        <img src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PORTFOLIO -->
+<!-- ============================================================ -->
+<section id="portfolio" class="py-24 max-w-7xl mx-auto px-6 md:px-12">
+  <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <div class="md:w-2/3">
+      <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Notre travail</p>
+      <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface leading-tight">
+        Des vidéos qui captivent,<br/>des résultats qui parlent.
+      </h2>
+    </div>
+    <a href="#calendly" class="inline-flex items-center gap-2 font-body text-sm text-primary underline underline-offset-4 decoration-primary/40 hover:decoration-primary transition-all whitespace-nowrap">
+      Discuter de votre projet
+      <span class="material-symbols-outlined text-base">arrow_forward</span>
+    </a>
+  </div>
+
+  <!-- Filter chips -->
+  <div class="flex flex-wrap gap-3 mb-12">
+    <button onclick="filterPortfolio('tous')" class="filter-btn active font-body text-sm font-medium px-5 py-2 rounded-full bg-primary text-on-primary transition-all" data-filter="tous">Tout</button>
+    <button onclick="filterPortfolio('short')" class="filter-btn font-body text-sm font-medium px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="short">Shorts / Reels</button>
+    <button onclick="filterPortfolio('long')" class="filter-btn font-body text-sm font-medium px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="long">YouTube Long</button>
+    <button onclick="filterPortfolio('brand')" class="filter-btn font-body text-sm font-medium px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="brand">Marque Perso</button>
+  </div>
+
+  <!-- Video grid -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="portfolio-grid">
+    <!-- Card 1 -->
+    <article class="portfolio-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low" data-cat="short">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-container/40 flex items-center justify-center">
+        <div class="play-btn w-14 h-14 rounded-full bg-surface/20 backdrop-blur-md flex items-center justify-center border border-white/20">
+          <span class="material-symbols-outlined text-white text-2xl" data-weight="fill">play_arrow</span>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <p class="font-headline text-white text-base font-bold">Short #1</p>
+        <p class="font-label text-white/70 text-xs uppercase tracking-wide mt-1">Vidéo à intégrer</p>
+      </div>
+      <div class="absolute top-3 right-3 bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20">Short</div>
+    </article>
+
+    <!-- Card 2 - offset -->
+    <article class="portfolio-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container md:translate-y-8" data-cat="long">
+      <div class="absolute inset-0 bg-gradient-to-br from-surface-container-high to-outline/20 flex items-center justify-center">
+        <div class="play-btn w-14 h-14 rounded-full bg-surface/20 backdrop-blur-md flex items-center justify-center border border-outline-variant/30">
+          <span class="material-symbols-outlined text-on-surface text-2xl" data-weight="fill">play_arrow</span>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <p class="font-headline text-white text-base font-bold">YouTube #1</p>
+        <p class="font-label text-white/70 text-xs uppercase tracking-wide mt-1">Vidéo à intégrer</p>
+      </div>
+      <div class="absolute top-3 right-3 bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20">Long</div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="portfolio-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low" data-cat="brand">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary-container/50 to-surface-container-highest flex items-center justify-center">
+        <div class="play-btn w-14 h-14 rounded-full bg-surface/20 backdrop-blur-md flex items-center justify-center border border-outline-variant/30">
+          <span class="material-symbols-outlined text-on-surface text-2xl" data-weight="fill">play_arrow</span>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <p class="font-headline text-white text-base font-bold">Marque Perso #1</p>
+        <p class="font-label text-white/70 text-xs uppercase tracking-wide mt-1">Vidéo à intégrer</p>
+      </div>
+      <div class="absolute top-3 right-3 bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20">Brand</div>
+    </article>
+
+    <!-- Card 4 - offset -->
+    <article class="portfolio-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container md:translate-y-8" data-cat="short">
+      <div class="absolute inset-0 bg-gradient-to-br from-outline/10 to-primary/20 flex items-center justify-center">
+        <div class="play-btn w-14 h-14 rounded-full bg-surface/20 backdrop-blur-md flex items-center justify-center border border-white/20">
+          <span class="material-symbols-outlined text-on-surface text-2xl" data-weight="fill">play_arrow</span>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <p class="font-headline text-white text-base font-bold">Short #2</p>
+        <p class="font-label text-white/70 text-xs uppercase tracking-wide mt-1">Vidéo à intégrer</p>
+      </div>
+      <div class="absolute top-3 right-3 bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20">Short</div>
+    </article>
+  </div>
+
+  <p class="text-center font-label text-xs text-on-surface-variant mt-8 tracking-wide opacity-60">Vos vidéos seront intégrées ici - Drive : drive.google.com/</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHIFFRES -->
+<!-- ============================================================ -->
+<section class="bg-surface-container-low py-20">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-0">
+    <div class="p-10 md:border-r border-outline-variant/20 text-center">
+      <p class="font-headline text-5xl md:text-6xl font-bold text-on-surface mb-2">
+        <span class="counter" data-target="100" data-suffix="&nbsp;%">0</span>
+      </p>
+      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Clients satisfaits</p>
+    </div>
+    <div class="p-10 md:border-r border-outline-variant/20 text-center">
+      <p class="font-headline text-5xl md:text-6xl font-bold text-primary mb-2">
+        +<span class="counter" data-target="150" data-suffix="">0</span>
+      </p>
+      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Créateurs accompagnés</p>
+    </div>
+    <div class="p-10 text-center">
+      <p class="font-headline text-5xl md:text-6xl font-bold text-on-surface mb-2">
+        <span class="counter" data-target="10" data-suffix="M+">0</span>
+      </p>
+      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Vues cumulées</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PREUVES SOCIALES / ÉTUDES DE CAS -->
+<!-- ============================================================ -->
+<section id="etudes-de-cas" class="py-24 max-w-7xl mx-auto px-6 md:px-12">
+  <div class="mb-16">
+    <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Preuves sociales</p>
+    <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface md:w-2/3 leading-tight">
+      Des résultats concrets pour de vrais créateurs.
+    </h2>
+  </div>
+
+  <!-- 2 rangées de 3 photos -->
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+    <!-- Row 1 -->
+    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
+        <span class="material-symbols-outlined text-3xl">image</span>
+        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+        <p class="font-body text-white text-sm">Résultat client #1</p>
+      </div>
+    </div>
+    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
+      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
+        <span class="material-symbols-outlined text-3xl">image</span>
+        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
+      </div>
+    </div>
+    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
+        <span class="material-symbols-outlined text-3xl">image</span>
+        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
+      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
+        <span class="material-symbols-outlined text-3xl">image</span>
+        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
+      </div>
+    </div>
+    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
+        <span class="material-symbols-outlined text-3xl">image</span>
+        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
+      </div>
+    </div>
+    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
+      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
+        <span class="material-symbols-outlined text-3xl">image</span>
+        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PROCESS - TIMELINE CONNECTÉE -->
+<!-- ============================================================ -->
+<section id="process" class="bg-surface-container-low py-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+      <!-- Titre sticky gauche -->
+      <div class="lg:col-span-4 lg:sticky lg:top-32">
+        <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Notre méthode</p>
+        <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface leading-tight mb-8">
+          Simple, rapide,<br/>sans mauvaises surprises.
+        </h2>
+        <a href="#calendly" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all">
+          <span class="material-symbols-outlined text-base">calendar_today</span>
+          Démarrer
+        </a>
+      </div>
+
+      <!-- Timeline droite -->
+      <div class="lg:col-span-8 relative">
+
+        <!-- Ligne verticale continue -->
+        <div class="absolute left-5 top-0 bottom-0 w-px bg-outline-variant/30" id="tl-track"></div>
+        <div class="absolute left-5 top-0 w-px bg-primary origin-top transition-all duration-700" id="tl-progress" style="height:0%"></div>
+
+        <div class="space-y-0" id="timeline-steps">
+
+          <!-- Step 1 -->
+          <div class="tl-step flex gap-8 pb-12 relative opacity-0 translate-y-4 transition-all duration-500">
+            <div class="flex flex-col items-center shrink-0 z-10">
+              <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline font-bold text-sm shadow-[0_0_0_4px_#f4f3f1]">01</div>
+            </div>
+            <div class="flex-1 bg-surface-container-lowest rounded-xl p-6 shadow-[0_2px_16px_rgba(26,28,27,0.04)] hover:shadow-[0_4px_24px_rgba(26,28,27,0.08)] transition-shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary text-xl">phone_in_talk</span>
+                <h3 class="font-headline text-xl font-bold text-on-surface">Rendez-vous</h3>
+              </div>
+              <p class="font-body text-base text-on-surface-variant leading-relaxed mb-4">
+                Corentin prend votre appel et analyse votre demande afin de répondre au mieux à vos besoins.
+              </p>
+              <a href="#calendly" class="inline-flex items-center gap-1.5 font-label text-xs uppercase tracking-widest text-primary font-semibold hover:opacity-70 transition-opacity">
+                Réserver l'appel <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="tl-step flex gap-8 pb-12 relative opacity-0 translate-y-4 transition-all duration-500 delay-75">
+            <div class="flex flex-col items-center shrink-0 z-10">
+              <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-headline font-bold text-sm shadow-[0_0_0_4px_#f4f3f1]">02</div>
+            </div>
+            <div class="flex-1 bg-surface-container-lowest rounded-xl p-6 shadow-[0_2px_16px_rgba(26,28,27,0.04)] hover:shadow-[0_4px_24px_rgba(26,28,27,0.08)] transition-shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary text-xl">video_file</span>
+                <h3 class="font-headline text-xl font-bold text-on-surface">Rushs</h3>
+              </div>
+              <p class="font-body text-base text-on-surface-variant leading-relaxed">
+                Après réception de vos rushs, notre équipe propose un montage fluide, dynamique et adapté aux réseaux, avec un livrable de haute qualité.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="tl-step flex gap-8 pb-12 relative opacity-0 translate-y-4 transition-all duration-500 delay-100">
+            <div class="flex flex-col items-center shrink-0 z-10">
+              <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-headline font-bold text-sm shadow-[0_0_0_4px_#f4f3f1]">03</div>
+            </div>
+            <div class="flex-1 bg-surface-container-lowest rounded-xl p-6 shadow-[0_2px_16px_rgba(26,28,27,0.04)] hover:shadow-[0_4px_24px_rgba(26,28,27,0.08)] transition-shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary text-xl">rate_review</span>
+                <h3 class="font-headline text-xl font-bold text-on-surface">V1 & Retours</h3>
+              </div>
+              <p class="font-body text-base text-on-surface-variant leading-relaxed">
+                Une première version vous est envoyée via Frame.io ou Krock. Retours illimités pour affiner chaque détail.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="tl-step flex gap-8 pb-12 relative opacity-0 translate-y-4 transition-all duration-500 delay-150">
+            <div class="flex flex-col items-center shrink-0 z-10">
+              <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-headline font-bold text-sm shadow-[0_0_0_4px_#f4f3f1]">04</div>
+            </div>
+            <div class="flex-1 bg-surface-container-lowest rounded-xl p-6 shadow-[0_2px_16px_rgba(26,28,27,0.04)] hover:shadow-[0_4px_24px_rgba(26,28,27,0.08)] transition-shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary text-xl">task_alt</span>
+                <h3 class="font-headline text-xl font-bold text-on-surface">Rendu final</h3>
+              </div>
+              <p class="font-body text-base text-on-surface-variant leading-relaxed">
+                Notre équipe effectue les modifications avec attention pour vous livrer une vidéo finale conforme à vos attentes, dans les délais impartis.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="tl-step flex gap-8 pb-12 relative opacity-0 translate-y-4 transition-all duration-500 delay-200">
+            <div class="flex flex-col items-center shrink-0 z-10">
+              <div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-headline font-bold text-sm shadow-[0_0_0_4px_#f4f3f1]">05</div>
+            </div>
+            <div class="flex-1 bg-surface-container-lowest rounded-xl p-6 shadow-[0_2px_16px_rgba(26,28,27,0.04)] hover:shadow-[0_4px_24px_rgba(26,28,27,0.08)] transition-shadow">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary text-xl">tune</span>
+                <h3 class="font-headline text-xl font-bold text-on-surface">Optimisation
+                  <span class="ml-2 font-label text-xs uppercase tracking-widest bg-primary/10 text-primary px-2 py-0.5 rounded-full">Option</span>
+                </h3>
+              </div>
+              <p class="font-body text-base text-on-surface-variant leading-relaxed">
+                Miniature + optimisation SEO (titre + description) pour maximiser la performance de votre contenu.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 6 - Final highlight -->
+          <div class="tl-step flex gap-8 pb-0 relative opacity-0 translate-y-4 transition-all duration-500 delay-300">
+            <div class="flex flex-col items-center shrink-0 z-10">
+              <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline font-bold text-sm shadow-[0_0_0_4px_#f4f3f1]">06</div>
+            </div>
+            <div class="flex-1 bg-primary rounded-xl p-6 shadow-[0_8px_32px_rgba(77,100,78,0.2)]">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-on-primary text-xl">bar_chart</span>
+                <h3 class="font-headline text-lg font-bold text-on-primary">Publication & Analyse</h3>
+              </div>
+              <p class="font-body text-base text-primary-fixed leading-relaxed">
+                Une fois la vidéo publiée, nous analysons les statistiques pour optimiser les prochaines et améliorer vos performances en continu.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- OFFRES -->
+<!-- ============================================================ -->
+<section id="offres" class="py-24 max-w-7xl mx-auto px-6 md:px-12">
+  <div class="mb-16 text-center">
+    <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Nos offres</p>
+    <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">
+      Choisissez votre formule.
+    </h2>
+    <p class="font-body text-lg text-on-surface-variant max-w-xl mx-auto">
+      Une base solide, des options à la carte. Comme chez Apple - vous choisissez, on s'adapte.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+
+    <!-- Pack Starter -->
+    <div class="relative bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)] flex flex-col border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
+      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">Starter</p>
+      <p class="font-headline text-4xl font-bold text-on-surface mb-1">À définir</p>
+      <p class="font-body text-sm text-on-surface-variant mb-8">Tarif personnalisé selon vos besoins</p>
+      <ul class="space-y-3 mb-10 flex-grow">
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">2 vidéos YouTube / mois</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">10 shorts / mois</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Retours illimités</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Livraison sous 15 jours</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline text-lg mt-0.5">cancel</span><span class="font-body text-sm text-on-surface-variant/50">Miniatures</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline text-lg mt-0.5">cancel</span><span class="font-body text-sm text-on-surface-variant/50">Optimisation SEO</span></li>
+      </ul>
+      <a href="#calendly" class="block text-center bg-surface-container px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all">
+        Démarrer
+      </a>
+    </div>
+
+    <!-- Pack Croissance - featured -->
+    <div class="relative bg-primary rounded-xl p-8 shadow-[0_16px_48px_rgba(77,100,78,0.25)] flex flex-col md:-translate-y-4 hover:-translate-y-6 transition-transform duration-300">
+      <div class="absolute top-0 right-6 -translate-y-1/2 bg-surface text-primary font-label text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm font-semibold">
+        Le plus populaire
+      </div>
+      <p class="font-label text-xs uppercase tracking-widest text-primary-fixed/70 mb-4">Croissance</p>
+      <p class="font-headline text-4xl font-bold text-on-primary mb-1">À définir</p>
+      <p class="font-body text-sm text-primary-fixed/70 mb-8">Tarif personnalisé selon vos besoins</p>
+      <ul class="space-y-3 mb-10 flex-grow">
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">4 vidéos YouTube / mois</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">20 shorts / mois</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">Retours illimités</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">Livraison sous 15 jours</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">Miniatures incluses</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed/50 text-lg mt-0.5">cancel</span><span class="font-body text-sm text-primary-fixed/50">Optimisation SEO</span></li>
+      </ul>
+      <a href="#calendly" class="block text-center bg-on-primary text-primary px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-primary-fixed transition-all">
+        Démarrer
+      </a>
+    </div>
+
+    <!-- Pack Performance -->
+    <div class="relative bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)] flex flex-col border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
+      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">Performance</p>
+      <p class="font-headline text-4xl font-bold text-on-surface mb-1">À définir</p>
+      <p class="font-body text-sm text-on-surface-variant mb-8">Tarif personnalisé selon vos besoins</p>
+      <ul class="space-y-3 mb-10 flex-grow">
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">4+ vidéos YouTube / mois</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">20+ shorts / mois</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Retours illimités</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Livraison prioritaire</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Miniatures incluses</span></li>
+        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Optimisation SEO complète</span></li>
+      </ul>
+      <a href="#calendly" class="block text-center bg-surface-container px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all">
+        Démarrer
+      </a>
+    </div>
+  </div>
+
+  <p class="text-center font-body text-sm text-on-surface-variant mt-8">
+    Les offres détaillées seront précisées prochainement. <a href="#calendly" class="text-primary underline underline-offset-4">Discutons de votre projet.</a>
+  </p>
+
+  <!-- CTA post-offres -->
+  <div class="mt-16 text-center">
+    <a href="#calendly" class="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-md font-label text-base uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all shadow-[0_4px_32px_rgba(77,100,78,0.18)]">
+      <span class="material-symbols-outlined text-xl">calendar_today</span>
+      Prendre rendez-vous
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- AVIS CLIENTS -->
+<!-- ============================================================ -->
+<section id="avis" class="bg-surface-container-low py-16 md:py-20">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-10 text-center">
+      <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Témoignages</p>
+      <h2 class="font-headline text-3xl md:text-4xl font-bold tracking-tight text-on-surface leading-tight">
+        Avis client
+      </h2>
+      <p class="font-body text-sm md:text-base text-on-surface-variant mt-3">
+        Ce que les clients pensent de mon travail :)
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+      <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+        <div class="flex gap-1 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+        </div>
+        <p class="font-body text-on-surface text-base leading-relaxed mb-5">
+          Ça fait plusieurs mois que je travaille avec lui. Je suis très satisfait de son travail : il est à l'écoute, se remet beaucoup en question, travaille sérieusement et est ultra ponctuel. Je le recommande vivement.
+        </p>
+        <div class="flex items-center gap-3 mt-auto pt-2">
+          <img src="photos/channels4_profile.jpg" alt="Photo de Nicolas Fleckinho" class="w-12 h-12 rounded-full object-cover shrink-0"/>
+          <div>
+            <p class="font-body text-base font-semibold text-on-surface">Nicolas / Fleckinho</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+        <div class="flex gap-1 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+        </div>
+        <p class="font-body text-on-surface text-base leading-relaxed mb-5">
+          J’ai contacté Corentin pour un shooting + vidéo de mon onglerie et tout était superbe ! La vidéo était au top et les photos aussi ! Il est très gentil, patient et sait mettre en valeur même les choses les plus simples. Je le recontacterai pour mes prochains projets. Merci encore !
+        </p>
+        <div class="flex items-center gap-3 mt-auto pt-2">
+          <img src="photos/channels4_profile (2).jpg" alt="Photo de Laura Walter" class="w-12 h-12 rounded-full object-cover shrink-0"/>
+          <div>
+            <p class="font-body text-base font-semibold text-on-surface">Laura Walter</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-1 flex">
+        <div class="w-full bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+          <div class="flex gap-1 mb-4">
+            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          </div>
+          <p class="font-body text-on-surface text-base leading-relaxed mb-5">
+            Je remercie Corentin pour ses qualités de monteur. Il a beaucoup travaillé avec moi, que ce soit pour YouTube ou pour des ADS, et j’ai toujours été satisfait de son travail. Je le recommande les yeux fermés.
+          </p>
+          <div class="flex items-center gap-3 mt-auto pt-2">
+            <img src="photos/unnamed.jpg" alt="Photo de Bryan Parry" class="w-12 h-12 rounded-full object-cover shrink-0"/>
+            <div>
+              <p class="font-body text-base font-semibold text-on-surface">Bryan Parry</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avis-legacy" class="hidden bg-surface-container-low py-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="mb-16">
+      <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Témoignages</p>
+      <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface md:w-1/2 leading-tight">
+        Ce que disent nos clients.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)]">
+        <div class="flex gap-1 mb-5">
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+        </div>
+        <p class="font-body text-on-surface-variant text-sm leading-relaxed italic mb-6">
+          Avis client à intégrer - à fournir.
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-on-surface-variant text-lg">person</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-semibold text-on-surface">Prénom Nom</p>
+            <p class="font-label text-xs text-on-surface-variant uppercase tracking-wide">Créateur</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)]">
+        <div class="flex gap-1 mb-5">
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+        </div>
+        <p class="font-body text-on-surface-variant text-sm leading-relaxed italic mb-6">
+          Avis client à intégrer - à fournir.
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-on-surface-variant text-lg">person</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-semibold text-on-surface">Prénom Nom</p>
+            <p class="font-label text-xs text-on-surface-variant uppercase tracking-wide">Créateur</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)]">
+        <div class="flex gap-1 mb-5">
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
+        </div>
+        <p class="font-body text-on-surface-variant text-sm leading-relaxed italic mb-6">
+          Avis client à intégrer - à fournir.
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-on-surface-variant text-lg">person</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-semibold text-on-surface">Prénom Nom</p>
+            <p class="font-label text-xs text-on-surface-variant uppercase tracking-wide">Créateur</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FAQ -->
+<!-- ============================================================ -->
+<section id="faq" class="py-24 max-w-7xl mx-auto px-6 md:px-12">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+    <div class="lg:col-span-4">
+      <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Questions fréquentes</p>
+      <h2 class="font-headline text-4xl font-bold tracking-tight text-on-surface leading-tight mb-6">
+        Tout ce que vous voulez savoir.
+      </h2>
+      <p class="font-body text-on-surface-variant text-sm leading-relaxed">
+        Une question sans réponse ? On en discute lors de votre appel gratuit.
+      </p>
+      <a href="#calendly" class="inline-flex items-center gap-2 mt-8 bg-primary text-on-primary px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all">
+        Réserver un appel
+      </a>
+    </div>
+
+    <div class="lg:col-span-8 space-y-3">
+
+      <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-6 text-left hover:bg-surface-container-low transition-colors">
+          <span class="font-headline text-base font-bold text-on-surface">Quel est votre délai de livraison ?</span>
+          <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed pb-6">
+            C'est notre point fort ! Nous livrons vite sans sacrifier la qualité. <strong>2 à 4 jours</strong> pour un format court (TikTok, Shorts, Reels), et <strong>maximum 2 semaines</strong> pour du contenu long (vidéos YouTube, documentaires, spots). Vous avez besoin de votre vidéo rapidement ? Vous êtes au bon endroit. Je communique toujours un calendrier précis à la signature du brief.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-6 text-left hover:bg-surface-container-low transition-colors">
+          <span class="font-headline text-base font-bold text-on-surface">Je ne sais pas ce que je veux exactement. Par où on commence ?</span>
+          <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed pb-6">
+            C'est normal et très courant ! C'est justement pour ça que j'offre un <strong>appel de consultation gratuit</strong>. On discute de votre vision, votre audience, vos objectifs et votre budget. Ensemble, on affine le concept et je vous propose une direction claire. Je suis là pour vous guider, pas juste exécuter.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-6 text-left hover:bg-surface-container-low transition-colors">
+          <span class="font-headline text-base font-bold text-on-surface">C'est trop cher, comment justifiez-vous vos tarifs ?</span>
+          <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
+        </button>
+        <div class="faq-answer px-6">
+          <div class="pb-6 space-y-3">
+            <p class="font-body text-base text-on-surface-variant leading-relaxed">Voici pourquoi nos tarifs représentent un excellent investissement :</p>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-2 font-body text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span><strong>Une équipe dédiée</strong> - monteurs pros, minimakers experts et rédacteurs hors du commun. Pas de freelance aléatoire, une vraie team coordonnée.</span></li>
+              <li class="flex items-start gap-2 font-body text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span><strong>Délais ultra-rapides</strong> - 2-4 jours pour un format court. Vous gagnez du temps, c'est de l'argent.</span></li>
+              <li class="flex items-start gap-2 font-body text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span><strong>Qualité professionnelle</strong> - équipement haut de gamme, montage soigné, pas de ressources externes qui ralentissent le process.</span></li>
+              <li class="flex items-start gap-2 font-body text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span><strong>Conception créative incluse</strong> - je réfléchis à votre stratégie vidéo avec une vraie expertise créative.</span></li>
+              <li class="flex items-start gap-2 font-body text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span><strong>Tarifs flexibles</strong> - forfaits mensuels, packs contenu, ou ajustements selon votre réalité.</span></li>
+              <li class="flex items-start gap-2 font-body text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span><strong>Pas de surprise</strong> - tout est fixé au départ. Zéro coût caché.</span></li>
+            </ul>
+            <p class="font-body text-sm text-on-surface-variant italic">On en discute lors de l'appel ? Je peux explorer des options qui vous conviennent.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-6 text-left hover:bg-surface-container-low transition-colors">
+          <span class="font-headline text-base font-bold text-on-surface">Et si je ne suis pas satisfait du résultat ?</span>
+          <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed pb-6">
+            Vous recevez une première version pour feedback. Je propose <strong>entre 2 et 3 rounds de corrections</strong> selon votre forfait pour affiner les couleurs, le montage, le son, etc. Votre satisfaction est ma priorité. Si on a besoin de changements plus importants, on en discute ? mais c'est rare quand on a bien aligné le brief au départ.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-6 text-left hover:bg-surface-container-low transition-colors">
+          <span class="font-headline text-base font-bold text-on-surface">J'ai une direction artistique et un brand personnel, sera-t-il respecté ?</span>
+          <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed pb-6">
+            Absolument ! Le montage et la finition seront réalisés en fonction de votre DA et votre personal brand. C'est crucial que la vidéo soit cohérente avec votre identité visuelle. Partagez-moi vos références, votre palette de couleurs, votre style de montage ? je m'assure que tout s'aligne parfaitement. <strong>Votre brand, c'est votre force : je suis là pour l'amplifier, pas pour la diluer.</strong>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CALENDRIER DE RÉSERVATION CUSTOM -->
+<!-- ============================================================ -->
+<section id="calendly" class="bg-surface-container-low py-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="text-center mb-14">
+      <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Passez à l'action</p>
+      <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">
+        Réservez votre appel gratuit.
+      </h2>
+      <p class="font-body text-lg text-on-surface-variant max-w-xl mx-auto">
+        30 minutes pour analyser votre projet et vous proposer la meilleure solution. Sans engagement.
+      </p>
+    </div>
+
+    <div class="max-w-5xl mx-auto bg-surface-container-lowest rounded-2xl shadow-[0_8px_48px_rgba(26,28,27,0.06)] overflow-hidden">
+
+      <!-- Step indicator compact -->
+      <div class="flex border-b border-outline-variant/20 px-2">
+        <div class="step-indicator flex-1 flex items-center justify-center gap-2 py-3 font-label text-xs uppercase tracking-widest transition-all" id="step-ind-1">
+          <span class="w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center font-bold shrink-0">1</span>
+          <span class="hidden sm:inline">Date & Horaire</span>
+        </div>
+        <div class="step-indicator flex-1 flex items-center justify-center gap-2 py-3 font-label text-xs uppercase tracking-widest transition-all opacity-40" id="step-ind-2">
+          <span class="w-5 h-5 rounded-full bg-outline-variant text-on-surface text-xs flex items-center justify-center font-bold shrink-0" id="step2-num">2</span>
+          <span class="hidden sm:inline">Vos informations</span>
+        </div>
+      </div>
+
+      <!-- STEP 1 ? Calendrier + créneaux côte à côte -->
+      <div id="cal-step-1" class="p-5 md:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+          <!-- Colonne gauche : calendrier -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <button onclick="prevMonth()" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors">
+                <span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_left</span>
+              </button>
+              <p class="font-headline text-base font-bold text-on-surface" id="cal-month-label"></p>
+              <button onclick="nextMonth()" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors">
+                <span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_right</span>
+              </button>
+            </div>
+            <div class="grid grid-cols-7 mb-1">
+              <div class="font-label text-xs text-on-surface-variant/60 text-center py-1.5">L</div>
+              <div class="font-label text-xs text-on-surface-variant/60 text-center py-1.5">M</div>
+              <div class="font-label text-xs text-on-surface-variant/60 text-center py-1.5">M</div>
+              <div class="font-label text-xs text-on-surface-variant/60 text-center py-1.5">J</div>
+              <div class="font-label text-xs text-on-surface-variant/60 text-center py-1.5">V</div>
+              <div class="font-label text-xs text-on-surface-variant/20 text-center py-1.5">S</div>
+              <div class="font-label text-xs text-on-surface-variant/20 text-center py-1.5">D</div>
+            </div>
+            <div class="grid grid-cols-7 gap-0.5" id="cal-grid"></div>
+            <p class="font-label text-xs text-on-surface-variant/40 mt-3">Lun-Ven - Heure de Paris</p>
+          </div>
+
+          <!-- Colonne droite : créneaux -->
+          <div>
+            <div id="slots-placeholder" class="flex flex-col items-center justify-center h-full py-8 text-center">
+              <span class="material-symbols-outlined text-3xl text-outline-variant mb-3">schedule</span>
+              <p class="font-body text-sm text-on-surface-variant">Sélectionnez une date<br/>pour voir les créneaux</p>
+            </div>
+            <div id="slots-panel" class="hidden">
+              <p class="font-headline text-base font-bold text-on-surface mb-1" id="slot-date-label"></p>
+              <p class="font-body text-xs text-on-surface-variant mb-4">Choisissez un créneau</p>
+              <div class="grid grid-cols-2 gap-2" id="slots-grid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 ? Formulaire (était step 3) -->
+      <div id="cal-step-2" class="p-5 md:p-8 hidden">
+        <button onclick="goStep(1)" class="flex items-center gap-2 font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-on-surface mb-6 transition-colors">
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+          Retour
+        </button>
+
+        <div class="flex items-center gap-3 bg-primary/8 rounded-xl p-4 mb-6">
+          <span class="material-symbols-outlined text-primary">event</span>
+          <div>
+            <p class="font-body text-sm font-semibold text-on-surface" id="booking-summary"></p>
+            <p class="font-label text-xs text-on-surface-variant">Appel gratuit - 30 min - Visio</p>
+          </div>
+        </div>
+
+        <form id="booking-form" class="space-y-5" onsubmit="submitBooking(event)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">Prénom *</label>
+              <input type="text" id="f-prenom" required placeholder="Votre prénom"
+                class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/30 focus:border-primary rounded-t-md px-4 py-3 font-body text-sm text-on-surface placeholder-on-surface-variant/40 outline-none transition-colors"/>
+            </div>
+            <div>
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">Nom *</label>
+              <input type="text" id="f-nom" required placeholder="Votre nom"
+                class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/30 focus:border-primary rounded-t-md px-4 py-3 font-body text-sm text-on-surface placeholder-on-surface-variant/40 outline-none transition-colors"/>
+            </div>
+          </div>
+          <div>
+            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">Email *</label>
+            <input type="email" id="f-email" required placeholder="vous@exemple.com"
+              class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/30 focus:border-primary rounded-t-md px-4 py-3 font-body text-sm text-on-surface placeholder-on-surface-variant/40 outline-none transition-colors"/>
+          </div>
+          <div>
+            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">Décrivez votre projet</label>
+            <textarea id="f-projet" rows="3" placeholder="Type de contenu, fréquence souhaitée, plateforme cible..."
+              class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/30 focus:border-primary rounded-t-md px-4 py-3 font-body text-sm text-on-surface placeholder-on-surface-variant/40 outline-none transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-primary text-on-primary py-4 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all mt-2">
+            Confirmer la réservation
+          </button>
+          <p class="font-label text-xs text-on-surface-variant/50 text-center">En confirmant, vous recevrez un email de confirmation avec le lien de visio.</p>
+        </form>
+      </div>
+
+      <!-- STEP 3 ? Confirmation -->
+      <div id="cal-step-3" class="p-6 md:p-10 hidden text-center">
+        <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+          <span class="material-symbols-outlined text-4xl text-primary" data-weight="fill">check_circle</span>
+        </div>
+        <h3 class="font-headline text-2xl font-bold text-on-surface mb-3">Réservation confirmée !</h3>
+        <p class="font-body text-on-surface-variant mb-4" id="confirm-summary"></p>
+        <p class="font-body text-sm text-on-surface-variant max-w-sm mx-auto mb-8">Vous allez recevoir un email de confirmation. Corentin vous contactera pour valider le créneau.</p>
+        <button onclick="resetBooking()" class="font-label text-xs uppercase tracking-widest text-primary underline underline-offset-4 hover:opacity-70 transition-opacity">
+          Faire une nouvelle réservation
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="bg-surface-container py-16">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+
+      <!-- Branding -->
+      <div class="md:col-span-1 flex flex-col gap-4">
+        <a href="#hero" class="font-headline text-2xl font-bold italic text-on-surface hover:opacity-80 transition-opacity">Comédia</a>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+          L'agence de montage vidéo qui allie créativité éditoriale et performance mesurable.
+        </p>
+        <!-- Social icons -->
+        <div class="flex items-center gap-4 mt-2">
+          <a href="https://www.instagram.com/1corentin2/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all duration-200" title="Instagram">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@1corentin2" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all duration-200" title="YouTube">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/corentin-demange-4b4a4226a/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all duration-200" title="LinkedIn">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/corentin.demange.96?locale=fr_FR" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all duration-200" title="Facebook">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex flex-col gap-3">
+        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Navigation</p>
+        <a href="#portfolio" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors">Portfolio</a>
+        <a href="#process" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors">Comment ça marche</a>
+        <a href="#offres" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors">Offres</a>
+        <a href="#faq" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors">FAQ</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="flex flex-col gap-3">
+        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Contact</p>
+        <a href="tel:+33769052075" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2">
+          <span class="material-symbols-outlined text-base text-primary">phone</span>
+          07 69 05 20 75
+        </a>
+        <button type="button" onclick="copyFooterEmail()" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2 text-left">
+          <span class="material-symbols-outlined text-base text-primary">mail</span>
+          corentindemange02@gmail.com
+        </button>
+        <p id="footer-email-feedback" class="font-label text-xs text-primary hidden">Copié !</p>
+        <a href="#calendly" class="inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-md font-label text-xs uppercase tracking-widest font-semibold mt-2 w-fit">
+          Prendre un RDV
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Légal -->
+      <div class="flex flex-col gap-3 md:items-end">
+        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Légal</p>
+        <a href="mentions-legales.html" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors">Mentions légales</a>
+        <a href="politique-confidentialite.html" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors">Politique de confidentialité</a>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="font-body text-xs text-on-surface-variant/50">© 2025 Comédia · Agence de montage vidéo · Tous droits réservés.</p>
+      <p class="font-body text-xs text-on-surface-variant/30">Fait avec soin pour les créateurs qui veulent scaler</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- JS -->
+<!-- ============================================================ -->
+<script>
+
+  // ============================================================
+  // WORD REVEAL HERO TITLE
+  // ============================================================
+  const heroTitle = document.getElementById('hero-title');
+  const heroWords = ['Comédia,', 'la', 'référence', 'n°1', 'pour', 'vos', 'contenus', 'longs', 'et', 'courts.'];
+  const greenFrom = 7; // index de "longs"
+
+  heroWords.forEach((word, i) => {
+    const span = document.createElement('span');
+    span.textContent = word;
+    span.style.marginRight = '0.28em';
+    if (i >= greenFrom) span.style.color = '#4d644e';
+    heroTitle.appendChild(span);
+    setTimeout(() => span.classList.add('show'), 100 + i * 75);
+  });
+
+
+  // ============================================================
+  // COMPTEURS ANIMÉS
+  // ============================================================
+  const counters = document.querySelectorAll('.counter');
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el     = entry.target;
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      const duration = 1600;
+      const step = target / (duration / 16);
+      let current = 0;
+      const tick = () => {
+        current = Math.min(current + step, target);
+        el.innerHTML = Math.floor(current) + suffix;
+        if (current < target) requestAnimationFrame(tick);
+      };
+      tick();
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObs.observe(c));
+
+  // ============================================================
+  // ORBES - PARALLAX SOURIS LÉGER
+  // ============================================================
+  const orbs = document.querySelectorAll('.hero-orb');
+  document.addEventListener('mousemove', e => {
+    const xPct = (e.clientX / window.innerWidth  - 0.5);
+    const yPct = (e.clientY / window.innerHeight - 0.5);
+    orbs.forEach((orb, i) => {
+      const factor = (i + 1) * 14;
+      orb.style.transform = `translate(${xPct * factor}px, ${yPct * factor}px)`;
+    });
+  });
+
+  // ============================================================
+  // CALENDRIER DE RÉSERVATION
+  // ============================================================
+  const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  const DAYS_FR = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+  const SLOTS = ['09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
+  // Créneaux déjà pris (simulés) - jours: YYYY-MM-DD -> tableau d'heures bloquées
+  const BOOKED = {};
+
+  let calDate = new Date();
+  calDate.setDate(1);
+  let selectedDate = null;
+  let selectedSlot = null;
+  let currentStep = 1;
+
+  function renderCalendar() {
+    const y = calDate.getFullYear();
+    const m = calDate.getMonth();
+    document.getElementById('cal-month-label').textContent = MONTHS_FR[m] + ' ' + y;
+
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+
+    const firstDay = new Date(y, m, 1);
+    // getDay() returns 0=Sunday, convert to Monday-first
+    let startDow = firstDay.getDay(); // 0=Sun
+    startDow = startDow === 0 ? 6 : startDow - 1; // 0=Mon now
+
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    // Empty cells before first day
+    for (let i = 0; i < startDow; i++) {
+      const empty = document.createElement('div');
+      grid.appendChild(empty);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(y, m, d);
+      const dow = date.getDay(); // 0=Sun, 6=Sat
+      const isWeekend = dow === 0 || dow === 6;
+      const isPast = date < today;
+      const isoStr = date.toISOString().split('T')[0];
+      const isSelected = selectedDate === isoStr;
+
+      const btn = document.createElement('button');
+      btn.textContent = d;
+      btn.className = 'aspect-square rounded-lg text-sm font-body transition-all duration-150 ';
+
+      if (isWeekend || isPast) {
+        btn.className += 'text-on-surface-variant/20 cursor-not-allowed';
+        btn.disabled = true;
+      } else if (isSelected) {
+        btn.className += 'bg-primary text-on-primary font-bold';
+      } else {
+        btn.className += 'hover:bg-surface-container text-on-surface cursor-pointer font-medium';
+        btn.onclick = () => selectDate(isoStr, d, m, y);
+      }
+
+      grid.appendChild(btn);
+    }
+  }
+
+  function selectDate(iso, d, m, y) {
+    selectedDate = iso;
+    selectedSlot = null;
+    renderCalendar();
+    const dow = new Date(y, m, d).getDay();
+    const label = DAYS_FR[dow === 0 ? 6 : dow - 1] + ' ' + d + ' ' + MONTHS_FR[m] + ' ' + y;
+    document.getElementById('slot-date-label').textContent = label;
+    document.getElementById('slots-placeholder').classList.add('hidden');
+    document.getElementById('slots-panel').classList.remove('hidden');
+    renderSlots(iso);
+  }
+
+  function renderSlots(iso) {
+    const grid = document.getElementById('slots-grid');
+    grid.innerHTML = '';
+    const booked = BOOKED[iso] || [];
+
+    SLOTS.forEach(slot => {
+      const taken = booked.includes(slot);
+      const btn = document.createElement('button');
+      btn.textContent = slot;
+      btn.className = 'py-3 rounded-xl font-label text-sm uppercase tracking-widest font-semibold transition-all duration-150 ';
+
+      if (taken) {
+        btn.className += 'bg-surface-container-high text-on-surface-variant/30 cursor-not-allowed line-through';
+        btn.disabled = true;
+      } else if (selectedSlot === slot) {
+        btn.className += 'bg-primary text-on-primary';
+      } else {
+        btn.className += 'bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary cursor-pointer';
+        btn.onclick = () => selectSlot(slot, iso);
+      }
+      grid.appendChild(btn);
+    });
+  }
+
+  function selectSlot(slot, iso) {
+    selectedSlot = slot;
+    renderSlots(iso);
+    const dateLabel = document.getElementById('slot-date-label').textContent;
+    document.getElementById('booking-summary').textContent = dateLabel + ' - ' + slot;
+    goStep(2);
+  }
+
+  function prevMonth() {
+    calDate.setMonth(calDate.getMonth() - 1);
+    renderCalendar();
+  }
+
+  function nextMonth() {
+    calDate.setMonth(calDate.getMonth() + 1);
+    renderCalendar();
+  }
+
+  function goStep(n) {
+    [1, 2, 3].forEach(i => {
+      const el = document.getElementById('cal-step-' + i);
+      if (el) el.classList.add('hidden');
+      const ind = document.getElementById('step-ind-' + i);
+      if (ind) ind.classList.add('opacity-40');
+    });
+    const target = document.getElementById('cal-step-' + n);
+    if (target) target.classList.remove('hidden');
+    currentStep = n;
+    const ind = document.getElementById('step-ind-' + n);
+    if (ind) ind.classList.remove('opacity-40');
+  }
+
+  function submitBooking(e) {
+    e.preventDefault();
+    const prenom = document.getElementById('f-prenom').value;
+    const nom = document.getElementById('f-nom').value;
+    const email = document.getElementById('f-email').value;
+    const projet = document.getElementById('f-projet').value;
+    const [y, m, d] = selectedDate.split('-');
+    const dateLabel = DAYS_FR[new Date(+y, +m-1, +d).getDay() === 0 ? 6 : new Date(+y, +m-1, +d).getDay() - 1] + ' ' + d + ' ' + MONTHS_FR[+m-1] + ' ' + y;
+
+    if (!BOOKED[selectedDate]) BOOKED[selectedDate] = [];
+    BOOKED[selectedDate].push(selectedSlot);
+
+    document.getElementById('confirm-summary').textContent = prenom + ' ' + nom + ' - ' + dateLabel + ' - ' + selectedSlot;
+    goStep(3);
+
+    // Envoie via mailto (fonctionnel sans backend)
+    const subject = encodeURIComponent('Réservation appel Comédia - ' + dateLabel + ' ' + selectedSlot);
+    const body = encodeURIComponent(
+      'Nouvelle réservation\n\nNom : ' + prenom + ' ' + nom +
+      '\nEmail : ' + email +
+      '\nDate : ' + dateLabel + ' - ' + selectedSlot +
+      '\nProjet : ' + projet
+    );
+    setTimeout(() => {
+      window.location.href = 'mailto:corentindemange02@gmail.com?subject=' + subject + '&body=' + body;
+    }, 800);
+  }
+
+  function resetBooking() {
+    selectedDate = null;
+    selectedSlot = null;
+    document.getElementById('booking-form').reset();
+    document.getElementById('slots-placeholder').classList.remove('hidden');
+    document.getElementById('slots-panel').classList.add('hidden');
+    goStep(1);
+    renderCalendar();
+  }
+
+  let footerEmailFeedbackTimeout;
+
+  function showFooterEmailFeedback(message) {
+    const feedback = document.getElementById('footer-email-feedback');
+    if (!feedback) return;
+
+    feedback.textContent = message;
+    feedback.classList.remove('hidden');
+    clearTimeout(footerEmailFeedbackTimeout);
+    footerEmailFeedbackTimeout = setTimeout(() => {
+      feedback.classList.add('hidden');
+    }, 1800);
+  }
+
+  function copyFooterEmail() {
+    const email = 'corentindemange02@gmail.com';
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email)
+        .then(() => showFooterEmailFeedback('Copié !'))
+        .catch(() => showFooterEmailFeedback(email));
+      return;
+    }
+
+    const input = document.createElement('input');
+    input.value = email;
+    document.body.appendChild(input);
+    input.select();
+
+    try {
+      document.execCommand('copy');
+      showFooterEmailFeedback('Copié !');
+    } catch (error) {
+      showFooterEmailFeedback(email);
+    }
+
+    document.body.removeChild(input);
+  }
+
+  // Init calendar
+  renderCalendar();
+
+  // ============================================================
+  // Mobile menu
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('shadow-[0_1px_24px_rgba(26,28,27,0.06)]');
+    } else {
+      navbar.classList.remove('shadow-[0_1px_24px_rgba(26,28,27,0.06)]');
+    }
+  });
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-answer').classList.remove('open');
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // Portfolio filter
+  function filterPortfolio(cat) {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.remove('bg-primary', 'text-on-primary');
+      btn.classList.add('bg-surface-variant', 'text-on-surface-variant');
+    });
+    const activeBtn = document.querySelector(`[data-filter="${cat}"]`);
+    activeBtn.classList.add('bg-primary', 'text-on-primary');
+    activeBtn.classList.remove('bg-surface-variant', 'text-on-surface-variant');
+
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      if (cat === 'tous' || card.dataset.cat === cat) {
+        card.style.display = '';
+        setTimeout(() => card.style.opacity = '1', 10);
+      } else {
+        card.style.opacity = '0';
+        setTimeout(() => card.style.display = 'none', 300);
+      }
+    });
+  }
+
+  // ============================================================
+  // TIMELINE ANIMÉE
+  // ============================================================
+  const tlSteps = document.querySelectorAll('.tl-step');
+  const tlProgress = document.getElementById('tl-progress');
+
+  const tlObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-4');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  tlSteps.forEach(step => tlObserver.observe(step));
+
+  // Progress line grows as user scrolls through the timeline
+  const tlSection = document.getElementById('process');
+  if (tlSection && tlProgress) {
+    window.addEventListener('scroll', () => {
+      const rect = tlSection.getBoundingClientRect();
+      const sectionH = tlSection.offsetHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = Math.min(100, (scrolled / (sectionH - window.innerHeight)) * 100);
+      tlProgress.style.height = pct + '%';
+    });
+  }
+</script>
+
+</body>
+</html>
