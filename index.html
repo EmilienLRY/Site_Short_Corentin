@@ -256,6 +256,33 @@
     #hero .hero-orb:nth-of-type(3) { width: 9rem; height: 9rem; top: 35%; left: -2.5rem; }
     #timeline-steps .tl-step { gap: 1rem; }
     #tl-track, #tl-progress { left: 1rem; }
+    .mobile-scroll-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      padding: 0 0 0.5rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mobile-scroll-row::-webkit-scrollbar { display: none; }
+    .mobile-scroll-card {
+      flex: 0 0 78vw;
+      max-width: 78vw;
+      min-width: 78vw;
+      scroll-snap-align: start;
+    }
+    .mobile-scroll-card-square {
+      flex-basis: 70vw;
+      max-width: 70vw;
+      min-width: 70vw;
+    }
+    .mobile-scroll-card-review {
+      flex-basis: 85vw;
+      max-width: 85vw;
+      min-width: 85vw;
+    }
   }
 </style>
 </head>
@@ -440,9 +467,9 @@
   </div>
 
   <!-- Video grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" id="portfolio-grid">
+  <div class="mobile-scroll-row md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" id="portfolio-grid">
     <!-- Card 1 -->
-    <article class="portfolio-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low" data-cat="short">
+    <article class="portfolio-card mobile-scroll-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low" data-cat="short">
       <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-container/40 flex items-center justify-center">
         <div class="play-btn w-14 h-14 rounded-full bg-surface/20 backdrop-blur-md flex items-center justify-center border border-white/20">
           <span class="material-symbols-outlined text-white text-2xl" data-weight="fill">play_arrow</span>
@@ -457,7 +484,7 @@
     </article>
 
     <!-- Card 2 - offset -->
-    <article class="portfolio-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container md:translate-y-8" data-cat="long">
+    <article class="portfolio-card mobile-scroll-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container md:translate-y-8" data-cat="long">
       <div class="absolute inset-0 bg-gradient-to-br from-surface-container-high to-outline/20 flex items-center justify-center">
         <div class="play-btn w-14 h-14 rounded-full bg-surface/20 backdrop-blur-md flex items-center justify-center border border-outline-variant/30">
           <span class="material-symbols-outlined text-on-surface text-2xl" data-weight="fill">play_arrow</span>
@@ -472,7 +499,7 @@
     </article>
 
     <!-- Card 3 -->
-    <article class="portfolio-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low" data-cat="brand">
+    <article class="portfolio-card mobile-scroll-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container-low" data-cat="brand">
       <div class="absolute inset-0 bg-gradient-to-br from-primary-container/50 to-surface-container-highest flex items-center justify-center">
         <div class="play-btn w-14 h-14 rounded-full bg-surface/20 backdrop-blur-md flex items-center justify-center border border-outline-variant/30">
           <span class="material-symbols-outlined text-on-surface text-2xl" data-weight="fill">play_arrow</span>
@@ -487,7 +514,7 @@
     </article>
 
     <!-- Card 4 - offset -->
-    <article class="portfolio-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container md:translate-y-8" data-cat="short">
+    <article class="portfolio-card mobile-scroll-card group relative aspect-[9/16] rounded-xl overflow-hidden bg-surface-container md:translate-y-8" data-cat="short">
       <div class="absolute inset-0 bg-gradient-to-br from-outline/10 to-primary/20 flex items-center justify-center">
         <div class="play-btn w-14 h-14 rounded-full bg-surface/20 backdrop-blur-md flex items-center justify-center border border-white/20">
           <span class="material-symbols-outlined text-on-surface text-2xl" data-weight="fill">play_arrow</span>
@@ -502,7 +529,8 @@
     </article>
   </div>
 
-  <p class="text-center font-label text-xs text-on-surface-variant mt-8 tracking-wide opacity-60">Vos vidéos seront intégrées ici - Drive : drive.google.com/</p>
+  <p class="font-label text-[11px] sm:text-xs text-on-surface-variant mt-4 sm:mt-8 tracking-wide opacity-60 text-center sm:text-left">Sur mobile, faites glisser les vidéos de gauche à droite.</p>
+  <p class="text-center font-label text-xs text-on-surface-variant mt-3 tracking-wide opacity-60">Vos vidéos seront intégrées ici - Drive : drive.google.com/</p>
 </section>
 
 <!-- ============================================================ -->
@@ -543,9 +571,9 @@
   </div>
 
   <!-- 2 rangées de 3 photos -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+  <div class="mobile-scroll-row md:grid md:grid-cols-3 gap-4 md:gap-6">
     <!-- Row 1 -->
-    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
       <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
         <span class="material-symbols-outlined text-3xl">image</span>
         <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
@@ -554,32 +582,32 @@
         <p class="font-body text-white text-sm">Résultat client #1</p>
       </div>
     </div>
-    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
+    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
       <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
         <span class="material-symbols-outlined text-3xl">image</span>
         <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
       </div>
     </div>
-    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
       <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
         <span class="material-symbols-outlined text-3xl">image</span>
         <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
       </div>
     </div>
     <!-- Row 2 -->
-    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
+    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
       <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
         <span class="material-symbols-outlined text-3xl">image</span>
         <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
       </div>
     </div>
-    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
       <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
         <span class="material-symbols-outlined text-3xl">image</span>
         <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
       </div>
     </div>
-    <div class="proof-card group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
+    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
       <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
         <span class="material-symbols-outlined text-3xl">image</span>
         <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
@@ -826,8 +854,8 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-      <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+    <div class="mobile-scroll-row md:grid md:grid-cols-3 gap-4 md:gap-5">
+      <div class="mobile-scroll-card mobile-scroll-card-review bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
         <div class="flex gap-1 mb-4">
           <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
           <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
@@ -846,7 +874,7 @@
         </div>
       </div>
 
-      <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+      <div class="mobile-scroll-card mobile-scroll-card-review bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
         <div class="flex gap-1 mb-4">
           <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
           <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
@@ -865,7 +893,7 @@
         </div>
       </div>
 
-      <div class="md:col-span-1 flex">
+      <div class="mobile-scroll-card mobile-scroll-card-review md:col-span-1 flex">
         <div class="w-full bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
           <div class="flex gap-1 mb-4">
             <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
