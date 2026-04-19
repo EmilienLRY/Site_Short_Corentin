@@ -276,16 +276,6 @@
     max-width: 85vw;
     min-width: 85vw;
   }
-  .mobile-scroll-card-stat {
-    flex-basis: 76vw;
-    max-width: 76vw;
-    min-width: 76vw;
-  }
-  .mobile-scroll-card-offer {
-    flex-basis: 84vw;
-    max-width: 84vw;
-    min-width: 84vw;
-  }
 
   @media (min-width: 768px) {
     .mobile-scroll-row {
@@ -296,9 +286,7 @@
     }
     .mobile-scroll-card,
     .mobile-scroll-card-square,
-    .mobile-scroll-card-review,
-    .mobile-scroll-card-stat,
-    .mobile-scroll-card-offer {
+    .mobile-scroll-card-review {
       min-width: 0;
       max-width: none;
       flex: initial;
@@ -567,24 +555,24 @@
 <!-- CHIFFRES -->
 <!-- ============================================================ -->
 <section class="bg-surface-container-low py-16 md:py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 mobile-scroll-row md:grid md:grid-cols-3 gap-4 md:gap-0">
-    <div class="mobile-scroll-card mobile-scroll-card-stat p-8 sm:p-10 border border-outline-variant/20 md:border-y-0 md:border-l-0 md:border-r text-center rounded-xl md:rounded-none bg-surface-container-low">
-      <p class="font-headline text-5xl md:text-6xl font-bold text-on-surface mb-2">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-3 gap-3 md:gap-0">
+    <div class="p-4 sm:p-6 md:p-10 border border-outline-variant/20 md:border-y-0 md:border-l-0 md:border-r text-center rounded-xl md:rounded-none bg-surface-container-low">
+      <p class="font-headline text-3xl sm:text-5xl md:text-6xl font-bold text-on-surface mb-2">
         <span class="counter" data-target="100" data-suffix="&nbsp;%">0</span>
       </p>
-      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Clients satisfaits</p>
+      <p class="font-label text-[10px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-widest text-on-surface-variant">Clients satisfaits</p>
     </div>
-    <div class="mobile-scroll-card mobile-scroll-card-stat p-8 sm:p-10 border border-outline-variant/20 md:border-y-0 md:border-l-0 md:border-r text-center rounded-xl md:rounded-none bg-surface-container-low">
-      <p class="font-headline text-5xl md:text-6xl font-bold text-primary mb-2">
+    <div class="p-4 sm:p-6 md:p-10 border border-outline-variant/20 md:border-y-0 md:border-l-0 md:border-r text-center rounded-xl md:rounded-none bg-surface-container-low">
+      <p class="font-headline text-3xl sm:text-5xl md:text-6xl font-bold text-primary mb-2">
         +<span class="counter" data-target="150" data-suffix="">0</span>
       </p>
-      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Créateurs accompagnés</p>
+      <p class="font-label text-[10px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-widest text-on-surface-variant">Créateurs accompagnés</p>
     </div>
-    <div class="mobile-scroll-card mobile-scroll-card-stat p-8 sm:p-10 border border-outline-variant/20 md:border-0 text-center rounded-xl md:rounded-none bg-surface-container-low">
-      <p class="font-headline text-5xl md:text-6xl font-bold text-on-surface mb-2">
+    <div class="p-4 sm:p-6 md:p-10 border border-outline-variant/20 md:border-0 text-center rounded-xl md:rounded-none bg-surface-container-low">
+      <p class="font-headline text-3xl sm:text-5xl md:text-6xl font-bold text-on-surface mb-2">
         <span class="counter" data-target="10" data-suffix="M+">0</span>
       </p>
-      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Vues cumulées</p>
+      <p class="font-label text-[10px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-widest text-on-surface-variant">Vues cumulées</p>
     </div>
   </div>
 </section>
@@ -796,61 +784,73 @@
     </p>
   </div>
 
-  <div class="mobile-scroll-row md:grid md:grid-cols-3 gap-6 lg:gap-8">
+  <div class="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3 lg:gap-8">
 
     <!-- Pack Starter -->
-    <div class="mobile-scroll-card mobile-scroll-card-offer relative bg-surface-container-lowest rounded-xl p-6 sm:p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)] flex flex-col border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
-      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">Starter</p>
-      <p class="font-headline text-4xl font-bold text-on-surface mb-1">À définir</p>
-      <p class="font-body text-sm text-on-surface-variant mb-8">Tarif personnalisé selon vos besoins</p>
-      <ul class="space-y-3 mb-10 flex-grow">
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">2 vidéos YouTube / mois</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">10 shorts / mois</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Retours illimités</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Livraison sous 15 jours</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline text-lg mt-0.5">cancel</span><span class="font-body text-sm text-on-surface-variant/50">Miniatures</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline text-lg mt-0.5">cancel</span><span class="font-body text-sm text-on-surface-variant/50">Optimisation SEO</span></li>
+    <div class="relative bg-surface-container-lowest rounded-xl p-5 sm:p-6 md:p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)] flex flex-col border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
+      <div class="flex items-start justify-between gap-4 mb-5">
+        <div>
+          <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Starter</p>
+          <p class="font-body text-sm text-on-surface-variant">Tarif personnalisé selon vos besoins</p>
+        </div>
+        <p class="font-headline text-3xl sm:text-4xl font-bold text-on-surface shrink-0 leading-none">À définir</p>
+      </div>
+      <ul class="grid grid-cols-2 gap-x-3 gap-y-2.5 mb-7 flex-grow">
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">2 vidéos YouTube / mois</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">10 shorts / mois</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Retours illimités</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Livraison sous 15 jours</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-outline text-base mt-0.5 shrink-0">cancel</span><span class="font-body text-[13px] leading-snug text-on-surface-variant/50">Miniatures</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-outline text-base mt-0.5 shrink-0">cancel</span><span class="font-body text-[13px] leading-snug text-on-surface-variant/50">Optimisation SEO</span></li>
       </ul>
-      <a href="#calendly" class="block text-center bg-surface-container px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all">
+      <a href="#calendly" class="block text-center bg-surface-container px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all">
         Démarrer
       </a>
     </div>
 
     <!-- Pack Croissance - featured -->
-    <div class="mobile-scroll-card mobile-scroll-card-offer relative bg-primary rounded-xl p-6 sm:p-8 shadow-[0_16px_48px_rgba(77,100,78,0.25)] flex flex-col md:-translate-y-4 hover:-translate-y-6 transition-transform duration-300">
-      <div class="absolute top-0 right-6 -translate-y-1/2 bg-surface text-primary font-label text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm font-semibold">
+    <div class="relative bg-primary rounded-xl p-5 sm:p-6 md:p-8 shadow-[0_16px_48px_rgba(77,100,78,0.25)] flex flex-col md:-translate-y-4 hover:-translate-y-6 transition-transform duration-300">
+      <div class="absolute top-0 right-5 sm:right-6 -translate-y-1/2 bg-surface text-primary font-label text-[10px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-widest px-3 sm:px-4 py-1.5 rounded-full shadow-sm font-semibold">
         Le plus populaire
       </div>
-      <p class="font-label text-xs uppercase tracking-widest text-primary-fixed/70 mb-4">Croissance</p>
-      <p class="font-headline text-4xl font-bold text-on-primary mb-1">À définir</p>
-      <p class="font-body text-sm text-primary-fixed/70 mb-8">Tarif personnalisé selon vos besoins</p>
-      <ul class="space-y-3 mb-10 flex-grow">
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">4 vidéos YouTube / mois</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">20 shorts / mois</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">Retours illimités</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">Livraison sous 15 jours</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-primary-fixed">Miniatures incluses</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed/50 text-lg mt-0.5">cancel</span><span class="font-body text-sm text-primary-fixed/50">Optimisation SEO</span></li>
+      <div class="flex items-start justify-between gap-4 mb-5">
+        <div>
+          <p class="font-label text-xs uppercase tracking-widest text-primary-fixed/70 mb-2">Croissance</p>
+          <p class="font-body text-sm text-primary-fixed/70">Tarif personnalisé selon vos besoins</p>
+        </div>
+        <p class="font-headline text-3xl sm:text-4xl font-bold text-on-primary shrink-0 leading-none">À définir</p>
+      </div>
+      <ul class="grid grid-cols-2 gap-x-3 gap-y-2.5 mb-7 flex-grow">
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">4 vidéos YouTube / mois</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">20 shorts / mois</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">Retours illimités</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">Livraison sous 15 jours</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">Miniatures incluses</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed/50 text-base mt-0.5 shrink-0">cancel</span><span class="font-body text-[13px] leading-snug text-primary-fixed/50">Optimisation SEO</span></li>
       </ul>
-      <a href="#calendly" class="block text-center bg-on-primary text-primary px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-primary-fixed transition-all">
+      <a href="#calendly" class="block text-center bg-on-primary text-primary px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold hover:bg-primary-fixed transition-all">
         Démarrer
       </a>
     </div>
 
     <!-- Pack Performance -->
-    <div class="mobile-scroll-card mobile-scroll-card-offer relative bg-surface-container-lowest rounded-xl p-6 sm:p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)] flex flex-col border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
-      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">Performance</p>
-      <p class="font-headline text-4xl font-bold text-on-surface mb-1">À définir</p>
-      <p class="font-body text-sm text-on-surface-variant mb-8">Tarif personnalisé selon vos besoins</p>
-      <ul class="space-y-3 mb-10 flex-grow">
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">4+ vidéos YouTube / mois</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">20+ shorts / mois</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Retours illimités</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Livraison prioritaire</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Miniatures incluses</span></li>
-        <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-lg mt-0.5" data-weight="fill">check_circle</span><span class="font-body text-sm text-on-surface-variant">Optimisation SEO complète</span></li>
+    <div class="relative bg-surface-container-lowest rounded-xl p-5 sm:p-6 md:p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)] flex flex-col border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
+      <div class="flex items-start justify-between gap-4 mb-5">
+        <div>
+          <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Performance</p>
+          <p class="font-body text-sm text-on-surface-variant">Tarif personnalisé selon vos besoins</p>
+        </div>
+        <p class="font-headline text-3xl sm:text-4xl font-bold text-on-surface shrink-0 leading-none">À définir</p>
+      </div>
+      <ul class="grid grid-cols-2 gap-x-3 gap-y-2.5 mb-7 flex-grow">
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">4+ vidéos YouTube / mois</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">20+ shorts / mois</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Retours illimités</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Livraison prioritaire</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Miniatures incluses</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Optimisation SEO complète</span></li>
       </ul>
-      <a href="#calendly" class="block text-center bg-surface-container px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all">
+      <a href="#calendly" class="block text-center bg-surface-container px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all">
         Démarrer
       </a>
     </div>
