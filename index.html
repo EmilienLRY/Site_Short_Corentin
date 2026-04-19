@@ -248,6 +248,51 @@
     }
   }
 
+  .mobile-scroll-row {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0.25rem;
+    padding: 0 0 0.5rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-scroll-row::-webkit-scrollbar { display: none; }
+  .mobile-scroll-card {
+    flex: 0 0 78vw;
+    max-width: 78vw;
+    min-width: 78vw;
+    scroll-snap-align: start;
+  }
+  .mobile-scroll-card-square {
+    flex-basis: 70vw;
+    max-width: 70vw;
+    min-width: 70vw;
+  }
+  .mobile-scroll-card-review {
+    flex-basis: 85vw;
+    max-width: 85vw;
+    min-width: 85vw;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-scroll-row {
+      display: grid;
+      overflow: visible;
+      scroll-snap-type: none;
+      padding: 0;
+    }
+    .mobile-scroll-card,
+    .mobile-scroll-card-square,
+    .mobile-scroll-card-review {
+      min-width: 0;
+      max-width: none;
+      flex: initial;
+    }
+  }
+
   @media (max-width: 767px) {
     .carousel-track { gap: 1.25rem; }
     .hero-orb { filter: blur(56px); opacity: 0.7; }
@@ -256,33 +301,6 @@
     #hero .hero-orb:nth-of-type(3) { width: 9rem; height: 9rem; top: 35%; left: -2.5rem; }
     #timeline-steps .tl-step { gap: 1rem; }
     #tl-track, #tl-progress { left: 1rem; }
-    .mobile-scroll-row {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      overscroll-behavior-x: contain;
-      scroll-snap-type: x mandatory;
-      padding: 0 0 0.5rem;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-    .mobile-scroll-row::-webkit-scrollbar { display: none; }
-    .mobile-scroll-card {
-      flex: 0 0 78vw;
-      max-width: 78vw;
-      min-width: 78vw;
-      scroll-snap-align: start;
-    }
-    .mobile-scroll-card-square {
-      flex-basis: 70vw;
-      max-width: 70vw;
-      min-width: 70vw;
-    }
-    .mobile-scroll-card-review {
-      flex-basis: 85vw;
-      max-width: 85vw;
-      min-width: 85vw;
-    }
   }
 </style>
 </head>
