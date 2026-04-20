@@ -22,12 +22,12 @@
           "surface-container-highest": "#e3e2e0",
           "outline-variant": "#c3c8c0",
           "surface-bright": "#faf9f7",
-          "on-primary": "#1a2b1b",
+          "on-primary": "#ffffff",
           "on-surface-variant": "#434842",
           "surface-container": "#efeeec",
           "on-background": "#1a1c1b",
           "inverse-primary": "#b3cdb3",
-          "surface-tint": "#9AEBA3",
+          "surface-tint": "#4d644e",
           "surface-variant": "#e3e2e0",
           "secondary": "#5f5e5e",
           "surface-container-high": "#e9e8e6",
@@ -42,7 +42,7 @@
           "surface": "#faf9f7",
           "on-primary-container": "#263b28",
           "background": "#faf9f7",
-          "primary": "#9AEBA3",
+          "primary": "#4d644e",
         },
         borderRadius: {
           "DEFAULT": "0.125rem",
@@ -370,7 +370,7 @@
     </p>
 
     <div class="flex flex-wrap justify-center gap-3 sm:gap-5 text-on-surface-variant font-body text-xs sm:text-sm">
-      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">verified</span> 99&nbsp;% de clients satisfaits</span>
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">verified</span> 100&nbsp;% de clients satisfaits</span>
       <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">group</span> +150 créateurs accompagnés</span>
       <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">visibility</span> +10M de vues cumulées</span>
     </div>
@@ -491,7 +491,6 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
         <p class="font-headline text-white text-base font-bold">Short #1</p>
-        <p class="font-label text-white/70 text-xs uppercase tracking-wide mt-1">Vidéo à intégrer</p>
       </div>
       <div class="absolute top-3 right-3 bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20">Short</div>
     </article>
@@ -506,7 +505,6 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
         <p class="font-headline text-white text-base font-bold">YouTube #1</p>
-        <p class="font-label text-white/70 text-xs uppercase tracking-wide mt-1">Vidéo à intégrer</p>
       </div>
       <div class="absolute top-3 right-3 bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20">Long</div>
     </article>
@@ -521,7 +519,6 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
         <p class="font-headline text-white text-base font-bold">Marque Perso #1</p>
-        <p class="font-label text-white/70 text-xs uppercase tracking-wide mt-1">Vidéo à intégrer</p>
       </div>
       <div class="absolute top-3 right-3 bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20">Brand</div>
     </article>
@@ -536,7 +533,6 @@
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
         <p class="font-headline text-white text-base font-bold">Short #2</p>
-        <p class="font-label text-white/70 text-xs uppercase tracking-wide mt-1">Vidéo à intégrer</p>
       </div>
       <div class="absolute top-3 right-3 bg-surface/20 backdrop-blur-md text-white font-label text-xs uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/20">Short</div>
     </article>
@@ -551,7 +547,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-0 items-stretch">
     <div class="min-w-0 p-3 sm:p-6 md:p-10 border border-outline-variant/20 md:border-y-0 md:border-l-0 md:border-r text-center rounded-xl md:rounded-none bg-surface-container-low">
       <p class="font-headline text-[clamp(1.55rem,7vw,1.9rem)] sm:text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-2 leading-none">
-        <span class="counter" data-target="99" data-suffix="%">0</span>
+        <span class="counter" data-target="100" data-suffix="%">0</span>
       </p>
       <p class="font-label text-[9px] sm:text-xs uppercase tracking-[0.12em] sm:tracking-widest text-on-surface-variant leading-tight">
         <span class="block sm:inline">Clients</span>
@@ -1461,7 +1457,7 @@
     const span = document.createElement('span');
     span.textContent = word;
     span.style.marginRight = '0.28em';
-    if (i >= greenFrom) span.style.color = '#9AEBA3';
+    if (i >= greenFrom) span.style.color = '#4d644e';
     heroTitle.appendChild(span);
     setTimeout(() => span.classList.add('show'), 100 + i * 75);
   });
