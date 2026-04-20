@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Comédia - Montage Vidéo Premium</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
   tailwind.config = {
@@ -22,12 +22,12 @@
           "surface-container-highest": "#e3e2e0",
           "outline-variant": "#c3c8c0",
           "surface-bright": "#faf9f7",
-          "on-primary": "#ffffff",
+          "on-primary": "#1a2b1b",
           "on-surface-variant": "#434842",
           "surface-container": "#efeeec",
           "on-background": "#1a1c1b",
           "inverse-primary": "#b3cdb3",
-          "surface-tint": "#4d644e",
+          "surface-tint": "#9AEBA3",
           "surface-variant": "#e3e2e0",
           "secondary": "#5f5e5e",
           "surface-container-high": "#e9e8e6",
@@ -42,7 +42,7 @@
           "surface": "#faf9f7",
           "on-primary-container": "#263b28",
           "background": "#faf9f7",
-          "primary": "#4d644e",
+          "primary": "#9AEBA3",
         },
         borderRadius: {
           "DEFAULT": "0.125rem",
@@ -52,7 +52,7 @@
           "full": "9999px",
         },
         fontFamily: {
-          "headline": ["Noto Serif"],
+          "headline": ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
           "body": ["Manrope"],
           "label": ["Manrope"],
         }
@@ -142,8 +142,8 @@
   a[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]):hover,
   button[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]):hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 32px rgba(77,100,78,0.40) !important;
-    filter: brightness(1.12);
+    box-shadow: 0 10px 32px rgba(154,235,163,0.50) !important;
+    filter: brightness(1.08);
   }
 
   /* Bouton blanc sur carte offre (fond blanc, texte vert) */
@@ -158,35 +158,35 @@
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(26,28,27,0.12) !important;
     filter: brightness(0.88);
-    color: #4d644e !important;
+    color: #3a7a45 !important;
   }
 
   /* Bouton ghost (bordure outline-variant, fond transparent) */
   a[class*="border-outline-variant"]:hover {
-    background-color: rgba(77,100,78,0.07) !important;
+    background-color: rgba(154,235,163,0.12) !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(77,100,78,0.15) !important;
-    border-color: rgba(77,100,78,0.5) !important;
+    box-shadow: 0 4px 16px rgba(154,235,163,0.25) !important;
+    border-color: rgba(154,235,163,0.7) !important;
   }
 
   /* Chips de filtre portfolio */
   button[class*="filter-btn"]:hover,
   .filter-btn:hover {
-    background-color: #4d644e !important;
-    color: #ffffff !important;
+    background-color: #9AEBA3 !important;
+    color: #1a2b1b !important;
     transform: translateY(-1px);
   }
 
   /* Boutons navigation calendrier */
   button[onclick*="prevMonth"]:hover,
   button[onclick*="nextMonth"]:hover {
-    background-color: rgba(77,100,78,0.12) !important;
-    color: #4d644e;
+    background-color: rgba(154,235,163,0.20) !important;
+    color: #3a7a45;
   }
 
   /* FAQ toggles */
   button[onclick*="toggleFaq"]:hover {
-    background-color: #dce6dc !important;
+    background-color: rgba(154,235,163,0.15) !important;
     padding-left: 28px !important;
     transition: padding-left 0.2s ease, background-color 0.2s ease !important;
   }
@@ -196,7 +196,7 @@
 
   /* Lien "retour" calendrier */
   button[onclick*="goStep"]:hover {
-    color: #4d644e !important;
+    color: #3a7a45 !important;
     transform: translateX(-3px);
   }
 
@@ -209,8 +209,23 @@
   nav a[href="#calendly"]:hover,
   header a[href="#calendly"]:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(77,100,78,0.30) !important;
-    filter: brightness(1.10);
+    box-shadow: 0 6px 20px rgba(154,235,163,0.40) !important;
+    filter: brightness(1.08);
+  }
+
+  /* Stars yellow */
+  .star-yellow { color: #FBBF24 !important; }
+
+  /* Reviews carousel */
+  .reviews-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .review-slide {
+    flex: 0 0 100%;
+  }
+  @media (min-width: 768px) {
+    .review-slide { flex: 0 0 33.333%; }
   }
 
   /* -- HERO ORBES -- */
@@ -236,7 +251,6 @@
 
   /* -- HERO SECTION relative pour les orbes -- */
   #hero { position: relative; }
-  #hero > .grid { position: relative; z-index: 1; }
   .filter-btn { white-space: nowrap; }
 
   @media (hover: none) {
@@ -340,70 +354,51 @@
 <!-- ============================================================ -->
 <!-- HERO -->
 <!-- ============================================================ -->
-<section id="hero" class="min-h-[100svh] lg:min-h-screen pt-28 sm:pt-32 pb-14 sm:pb-12 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 flex items-center overflow-hidden">
+<section id="hero" class="pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-12 overflow-hidden relative">
 
   <!-- Orbes de fond -->
-  <div class="hero-orb w-[480px] h-[480px] bg-primary/8 -top-48 right-1/4" style="animation-delay:0s"></div>
-  <div class="hero-orb w-[320px] h-[320px] bg-primary-container/25 bottom-0 left-1/3" style="animation-delay:2.5s"></div>
-  <div class="hero-orb w-[200px] h-[200px] bg-primary/6 top-1/3 -left-16" style="animation-delay:4.8s"></div>
+  <div class="hero-orb w-[480px] h-[480px] bg-primary/20 -top-48 right-1/4" style="animation-delay:0s"></div>
+  <div class="hero-orb w-[320px] h-[320px] bg-primary/15 bottom-0 left-1/3" style="animation-delay:2.5s"></div>
+  <div class="hero-orb w-[200px] h-[200px] bg-primary/10 top-1/3 -left-16" style="animation-delay:4.8s"></div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center w-full">
+  <!-- Centred text block -->
+  <div class="relative z-10 max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
+    <h1 id="hero-title" class="word-reveal font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-on-surface"></h1>
 
-    <!-- Left -->
-    <div class="lg:col-span-7 space-y-6 sm:space-y-8">
-      <h1 id="hero-title" class="word-reveal font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-on-surface"></h1>
+    <p class="font-body text-lg sm:text-xl text-on-surface-variant leading-relaxed">
+      Boostez votre visibilité grâce à des vidéos impactantes.
+    </p>
 
-      <p class="font-body text-lg sm:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-        Boostez votre visibilité grâce à des vidéos impactantes.
-      </p>
-
-      <div class="flex flex-wrap gap-3 sm:gap-5 text-on-surface-variant font-body text-xs sm:text-sm">
-        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">verified</span> 100&nbsp;% de clients satisfaits</span>
-        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">group</span> +150 créateurs accompagnés</span>
-        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">visibility</span> +10M de vues cumulées</span>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-4 pt-2">
-        <a href="#calendly" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-primary text-on-primary px-6 sm:px-8 py-4 rounded-md font-label text-sm uppercase tracking-[0.18em] sm:tracking-widest font-semibold text-center hover:bg-opacity-90 transition-all shadow-[0_4px_32px_rgba(77,100,78,0.18)]">
-          <span class="material-symbols-outlined text-lg">calendar_today</span>
-          Réserver un appel gratuit
-        </a>
-        <a href="#portfolio" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-8 py-4 border border-outline-variant/30 rounded-md font-label text-sm uppercase tracking-[0.18em] sm:tracking-widest font-semibold text-on-surface text-center hover:bg-surface-container-low transition-all">
-          Voir le portfolio
-        </a>
-      </div>
+    <div class="flex flex-wrap justify-center gap-3 sm:gap-5 text-on-surface-variant font-body text-xs sm:text-sm">
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">verified</span> 99&nbsp;% de clients satisfaits</span>
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">group</span> +150 créateurs accompagnés</span>
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">visibility</span> +10M de vues cumulées</span>
     </div>
 
-    <!-- Right - VSL embed -->
-    <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center">
-      <div class="relative max-w-[260px] w-full mx-auto" style="aspect-ratio:9/16; max-height: calc(100vh - 160px)">
-        <a
-          href="https://youtube.com/shorts/BoUePGudoUw?si=asPK8h_o-_hYcaFF"
-          target="_blank"
-          rel="noopener"
-          aria-label="Ouvrir le short YouTube"
-          class="absolute inset-0 block rounded-2xl overflow-hidden bg-[#1f1f1f] shadow-[0_16px_56px_rgba(26,28,27,0.1)] group"
-        >
-          <img
-            src="https://i.ytimg.com/vi/BoUePGudoUw/maxresdefault.jpg"
-            alt="Aperçu du short YouTube"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/15"></div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-20 h-20 rounded-full bg-white/18 backdrop-blur-md border border-white/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-              <span class="material-symbols-outlined text-white text-4xl" data-weight="fill">play_arrow</span>
-            </div>
-          </div>
-          <div class="absolute bottom-0 inset-x-0 p-6">
-            <p class="font-headline text-2xl font-bold text-white leading-tight">Voir le short</p>
-            <p class="font-body text-sm text-white/85 mt-2">Ouverture directe sur YouTube</p>
-          </div>
-          <div class="absolute top-4 right-4 bg-surface/85 backdrop-blur-md text-on-surface-variant font-label text-xs uppercase tracking-widest px-3 py-1 rounded-full border border-outline-variant/20 pointer-events-none">
-            Short
-          </div>
-        </a>
-      </div>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+      <a href="#calendly" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-primary text-on-primary px-6 sm:px-8 py-4 rounded-md font-label text-sm uppercase tracking-[0.18em] sm:tracking-widest font-semibold text-center hover:bg-opacity-90 transition-all shadow-[0_4px_32px_rgba(154,235,163,0.35)]">
+        <span class="material-symbols-outlined text-lg">calendar_today</span>
+        Réserver un appel gratuit
+      </a>
+      <a href="#portfolio" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-8 py-4 border border-outline-variant/30 rounded-md font-label text-sm uppercase tracking-[0.18em] sm:tracking-widest font-semibold text-on-surface text-center hover:bg-surface-container-low transition-all">
+        Voir le portfolio
+      </a>
+    </div>
+  </div>
+
+  <!-- VSL YouTube (horizontal 16/9) -->
+  <div class="relative z-10 mt-12 sm:mt-14 max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-[0_16px_56px_rgba(26,28,27,0.13)]" style="aspect-ratio:16/9">
+    <iframe
+      src="https://www.youtube.com/embed/_9R4jvMtgG0?start=36&rel=0&modestbranding=1"
+      title="Vidéo de présentation Comédia"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      class="w-full h-full border-0"
+    ></iframe>
+    <!-- Badge "bientôt disponible" -->
+    <div class="absolute top-4 left-4 flex items-center gap-2 bg-surface/90 backdrop-blur-md px-4 py-2 rounded-full shadow-md pointer-events-none z-10 border border-outline-variant/20">
+      <span class="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0"></span>
+      <span class="font-label text-xs uppercase tracking-widest text-on-surface">Vidéo de présentation bientôt disponible</span>
     </div>
   </div>
 </section>
@@ -419,41 +414,41 @@
     <div class="carousel-track">
       <!-- Photos réelles depuis le dossier photos/ -->
       <div class="flex gap-6 items-center">
-        <img src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
       </div>
       <!-- Duplicate for seamless loop -->
       <div class="flex gap-6 items-center">
-        <img src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
-        <img src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 grayscale hover:grayscale-0 transition-all duration-300"/>
+        <img src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
       </div>
     </div>
   </div>
@@ -547,8 +542,6 @@
     </article>
   </div>
 
-  <p class="font-label text-[11px] sm:text-xs text-on-surface-variant mt-4 sm:mt-8 tracking-wide opacity-60 text-center sm:text-left">Sur mobile, faites glisser les vidéos de gauche à droite.</p>
-  <p class="text-center font-label text-xs text-on-surface-variant mt-3 tracking-wide opacity-60">Vos vidéos seront intégrées ici - Drive : drive.google.com/</p>
 </section>
 
 <!-- ============================================================ -->
@@ -558,7 +551,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-0 items-stretch">
     <div class="min-w-0 p-3 sm:p-6 md:p-10 border border-outline-variant/20 md:border-y-0 md:border-l-0 md:border-r text-center rounded-xl md:rounded-none bg-surface-container-low">
       <p class="font-headline text-[clamp(1.55rem,7vw,1.9rem)] sm:text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-2 leading-none">
-        <span class="counter" data-target="100" data-suffix="%">0</span>
+        <span class="counter" data-target="99" data-suffix="%">0</span>
       </p>
       <p class="font-label text-[9px] sm:text-xs uppercase tracking-[0.12em] sm:tracking-widest text-on-surface-variant leading-tight">
         <span class="block sm:inline">Clients</span>
@@ -586,62 +579,6 @@
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- PREUVES SOCIALES / ÉTUDES DE CAS -->
-<!-- ============================================================ -->
-<section id="etudes-de-cas" class="py-20 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-  <div class="mb-12 md:mb-16">
-    <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Preuves sociales</p>
-    <h2 class="font-headline text-[2.55rem] sm:text-4xl md:text-5xl font-bold tracking-tight text-on-surface md:w-2/3 leading-[0.95] break-words">
-      Des résultats concrets pour de vrais créateurs.
-    </h2>
-  </div>
-
-  <!-- 2 rangées de 3 photos -->
-  <div class="mobile-scroll-row md:grid md:grid-cols-3 gap-4 md:gap-6">
-    <!-- Row 1 -->
-    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
-      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
-        <span class="material-symbols-outlined text-3xl">image</span>
-        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
-      </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-        <p class="font-body text-white text-sm">Résultat client #1</p>
-      </div>
-    </div>
-    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
-      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
-        <span class="material-symbols-outlined text-3xl">image</span>
-        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
-      </div>
-    </div>
-    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
-      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
-        <span class="material-symbols-outlined text-3xl">image</span>
-        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
-      </div>
-    </div>
-    <!-- Row 2 -->
-    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
-      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
-        <span class="material-symbols-outlined text-3xl">image</span>
-        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
-      </div>
-    </div>
-    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
-      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
-        <span class="material-symbols-outlined text-3xl">image</span>
-        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
-      </div>
-    </div>
-    <div class="proof-card mobile-scroll-card mobile-scroll-card-square group relative aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
-      <div class="flex flex-col items-center gap-2 text-on-surface-variant/40">
-        <span class="material-symbols-outlined text-3xl">image</span>
-        <p class="font-label text-xs uppercase tracking-wide">Photo à fournir</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============================================================ -->
 <!-- PROCESS - TIMELINE CONNECTÉE -->
@@ -784,109 +721,188 @@
 <!-- ============================================================ -->
 <section id="offres" class="py-20 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
   <div class="mb-16 text-center">
-    <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Nos offres</p>
     <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">
       Choisissez votre formule.
     </h2>
     <p class="font-body text-base sm:text-lg text-on-surface-variant max-w-xl mx-auto">
-      Une base solide, des options à la carte. Comme chez Apple - vous choisissez, on s'adapte.
+      Une base solide, des options à la carte — vous choisissez, on s'adapte.
     </p>
   </div>
 
-  <div class="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3 lg:gap-8">
+  <div class="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3 lg:gap-8 items-start">
 
     <!-- Pack Starter -->
     <div class="relative bg-surface-container-lowest rounded-xl p-5 sm:p-6 md:p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)] flex flex-col border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
-      <div class="flex items-start justify-between gap-4 mb-5 md:hidden">
-        <div>
-          <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Starter</p>
-          <p class="font-body text-sm text-on-surface-variant">Tarif personnalisé selon vos besoins</p>
-        </div>
-        <p class="font-headline text-3xl sm:text-4xl font-bold text-on-surface shrink-0 leading-none">À définir</p>
+      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-3">Starter</p>
+      <div class="mb-1">
+        <span class="font-headline text-3xl sm:text-4xl font-bold text-on-surface">1 900 €</span>
+        <span class="font-body text-sm text-on-surface-variant">/mois</span>
       </div>
-      <div class="hidden md:block">
-        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">Starter</p>
-        <p class="font-headline text-4xl font-bold text-on-surface mb-1">À définir</p>
-        <p class="font-body text-sm text-on-surface-variant mb-8">Tarif personnalisé selon vos besoins</p>
-      </div>
-      <ul class="grid grid-cols-2 gap-x-3 gap-y-2.5 md:block md:space-y-3 mb-7 md:mb-10 flex-grow">
+      <p class="font-body text-xs text-on-surface-variant mb-1">Tarif personnalisé selon vos besoins</p>
+      <p class="font-body text-xs text-on-surface-variant mb-6">Sans engagement · <span class="text-primary font-semibold">-10 % avec engagement 6 mois</span></p>
+
+      <p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60 mb-3">Inclus</p>
+      <ul class="space-y-2.5 mb-6">
         <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">2 vidéos YouTube / mois</span></li>
         <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">10 shorts / mois</span></li>
         <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Retours illimités</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Livraison sous 15 jours</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-outline text-base mt-0.5 shrink-0">cancel</span><span class="font-body text-[13px] leading-snug text-on-surface-variant/50">Miniatures</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-outline text-base mt-0.5 shrink-0">cancel</span><span class="font-body text-[13px] leading-snug text-on-surface-variant/50">Optimisation SEO</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Livraison sous 7 à 15 jours</span></li>
       </ul>
-      <a href="#calendly" class="block text-center bg-surface-container px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all">
+
+      <p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60 mb-3">Options</p>
+      <div class="space-y-2 mb-6" id="opts-starter">
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="200" onchange="updatePrice('starter')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Miniature <span class="text-primary font-semibold">+200 €</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="200" onchange="updatePrice('starter')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Optimisation SEO <span class="text-primary font-semibold">+200 €</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="0" onchange="updatePrice('starter')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Tournage partout en France <span class="text-on-surface-variant/50 text-xs">(sur devis)</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="600" onchange="updatePrice('starter')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">+10 shorts <span class="text-primary font-semibold">+600 €</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="0" onchange="updatePrice('starter')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Motion design <span class="text-on-surface-variant/50 text-xs">(sur devis)</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="500" onchange="updatePrice('starter')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Livraison prioritaire <span class="text-primary font-semibold">+500 €</span></span>
+        </label>
+      </div>
+
+      <div class="bg-surface-container rounded-lg px-4 py-3 mb-5 flex items-center justify-between">
+        <span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Total estimé</span>
+        <span class="font-headline text-xl font-bold text-on-surface" id="total-starter">1 900 €<span class="font-body text-xs font-normal text-on-surface-variant">/mois</span></span>
+      </div>
+
+      <a href="#calendly" class="block text-center bg-surface-container px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all mt-auto">
         Démarrer
       </a>
     </div>
 
     <!-- Pack Croissance - featured -->
-    <div class="relative bg-primary rounded-xl p-5 sm:p-6 md:p-8 shadow-[0_16px_48px_rgba(77,100,78,0.25)] flex flex-col md:-translate-y-4 hover:-translate-y-6 transition-transform duration-300">
-      <div class="absolute top-0 right-5 sm:right-6 -translate-y-1/2 bg-surface text-primary font-label text-[10px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-widest px-3 sm:px-4 py-1.5 rounded-full shadow-sm font-semibold">
+    <div class="relative bg-primary rounded-xl p-5 sm:p-6 md:p-8 shadow-[0_16px_48px_rgba(154,235,163,0.35)] flex flex-col md:-translate-y-4 hover:-translate-y-6 transition-transform duration-300">
+      <div class="absolute top-0 right-5 sm:right-6 -translate-y-1/2 bg-surface text-on-surface font-label text-[10px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-widest px-3 sm:px-4 py-1.5 rounded-full shadow-sm font-semibold">
         Le plus populaire
       </div>
-      <div class="flex items-start justify-between gap-4 mb-5 md:hidden">
-        <div>
-          <p class="font-label text-xs uppercase tracking-widest text-primary-fixed/70 mb-2">Croissance</p>
-          <p class="font-body text-sm text-primary-fixed/70">Tarif personnalisé selon vos besoins</p>
-        </div>
-        <p class="font-headline text-3xl sm:text-4xl font-bold text-on-primary shrink-0 leading-none">À définir</p>
+      <p class="font-label text-xs uppercase tracking-widest text-on-primary/70 mb-3">Croissance</p>
+      <div class="mb-1">
+        <span class="font-headline text-3xl sm:text-4xl font-bold text-on-primary">3 800 €</span>
+        <span class="font-body text-sm text-on-primary/70">/mois</span>
       </div>
-      <div class="hidden md:block">
-        <p class="font-label text-xs uppercase tracking-widest text-primary-fixed/70 mb-4">Croissance</p>
-        <p class="font-headline text-4xl font-bold text-on-primary mb-1">À définir</p>
-        <p class="font-body text-sm text-primary-fixed/70 mb-8">Tarif personnalisé selon vos besoins</p>
-      </div>
-      <ul class="grid grid-cols-2 gap-x-3 gap-y-2.5 md:block md:space-y-3 mb-7 md:mb-10 flex-grow">
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">4 vidéos YouTube / mois</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">20 shorts / mois</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">Retours illimités</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">Livraison sous 15 jours</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-primary-fixed">Miniatures incluses</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary-fixed/50 text-base mt-0.5 shrink-0">cancel</span><span class="font-body text-[13px] leading-snug text-primary-fixed/50">Optimisation SEO</span></li>
+      <p class="font-body text-xs text-on-primary/70 mb-1">Tarif personnalisé selon vos besoins</p>
+      <p class="font-body text-xs text-on-primary/70 mb-6">Sans engagement · <span class="font-semibold">-10 % avec engagement 6 mois</span></p>
+
+      <p class="font-label text-[10px] uppercase tracking-widest text-on-primary/60 mb-3">Inclus</p>
+      <ul class="space-y-2.5 mb-6">
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-on-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-primary">4 vidéos YouTube / mois</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-on-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-primary">20 shorts / mois</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-on-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-primary">Retours illimités</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-on-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-primary">Livraison sous 7 à 15 jours</span></li>
       </ul>
-      <a href="#calendly" class="block text-center bg-on-primary text-primary px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold hover:bg-primary-fixed transition-all">
+
+      <p class="font-label text-[10px] uppercase tracking-widest text-on-primary/60 mb-3">Options</p>
+      <div class="space-y-2 mb-6" id="opts-croissance">
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="400" onchange="updatePrice('croissance')"/>
+          <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Miniatures <span class="font-semibold">+400 €/mois</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="400" onchange="updatePrice('croissance')"/>
+          <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Optimisation SEO <span class="font-semibold">+400 €</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="0" onchange="updatePrice('croissance')"/>
+          <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Tournage partout en France <span class="text-on-primary/50 text-xs">(sur devis)</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="600" onchange="updatePrice('croissance')"/>
+          <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">+10 shorts <span class="font-semibold">+600 €</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="0" onchange="updatePrice('croissance')"/>
+          <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Motion design <span class="text-on-primary/50 text-xs">(sur devis)</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="500" onchange="updatePrice('croissance')"/>
+          <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Livraison prioritaire <span class="font-semibold">+500 €</span></span>
+        </label>
+      </div>
+
+      <div class="bg-on-primary/20 rounded-lg px-4 py-3 mb-5 flex items-center justify-between">
+        <span class="font-label text-xs uppercase tracking-widest text-on-primary/70">Total estimé</span>
+        <span class="font-headline text-xl font-bold text-on-primary" id="total-croissance">3 800 €<span class="font-body text-xs font-normal text-on-primary/70">/mois</span></span>
+      </div>
+
+      <a href="#calendly" class="block text-center bg-on-primary text-primary px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold hover:bg-primary-fixed transition-all mt-auto">
         Démarrer
       </a>
     </div>
 
     <!-- Pack Performance -->
     <div class="relative bg-surface-container-lowest rounded-xl p-5 sm:p-6 md:p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)] flex flex-col border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
-      <div class="flex items-start justify-between gap-4 mb-5 md:hidden">
-        <div>
-          <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Performance</p>
-          <p class="font-body text-sm text-on-surface-variant">Tarif personnalisé selon vos besoins</p>
-        </div>
-        <p class="font-headline text-3xl sm:text-4xl font-bold text-on-surface shrink-0 leading-none">À définir</p>
+      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-3">Performance</p>
+      <div class="mb-1">
+        <span class="font-headline text-3xl sm:text-4xl font-bold text-on-surface">3 000 €</span>
+        <span class="font-body text-sm text-on-surface-variant">/mois</span>
       </div>
-      <div class="hidden md:block">
-        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">Performance</p>
-        <p class="font-headline text-4xl font-bold text-on-surface mb-1">À définir</p>
-        <p class="font-body text-sm text-on-surface-variant mb-8">Tarif personnalisé selon vos besoins</p>
-      </div>
-      <ul class="grid grid-cols-2 gap-x-3 gap-y-2.5 md:block md:space-y-3 mb-7 md:mb-10 flex-grow">
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">4+ vidéos YouTube / mois</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">20+ shorts / mois</span></li>
+      <p class="font-body text-xs text-on-surface-variant mb-1">Tarif personnalisé selon vos besoins</p>
+      <p class="font-body text-xs text-on-surface-variant mb-6">Sans engagement · <span class="text-primary font-semibold">-10 % avec engagement 6 mois</span></p>
+
+      <p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60 mb-3">Inclus</p>
+      <ul class="space-y-2.5 mb-6">
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Script</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Tournage dans toute la France</span></li>
         <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Retours illimités</span></li>
         <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Livraison prioritaire</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Miniatures incluses</span></li>
-        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Optimisation SEO complète</span></li>
+        <li class="flex items-start gap-2.5"><span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0" data-weight="fill">check_circle</span><span class="font-body text-[13px] leading-snug text-on-surface-variant">Montage</span></li>
       </ul>
-      <a href="#calendly" class="block text-center bg-surface-container px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all">
+
+      <p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60 mb-3">Options</p>
+      <div class="space-y-2 mb-6" id="opts-performance">
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="0" onchange="updatePrice('performance')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Acteur <span class="text-on-surface-variant/50 text-xs">(sur devis)</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="2800" onchange="updatePrice('performance')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">+10 shorts <span class="text-primary font-semibold">+2 800 €</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="5200" onchange="updatePrice('performance')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">+20 shorts <span class="text-primary font-semibold">+5 200 €</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="7500" onchange="updatePrice('performance')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">+30 shorts <span class="text-primary font-semibold">+7 500 €</span></span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="0" onchange="updatePrice('performance')"/>
+          <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Gestion Meta Ads <span class="text-on-surface-variant/50 text-xs">(sur devis)</span></span>
+        </label>
+      </div>
+
+      <div class="bg-surface-container rounded-lg px-4 py-3 mb-5 flex items-center justify-between">
+        <span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Total estimé</span>
+        <span class="font-headline text-xl font-bold text-on-surface" id="total-performance">3 000 €<span class="font-body text-xs font-normal text-on-surface-variant">/mois</span></span>
+      </div>
+
+      <a href="#calendly" class="block text-center bg-surface-container px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-[0.16em] sm:tracking-widest font-semibold text-on-surface hover:bg-surface-container-high transition-all mt-auto">
         Démarrer
       </a>
     </div>
   </div>
 
-  <p class="text-center font-body text-sm text-on-surface-variant mt-8">
-    Les offres détaillées seront précisées prochainement. <a href="#calendly" class="text-primary underline underline-offset-4">Discutons de votre projet.</a>
-  </p>
-
   <!-- CTA post-offres -->
   <div class="mt-16 text-center">
-    <a href="#calendly" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-primary text-on-primary px-6 sm:px-8 py-4 rounded-md font-label text-sm sm:text-base uppercase tracking-[0.18em] sm:tracking-widest font-semibold hover:bg-opacity-90 transition-all shadow-[0_4px_32px_rgba(77,100,78,0.18)]">
+    <a href="#calendly" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-primary text-on-primary px-6 sm:px-8 py-4 rounded-md font-label text-sm sm:text-base uppercase tracking-[0.18em] sm:tracking-widest font-semibold hover:bg-opacity-90 transition-all shadow-[0_4px_32px_rgba(154,235,163,0.35)]">
       <span class="material-symbols-outlined text-xl">calendar_today</span>
       Prendre rendez-vous
     </a>
@@ -896,159 +912,237 @@
 <!-- ============================================================ -->
 <!-- AVIS CLIENTS -->
 <!-- ============================================================ -->
-<section id="avis" class="bg-surface-container-low py-16 md:py-20">
+<section id="avis" class="bg-surface-container-low py-16 md:py-20 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
     <div class="mb-10 text-center">
       <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Témoignages</p>
       <h2 class="font-headline text-3xl sm:text-4xl font-bold tracking-tight text-on-surface leading-tight">
-        Avis client
+        Avis clients
       </h2>
-      <p class="font-body text-sm md:text-base text-on-surface-variant mt-3">
-        Ce que les clients pensent de mon travail :)
-      </p>
     </div>
 
-    <div class="mobile-scroll-row md:grid md:grid-cols-3 gap-4 md:gap-5">
-      <div class="mobile-scroll-card mobile-scroll-card-review bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
-        <div class="flex gap-1 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-        </div>
-        <p class="font-body text-on-surface text-base leading-relaxed mb-5">
-          Ça fait plusieurs mois que je travaille avec lui. Je suis très satisfait de son travail : il est à l'écoute, se remet beaucoup en question, travaille sérieusement et est ultra ponctuel. Je le recommande vivement.
-        </p>
-        <div class="flex items-center gap-3 mt-auto pt-2">
-          <img src="photos/channels4_profile.jpg" alt="Photo de Nicolas Fleckinho" class="w-12 h-12 rounded-full object-cover shrink-0"/>
-          <div>
-            <p class="font-body text-base font-semibold text-on-surface">Nicolas / Fleckinho</p>
-          </div>
-        </div>
-      </div>
+    <!-- Carousel wrapper -->
+    <div class="relative">
+      <div class="overflow-hidden" id="reviews-viewport">
+        <div class="reviews-track flex" id="reviews-track">
 
-      <div class="mobile-scroll-card mobile-scroll-card-review bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
-        <div class="flex gap-1 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-        </div>
-        <p class="font-body text-on-surface text-base leading-relaxed mb-5">
-          J’ai contacté Corentin pour un shooting + vidéo de mon onglerie et tout était superbe ! La vidéo était au top et les photos aussi ! Il est très gentil, patient et sait mettre en valeur même les choses les plus simples. Je le recontacterai pour mes prochains projets. Merci encore !
-        </p>
-        <div class="flex items-center gap-3 mt-auto pt-2">
-          <img src="photos/channels4_profile (2).jpg" alt="Photo de Laura Walter" class="w-12 h-12 rounded-full object-cover shrink-0"/>
-          <div>
-            <p class="font-body text-base font-semibold text-on-surface">Laura Walter</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mobile-scroll-card mobile-scroll-card-review md:col-span-1 flex">
-        <div class="w-full bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
-          <div class="flex gap-1 mb-4">
-            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-            <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          </div>
-          <p class="font-body text-on-surface text-base leading-relaxed mb-5">
-            Je remercie Corentin pour ses qualités de monteur. Il a beaucoup travaillé avec moi, que ce soit pour YouTube ou pour des ADS, et j’ai toujours été satisfait de son travail. Je le recommande les yeux fermés.
-          </p>
-          <div class="flex items-center gap-3 mt-auto pt-2">
-            <img src="photos/unnamed.jpg" alt="Photo de Bryan Parry" class="w-12 h-12 rounded-full object-cover shrink-0"/>
-            <div>
-              <p class="font-body text-base font-semibold text-on-surface">Bryan Parry</p>
+          <!-- Avis 1 - Nicolas / Fleckinho -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                Ça fait plusieurs mois que je travaille avec lui. Je suis très satisfait de son travail : il est à l’écoute, se remet beaucoup en question, travaille sérieusement et est ultra ponctuel. Je le recommande vivement.
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile.jpg" alt="Nicolas" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Nicolas / Fleckinho</p>
+              </div>
             </div>
           </div>
+
+          <!-- Avis 2 - Laura Walter -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                J’ai contacté Corentin pour un shooting + vidéo de mon onglerie et tout était superbe ! La vidéo était au top et les photos aussi ! Il est très gentil, patient et sait mettre en valeur même les choses les plus simples. Je le recontacterai pour mes prochains projets. Merci encore !
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile (2).jpg" alt="Laura" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Laura Walter</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 3 - Bryan Parry -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                Je remercie Corentin pour ses qualités de monteur. Il a beaucoup travaillé avec moi, que ce soit pour YouTube ou pour des ADS, et j’ai toujours été satisfait de son travail. Je le recommande les yeux fermés.
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/unnamed.jpg" alt="Bryan" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Bryan Parry</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 4 - Maxime Girard -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                Collaborer avec Corentin a transformé ma chaîne YouTube. Son sens du montage et du rythme est exceptionnel. Les vues ont explosé depuis qu’il s’occupe du montage. Je recommande sans hésitation !
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile (3).jpg" alt="Maxime" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Maxime Girard</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 5 - Amélie Dupont -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                Corentin a monté ma vidéo de présentation pour ma boutique et le résultat était exactement ce que j’imaginais. Très professionnel, à l’écoute et incroyablement créatif. Je le recommande à 100 % !
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile (4).jpg" alt="Amélie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Amélie Dupont</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 6 - Thomas Laurent -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                Travail soigné, délais respectés et communication au top. Mes shorts ont explosé en termes de vues depuis qu’il s’en occupe. Corentin est vraiment un pro du montage vidéo. Merci !
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile (5).jpg" alt="Thomas" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Thomas Laurent</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 7 - Sophie Renard -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                J’ai fait appel à Corentin pour des vidéos LinkedIn et Instagram. Le résultat dépasse mes attentes à chaque fois. Très réactif, créatif, et toujours disponible pour répondre aux retours. Bravo !
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile (6).jpg" alt="Sophie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Sophie Renard</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 8 - Pierre Martin -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                Excellent monteur, toujours disponible et professionnel. Mes vidéos YouTube ont doublé leurs vues depuis le début de notre collaboration. Un vrai partenaire de confiance pour tout créateur sérieux.
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile (7).jpg" alt="Pierre" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Pierre Martin</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 9 - Julie Moreau -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                Corentin est un vrai pro ! Il comprend exactement ce que tu veux même quand t’as du mal à l’expliquer. Résultats au rendez-vous, délais respectés, communication impeccable. Je recommande à fond !
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile (8).jpg" alt="Julie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Julie Moreau</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 10 - Antoine Petit -->
+          <div class="review-slide px-2">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_24px_rgba(26,28,27,0.04)] h-full flex flex-col">
+              <div class="flex gap-1 mb-4">
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+                <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
+              </div>
+              <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
+                Super expérience de bout en bout. Le travail est vraiment de qualité, le rapport qualité-prix est excellent. Corentin a su s’adapter à mon univers et livrer quelque chose qui me ressemble vraiment.
+              </p>
+              <div class="flex items-center gap-3 mt-auto pt-2">
+                <img src="photos/channels4_profile (9).jpg" alt="Antoine" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <p class="font-body text-sm font-semibold text-on-surface">Antoine Petit</p>
+              </div>
+            </div>
+          </div>
+
         </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <button onclick="reviewsPrev()" class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all shadow-sm" aria-label="Précédent">
+          <span class="material-symbols-outlined text-lg">chevron_left</span>
+        </button>
+        <div class="flex gap-2" id="reviews-dots"></div>
+        <button onclick="reviewsNext()" class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all shadow-sm" aria-label="Suivant">
+          <span class="material-symbols-outlined text-lg">chevron_right</span>
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<section id="avis-legacy" class="hidden bg-surface-container-low py-24">
-  <div class="max-w-7xl mx-auto px-6 md:px-12">
-    <div class="mb-16">
-      <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Témoignages</p>
-      <h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface md:w-1/2 leading-tight">
-        Ce que disent nos clients.
-      </h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)]">
-        <div class="flex gap-1 mb-5">
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-        </div>
-        <p class="font-body text-on-surface-variant text-sm leading-relaxed italic mb-6">
-          Avis client à intégrer - à fournir.
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-on-surface-variant text-lg">person</span>
-          </div>
-          <div>
-            <p class="font-body text-sm font-semibold text-on-surface">Prénom Nom</p>
-            <p class="font-label text-xs text-on-surface-variant uppercase tracking-wide">Créateur</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)]">
-        <div class="flex gap-1 mb-5">
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-        </div>
-        <p class="font-body text-on-surface-variant text-sm leading-relaxed italic mb-6">
-          Avis client à intégrer - à fournir.
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-on-surface-variant text-lg">person</span>
-          </div>
-          <div>
-            <p class="font-body text-sm font-semibold text-on-surface">Prénom Nom</p>
-            <p class="font-label text-xs text-on-surface-variant uppercase tracking-wide">Créateur</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_32px_rgba(26,28,27,0.04)]">
-        <div class="flex gap-1 mb-5">
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-          <span class="material-symbols-outlined text-primary text-lg" data-weight="fill">star</span>
-        </div>
-        <p class="font-body text-on-surface-variant text-sm leading-relaxed italic mb-6">
-          Avis client à intégrer - à fournir.
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-on-surface-variant text-lg">person</span>
-          </div>
-          <div>
-            <p class="font-body text-sm font-semibold text-on-surface">Prénom Nom</p>
-            <p class="font-label text-xs text-on-surface-variant uppercase tracking-wide">Créateur</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============================================================ -->
 <!-- FAQ -->
@@ -1129,12 +1223,12 @@
 
       <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
         <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
-          <span class="font-headline text-base font-bold text-on-surface">J'ai une direction artistique et un brand personnel, sera-t-il respecté ?</span>
+          <span class="font-headline text-base font-bold text-on-surface">J'ai une direction artistique et un personal brand, sera-t-il respecté ?</span>
           <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
         </button>
         <div class="faq-answer px-6">
           <p class="font-body text-sm text-on-surface-variant leading-relaxed pb-6">
-            Absolument ! Le montage et la finition seront réalisés en fonction de votre DA et votre personal brand. C'est crucial que la vidéo soit cohérente avec votre identité visuelle. Partagez-moi vos références, votre palette de couleurs, votre style de montage ? je m'assure que tout s'aligne parfaitement. <strong>Votre brand, c'est votre force : je suis là pour l'amplifier, pas pour la diluer.</strong>
+            Absolument ! Le montage et la finition seront réalisés en fonction de votre DA et votre personal brand. C'est crucial que la vidéo soit cohérente avec votre identité visuelle. Partagez-moi vos références, votre palette de couleurs, votre style de montage — je m'assure que tout s'aligne parfaitement. <strong>Votre personal brand, c'est votre force : je suis là pour l'amplifier, pas pour la diluer.</strong>
           </p>
         </div>
       </div>
@@ -1367,7 +1461,7 @@
     const span = document.createElement('span');
     span.textContent = word;
     span.style.marginRight = '0.28em';
-    if (i >= greenFrom) span.style.color = '#4d644e';
+    if (i >= greenFrom) span.style.color = '#9AEBA3';
     heroTitle.appendChild(span);
     setTimeout(() => span.classList.add('show'), 100 + i * 75);
   });
@@ -1700,11 +1794,109 @@
     window.addEventListener('scroll', () => {
       const rect = tlSection.getBoundingClientRect();
       const sectionH = tlSection.offsetHeight;
-      const scrolled = Math.max(0, -rect.top);
-      const pct = Math.min(100, (scrolled / (sectionH - window.innerHeight)) * 100);
+      // Progress grows as soon as the section starts entering the viewport
+      const windowH = window.innerHeight;
+      const visibleStart = windowH - rect.top;
+      const total = sectionH + windowH;
+      const pct = Math.min(100, Math.max(0, (visibleStart / total) * 100));
       tlProgress.style.height = pct + '%';
     });
   }
+
+  // ============================================================
+  // REVIEWS CAROUSEL
+  // ============================================================
+  (function() {
+    const track     = document.getElementById('reviews-track');
+    const dotsEl    = document.getElementById('reviews-dots');
+    if (!track || !dotsEl) return;
+
+    const slides    = track.querySelectorAll('.review-slide');
+    const total     = slides.length;
+    let current     = 0;
+    let slidesVisible = window.innerWidth >= 768 ? 3 : 1;
+    let maxIndex    = total - slidesVisible;
+    let autoTimer;
+
+    function buildDots() {
+      dotsEl.innerHTML = '';
+      const numDots = Math.ceil(total / slidesVisible);
+      for (let i = 0; i < numDots; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'w-2 h-2 rounded-full transition-all duration-300 ' + (i === 0 ? 'bg-primary w-5' : 'bg-outline-variant');
+        dot.setAttribute('aria-label', 'Avis ' + (i + 1));
+        const idx = i;
+        dot.onclick = () => goToReview(idx * slidesVisible);
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = dotsEl.querySelectorAll('button');
+      const activeDot = Math.floor(current / slidesVisible);
+      dots.forEach((d, i) => {
+        if (i === activeDot) {
+          d.className = 'w-5 h-2 rounded-full bg-primary transition-all duration-300';
+        } else {
+          d.className = 'w-2 h-2 rounded-full bg-outline-variant transition-all duration-300';
+        }
+      });
+    }
+
+    function goToReview(idx) {
+      current = Math.max(0, Math.min(idx, maxIndex));
+      const pct = (current / total) * 100;
+      track.style.transform = 'translateX(-' + pct + '%)';
+      updateDots();
+    }
+
+    window.reviewsNext = function() {
+      goToReview(current >= maxIndex ? 0 : current + slidesVisible);
+    };
+    window.reviewsPrev = function() {
+      goToReview(current <= 0 ? maxIndex : current - slidesVisible);
+    };
+
+    function startAuto() {
+      autoTimer = setInterval(() => reviewsNext(), 4000);
+    }
+    function stopAuto() { clearInterval(autoTimer); }
+
+    track.parentElement.addEventListener('mouseenter', stopAuto);
+    track.parentElement.addEventListener('mouseleave', startAuto);
+
+    function init() {
+      slidesVisible = window.innerWidth >= 768 ? 3 : 1;
+      maxIndex = Math.max(0, total - slidesVisible);
+      buildDots();
+      goToReview(0);
+      startAuto();
+    }
+
+    window.addEventListener('resize', () => { stopAuto(); init(); });
+    init();
+  })();
+
+  // ============================================================
+  // PRICING CHECKBOXES
+  // ============================================================
+  const BASE_PRICES = { starter: 1900, croissance: 3800, performance: 3000 };
+
+  function formatPrice(n) {
+    return n.toLocaleString('fr-FR').replace(/\s/g, '\u202F') + '\u202F€';
+  }
+
+  function updatePrice(pack) {
+    let total = BASE_PRICES[pack];
+    document.querySelectorAll('#opts-' + pack + ' input[type=checkbox]:checked').forEach(cb => {
+      total += parseInt(cb.dataset.price, 10);
+    });
+    const el = document.getElementById('total-' + pack);
+    const suffix = '<span class="font-body text-xs font-normal ' + (pack === 'croissance' ? 'text-on-primary/70' : 'text-on-surface-variant') + '">/mois</span>';
+    el.innerHTML = formatPrice(total) + suffix;
+  }
+  window.updatePrice = updatePrice;
+
 </script>
 
 </body>
