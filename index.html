@@ -370,19 +370,9 @@
     </p>
 
     <div class="flex flex-wrap justify-center gap-3 sm:gap-5 text-on-surface-variant font-body text-xs sm:text-sm">
-      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">verified</span> 100&nbsp;% de clients satisfaits</span>
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">verified</span> 99&nbsp;% de clients satisfaits</span>
       <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">group</span> +150 créateurs accompagnés</span>
       <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">visibility</span> +10M de vues cumulées</span>
-    </div>
-
-    <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-      <a href="#calendly" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-primary text-on-primary px-6 sm:px-8 py-4 rounded-md font-label text-sm uppercase tracking-[0.18em] sm:tracking-widest font-semibold text-center hover:bg-opacity-90 transition-all shadow-[0_4px_32px_rgba(154,235,163,0.35)]">
-        <span class="material-symbols-outlined text-lg">calendar_today</span>
-        Réserver un appel gratuit
-      </a>
-      <a href="#portfolio" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-8 py-4 border border-outline-variant/30 rounded-md font-label text-sm uppercase tracking-[0.18em] sm:tracking-widest font-semibold text-on-surface text-center hover:bg-surface-container-low transition-all">
-        Voir le portfolio
-      </a>
     </div>
   </div>
 
@@ -400,6 +390,16 @@
       <span class="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0"></span>
       <span class="font-label text-xs uppercase tracking-widest text-on-surface">Vidéo de présentation bientôt disponible</span>
     </div>
+  </div>
+
+  <div class="relative z-10 max-w-3xl mx-auto flex flex-col sm:flex-row gap-4 justify-center pt-6 sm:pt-8">
+    <a href="#calendly" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-primary text-on-primary px-6 sm:px-8 py-4 rounded-md font-label text-sm uppercase tracking-[0.18em] sm:tracking-widest font-semibold text-center hover:bg-opacity-90 transition-all shadow-[0_4px_32px_rgba(154,235,163,0.35)]">
+      <span class="material-symbols-outlined text-lg">calendar_today</span>
+      Réserver un appel gratuit
+    </a>
+    <a href="#portfolio" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-8 py-4 border border-outline-variant/30 rounded-md font-label text-sm uppercase tracking-[0.18em] sm:tracking-widest font-semibold text-on-surface text-center hover:bg-surface-container-low transition-all">
+      Voir le portfolio
+    </a>
   </div>
 </section>
 
@@ -547,7 +547,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-0 items-stretch">
     <div class="min-w-0 p-3 sm:p-6 md:p-10 border border-outline-variant/20 md:border-y-0 md:border-l-0 md:border-r text-center rounded-xl md:rounded-none bg-surface-container-low">
       <p class="font-headline text-[clamp(1.55rem,7vw,1.9rem)] sm:text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-2 leading-none">
-        <span class="counter" data-target="100" data-suffix="%">0</span>
+        <span class="counter" data-target="99" data-suffix="%">0</span>
       </p>
       <p class="font-label text-[9px] sm:text-xs uppercase tracking-[0.12em] sm:tracking-widest text-on-surface-variant leading-tight">
         <span class="block sm:inline">Clients</span>
@@ -1013,7 +1013,7 @@
                 <span class="material-symbols-outlined star-yellow text-lg" data-weight="fill">star</span>
               </div>
               <p class="font-body text-on-surface text-sm leading-relaxed mb-5 flex-grow">
-                Corentin a monté ma vidéo de présentation pour ma boutique et le résultat était exactement ce que j’imaginais. Très professionnel, à l’écoute et incroyablement créatif. Je le recommande à 100 % !
+                Corentin a monté ma vidéo de présentation pour ma boutique et le résultat était exactement ce que j’imaginais. Très professionnel, à l’écoute et incroyablement créatif. Je le recommande à 99 % !
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
                 <img src="photos/channels4_profile (4).jpg" alt="Amélie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
@@ -1343,9 +1343,10 @@
             <textarea id="f-projet" rows="3" placeholder="Type de contenu, fréquence souhaitée, plateforme cible..."
               class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/30 focus:border-primary rounded-t-md px-4 py-3 font-body text-sm text-on-surface placeholder-on-surface-variant/40 outline-none transition-colors resize-none"></textarea>
           </div>
-          <button type="submit" class="w-full bg-primary text-on-primary py-4 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all mt-2">
+          <button id="booking-submit-btn" type="submit" class="w-full bg-primary text-on-primary py-4 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all mt-2 disabled:opacity-60 disabled:cursor-not-allowed">
             Confirmer la réservation
           </button>
+          <p id="booking-feedback" class="font-body text-sm text-center hidden"></p>
           <p class="font-label text-xs text-on-surface-variant/50 text-center">En confirmant, vous recevrez un email de confirmation avec le lien de visio.</p>
         </form>
       </div>
@@ -1444,7 +1445,26 @@
 <!-- ============================================================ -->
 <!-- JS -->
 <!-- ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+
+  // Replace the placeholders below with your real EmailJS IDs.
+  const EMAILJS_CONFIG = {
+    publicKey: 'ya5f_3-zXNXo0Svc7',
+    serviceId: 'EMAILJS_SERVICE_ID',
+    templateId: 'EMAILJS_TEMPLATE_ID'
+  };
+
+  const EMAILJS_READY =
+    typeof window.emailjs !== 'undefined' &&
+    EMAILJS_CONFIG.serviceId !== 'EMAILJS_SERVICE_ID' &&
+    EMAILJS_CONFIG.templateId !== 'EMAILJS_TEMPLATE_ID';
+
+  if (EMAILJS_READY) {
+    window.emailjs.init({
+      publicKey: EMAILJS_CONFIG.publicKey
+    });
+  }
 
   // ============================================================
   // WORD REVEAL HERO TITLE
@@ -1632,38 +1652,114 @@
     if (ind) ind.classList.remove('opacity-40');
   }
 
-  function submitBooking(e) {
-    e.preventDefault();
-    const prenom = document.getElementById('f-prenom').value;
-    const nom = document.getElementById('f-nom').value;
-    const email = document.getElementById('f-email').value;
-    const projet = document.getElementById('f-projet').value;
-    const [y, m, d] = selectedDate.split('-');
-    const dateLabel = DAYS_FR[new Date(+y, +m-1, +d).getDay() === 0 ? 6 : new Date(+y, +m-1, +d).getDay() - 1] + ' ' + d + ' ' + MONTHS_FR[+m-1] + ' ' + y;
+  function setBookingFeedback(message, isError) {
+    const feedback = document.getElementById('booking-feedback');
+    if (!feedback) return;
 
-    if (!BOOKED[selectedDate]) BOOKED[selectedDate] = [];
-    BOOKED[selectedDate].push(selectedSlot);
+    feedback.textContent = message;
+    feedback.classList.remove('hidden', 'text-primary', 'text-red-600');
+    feedback.classList.add(isError ? 'text-red-600' : 'text-primary');
+  }
 
-    document.getElementById('confirm-summary').textContent = prenom + ' ' + nom + ' - ' + dateLabel + ' - ' + selectedSlot;
-    goStep(3);
+  function clearBookingFeedback() {
+    const feedback = document.getElementById('booking-feedback');
+    if (!feedback) return;
 
-    // Envoie via mailto (fonctionnel sans backend)
-    const subject = encodeURIComponent('Réservation appel Comédia - ' + dateLabel + ' ' + selectedSlot);
+    feedback.textContent = '';
+    feedback.classList.add('hidden');
+    feedback.classList.remove('text-primary', 'text-red-600');
+  }
+
+  function submitBookingFallback(details) {
+    const subject = encodeURIComponent('Reservation appel Comedia - ' + details.dateLabel + ' ' + details.slot);
     const body = encodeURIComponent(
-      'Nouvelle réservation\n\nNom : ' + prenom + ' ' + nom +
-      '\nEmail : ' + email +
-      '\nDate : ' + dateLabel + ' - ' + selectedSlot +
-      '\nProjet : ' + projet
+      'Nouvelle reservation\n\nNom : ' + details.prenom + ' ' + details.nom +
+      '\nEmail : ' + details.email +
+      '\nDate : ' + details.dateLabel + ' - ' + details.slot +
+      '\nProjet : ' + details.projet
     );
+
+    setBookingFeedback("EmailJS n'est pas encore configuré, ouverture de votre messagerie.", false);
     setTimeout(() => {
       window.location.href = 'mailto:corentindemange02@gmail.com?subject=' + subject + '&body=' + body;
-    }, 800);
+    }, 500);
+  }
+
+  async function sendBookingEmail(details) {
+    if (!EMAILJS_READY) {
+      submitBookingFallback(details);
+      return;
+    }
+
+    await window.emailjs.send(
+      EMAILJS_CONFIG.serviceId,
+      EMAILJS_CONFIG.templateId,
+      {
+        prenom: details.prenom,
+        nom: details.nom,
+        from_name: details.prenom + ' ' + details.nom,
+        reply_to: details.email,
+        email: details.email,
+        projet: details.projet || 'Non renseigné',
+        booking_date: details.dateLabel,
+        booking_slot: details.slot,
+        booking_datetime: details.dateLabel + ' - ' + details.slot
+      }
+    );
+  }
+
+  async function submitBooking(e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('booking-submit-btn');
+    const prenom = document.getElementById('f-prenom').value.trim();
+    const nom = document.getElementById('f-nom').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const projet = document.getElementById('f-projet').value.trim();
+
+    if (!selectedDate || !selectedSlot) {
+      setBookingFeedback("Sélectionnez d'abord une date et un créneau.", true);
+      return;
+    }
+
+    const [y, m, d] = selectedDate.split('-');
+    const dateLabel = DAYS_FR[new Date(+y, +m-1, +d).getDay() === 0 ? 6 : new Date(+y, +m-1, +d).getDay() - 1] + ' ' + d + ' ' + MONTHS_FR[+m-1] + ' ' + y;
+    const bookingDetails = {
+      prenom,
+      nom,
+      email,
+      projet,
+      dateLabel,
+      slot: selectedSlot
+    };
+
+    clearBookingFeedback();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+
+    try {
+      await sendBookingEmail(bookingDetails);
+
+      if (!BOOKED[selectedDate]) BOOKED[selectedDate] = [];
+      if (!BOOKED[selectedDate].includes(selectedSlot)) {
+        BOOKED[selectedDate].push(selectedSlot);
+      }
+
+      document.getElementById('confirm-summary').textContent = prenom + ' ' + nom + ' - ' + dateLabel + ' - ' + selectedSlot;
+      goStep(3);
+    } catch (error) {
+      setBookingFeedback("L'envoi a échoué. Réessayez ou contactez Corentin par email.", true);
+      console.error('EmailJS booking error:', error);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Confirmer la réservation';
+    }
   }
 
   function resetBooking() {
     selectedDate = null;
     selectedSlot = null;
     document.getElementById('booking-form').reset();
+    clearBookingFeedback();
     document.getElementById('slots-placeholder').classList.remove('hidden');
     document.getElementById('slots-panel').classList.add('hidden');
     goStep(1);
