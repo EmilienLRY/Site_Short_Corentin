@@ -394,6 +394,29 @@
     }
   }
 
+  #calendly-embed {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    min-height: 620px;
+  }
+
+  #calendly-embed > div,
+  #calendly-embed iframe,
+  #calendly-embed .calendly-inline-widget {
+    display: block;
+    width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 auto;
+    border: 0;
+  }
+
+  @media (min-width: 1024px) {
+    #calendly-embed {
+      min-height: 680px;
+    }
+  }
+
   @media (min-width: 1024px) and (max-width: 1440px) and (max-height: 820px) {
     #portfolio,
     #process,
@@ -674,7 +697,7 @@
 <!-- PROCESS - TIMELINE CONNECTÉE -->
 <!-- ============================================================ -->
 <section id="process" class="bg-surface-container-low py-20 md:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-start">
 
@@ -1003,7 +1026,7 @@
 <!-- AVIS CLIENTS -->
 <!-- ============================================================ -->
 <section id="avis" class="bg-surface-container-low py-16 md:py-20 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
     <div class="mb-10 text-center">
       <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Témoignages</p>
       <h2 class="font-headline text-3xl sm:text-4xl font-bold tracking-tight text-on-surface leading-tight">
@@ -1331,7 +1354,7 @@
 <!-- CALENDRIER DE RÉSERVATION CUSTOM -->
 <!-- ============================================================ -->
 <section id="calendly" class="bg-surface-container-low py-20 md:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
     <div class="text-center mb-14">
       <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Passez à l'action</p>
       <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">
@@ -1342,7 +1365,7 @@
       </p>
     </div>
 
-    <div class="max-w-5xl mx-auto mb-8">
+    <div class="max-w-[1180px] mx-auto mb-8">
       <div class="hidden self-start rounded-2xl bg-primary text-on-primary p-6 sm:p-8 md:p-10 shadow-[0_10px_48px_rgba(154,235,163,0.22)]">
         <p class="font-label text-xs uppercase tracking-widest text-on-primary/70 mb-4">Réservation simplifiée</p>
         <h3 class="font-headline text-2xl sm:text-3xl font-bold leading-tight mb-4">
@@ -1389,8 +1412,8 @@
         Il restera simplement a remplacer le lien Calendly par le votre pour activer la reservation.
       </p>
 
-      <div class="self-start bg-surface-container-lowest rounded-2xl shadow-[0_8px_48px_rgba(26,28,27,0.06)] overflow-hidden border border-outline-variant/20">
-        <div id="calendly-embed" class="min-h-[820px]"></div>
+      <div class="w-full bg-surface-container-lowest rounded-2xl shadow-[0_8px_48px_rgba(26,28,27,0.06)] overflow-hidden border border-outline-variant/20 p-4 sm:p-5">
+        <div id="calendly-embed" class="w-full mx-auto"></div>
       </div>
     </div>
 
@@ -1718,6 +1741,9 @@
       parentElement: embed,
       resize: true
     });
+
+    window.setTimeout(() => window.dispatchEvent(new Event('resize')), 150);
+    window.setTimeout(() => window.dispatchEvent(new Event('resize')), 900);
   }
 
   // ============================================================
