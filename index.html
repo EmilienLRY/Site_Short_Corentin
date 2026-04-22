@@ -1342,8 +1342,8 @@
       </p>
     </div>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.35fr)] gap-6 md:gap-8 items-start mb-8">
-      <div class="self-start rounded-2xl bg-primary text-on-primary p-6 sm:p-8 md:p-10 shadow-[0_10px_48px_rgba(154,235,163,0.22)]">
+    <div class="max-w-5xl mx-auto mb-8">
+      <div class="hidden self-start rounded-2xl bg-primary text-on-primary p-6 sm:p-8 md:p-10 shadow-[0_10px_48px_rgba(154,235,163,0.22)]">
         <p class="font-label text-xs uppercase tracking-widest text-on-primary/70 mb-4">Réservation simplifiée</p>
         <h3 class="font-headline text-2xl sm:text-3xl font-bold leading-tight mb-4">
           On garde votre design,
@@ -1366,17 +1366,31 @@
             <p class="font-body text-sm text-on-primary/85">Le bloc garde votre style global, avec un habillage premium autour du widget.</p>
           </div>
         </div>
-        <a id="calendly-direct-link" href="https://calendly.com/corentindemange02/30min" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-8 bg-on-primary text-primary px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-primary-fixed transition-all">
+        <a id="old-calendly-direct-link" href="https://calendly.com/corentindemange02/30min" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-8 bg-on-primary text-primary px-6 py-3 rounded-md font-label text-sm uppercase tracking-widest font-semibold hover:bg-primary-fixed transition-all">
           Ouvrir Calendly
           <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
-        <p id="calendly-setup-note" class="font-body text-sm text-on-primary/80 mt-4 hidden">
+        <p id="old-calendly-setup-note" class="font-body text-sm text-on-primary/80 mt-4 hidden">
           Il restera simplement à remplacer le lien Calendly par le vôtre pour activer la réservation.
         </p>
       </div>
 
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+        <div class="min-w-0">
+          <p class="font-label text-xs uppercase tracking-widest text-primary mb-2">Reservation en ligne</p>
+          <p class="font-body text-sm text-on-surface-variant">Choisissez directement un creneau disponible dans Calendly.</p>
+        </div>
+        <a id="calendly-direct-link" href="https://calendly.com/corentindemange02/30min" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-5 py-3 rounded-md font-label text-xs sm:text-sm uppercase tracking-widest font-semibold hover:bg-opacity-90 transition-all shrink-0">
+          Ouvrir Calendly
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
+      <p id="calendly-setup-note" class="font-body text-sm text-on-surface-variant mb-4 text-center hidden">
+        Il restera simplement a remplacer le lien Calendly par le votre pour activer la reservation.
+      </p>
+
       <div class="self-start bg-surface-container-lowest rounded-2xl shadow-[0_8px_48px_rgba(26,28,27,0.06)] overflow-hidden border border-outline-variant/20">
-        <div id="calendly-embed" class="min-h-[760px]"></div>
+        <div id="calendly-embed" class="min-h-[820px]"></div>
       </div>
     </div>
 
@@ -1640,7 +1654,14 @@
   // ============================================================
   function getCalendlyWidgetUrl() {
     if (!CALENDLY_URL) return '';
-    return CALENDLY_URL + (CALENDLY_URL.includes('?') ? '&' : '?') + 'hide_gdpr_banner=1';
+    const params = [
+      'hide_event_type_details=1',
+      'hide_gdpr_banner=1',
+      'background_color=faf9f7',
+      'text_color=1a1c1b',
+      'primary_color=4d644e'
+    ];
+    return CALENDLY_URL + (CALENDLY_URL.includes('?') ? '&' : '?') + params.join('&');
   }
 
   function renderCalendlyFallback(message) {
@@ -1663,23 +1684,27 @@
     const directLink = document.getElementById('calendly-direct-link');
     const setupNote = document.getElementById('calendly-setup-note');
 
-    if (!embed || !directLink) return;
+    if (!embed) return;
 
     const isConfigured =
       /^https:\/\/calendly\.com\/.+/i.test(CALENDLY_URL) &&
       !CALENDLY_URL.includes('votre-identifiant');
 
     if (!isConfigured) {
-      directLink.href = '#calendly';
-      directLink.classList.add('opacity-50', 'pointer-events-none');
+      if (directLink) {
+        directLink.href = '#calendly';
+        directLink.classList.add('opacity-50', 'pointer-events-none');
+      }
       if (setupNote) setupNote.classList.remove('hidden');
       renderCalendlyFallback("Remplacez simplement l'URL Calendly dans le script pour afficher vos vrais créneaux ici.");
       return;
     }
 
     const widgetUrl = getCalendlyWidgetUrl();
-    directLink.href = widgetUrl;
-    directLink.classList.remove('opacity-50', 'pointer-events-none');
+    if (directLink) {
+      directLink.href = widgetUrl;
+      directLink.classList.remove('opacity-50', 'pointer-events-none');
+    }
     if (setupNote) setupNote.classList.add('hidden');
 
     if (typeof window.Calendly === 'undefined') {
