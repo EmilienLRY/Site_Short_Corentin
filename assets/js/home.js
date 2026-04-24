@@ -47,8 +47,23 @@ const CALENDLY_URL = 'https://calendly.com/corentindemange02/30min';
   counters.forEach(c => counterObs.observe(c));
 
   // ============================================================
-  // ORBES - PARALLAX SOURIS LÉGER
+  // YOUTUBE CLICK-TO-PLAY
   // ============================================================
+  const ytFacade = document.getElementById('yt-facade');
+  if (ytFacade) {
+    ytFacade.addEventListener('click', () => {
+      const videoId = ytFacade.dataset.videoId;
+      const start = ytFacade.dataset.start;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?start=${start}&rel=0&modestbranding=1&autoplay=1`;
+      iframe.title = 'Vidéo de présentation Comédia';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.allowFullscreen = true;
+      iframe.className = 'w-full h-full border-0';
+      ytFacade.replaceWith(iframe);
+    });
+  }
+
   // ============================================================
   // CALENDLY
   // ============================================================
