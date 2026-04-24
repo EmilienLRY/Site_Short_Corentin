@@ -524,8 +524,7 @@ const CALENDLY_URL = 'https://calendly.com/corentindemange02/30min';
   // ============================================================
   (function() {
     const track     = document.getElementById('reviews-track');
-    const dotsEl    = document.getElementById('reviews-dots');
-    if (!track || !dotsEl) return;
+    if (!track) return;
 
     const slides    = track.querySelectorAll('.review-slide');
     const total     = slides.length;
@@ -534,36 +533,10 @@ const CALENDLY_URL = 'https://calendly.com/corentindemange02/30min';
     let maxIndex    = total - slidesVisible;
     let autoTimer;
 
-    function buildDots() {
-      dotsEl.innerHTML = '';
-      const numDots = Math.ceil(total / slidesVisible);
-      for (let i = 0; i < numDots; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'w-2 h-2 rounded-full transition-all duration-300 ' + (i === 0 ? 'bg-primary w-5' : 'bg-outline-variant');
-        dot.setAttribute('aria-label', 'Avis ' + (i + 1));
-        const idx = i;
-        dot.addEventListener('click', () => goToReview(idx * slidesVisible));
-        dotsEl.appendChild(dot);
-      }
-    }
-
-    function updateDots() {
-      const dots = dotsEl.querySelectorAll('button');
-      const activeDot = Math.floor(current / slidesVisible);
-      dots.forEach((d, i) => {
-        if (i === activeDot) {
-          d.className = 'w-5 h-2 rounded-full bg-primary transition-all duration-300';
-        } else {
-          d.className = 'w-2 h-2 rounded-full bg-outline-variant transition-all duration-300';
-        }
-      });
-    }
-
     function goToReview(idx) {
       current = Math.max(0, Math.min(idx, maxIndex));
       const pct = (current / total) * 100;
       track.style.transform = 'translateX(-' + pct + '%)';
-      updateDots();
     }
 
     const reviewsNext = () => {
@@ -599,7 +572,6 @@ const CALENDLY_URL = 'https://calendly.com/corentindemange02/30min';
     function init() {
       slidesVisible = window.innerWidth >= 768 ? 3 : 1;
       maxIndex = Math.max(0, total - slidesVisible);
-      buildDots();
       goToReview(0);
       startAuto();
     }
