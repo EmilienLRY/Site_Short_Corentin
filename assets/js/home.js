@@ -49,30 +49,6 @@ const CALENDLY_URL = 'https://calendly.com/corentindemange02/30min';
   // ============================================================
   // ORBES - PARALLAX SOURIS LÉGER
   // ============================================================
-  const orbs = document.querySelectorAll('.hero-orb');
-  if (orbs.length) {
-    let orbFrame = null;
-    let orbOffsetX = 0;
-    let orbOffsetY = 0;
-
-    const applyOrbTransform = () => {
-      orbs.forEach((orb, i) => {
-        const factor = (i + 1) * 14;
-        orb.style.transform = `translate(${orbOffsetX * factor}px, ${orbOffsetY * factor}px)`;
-      });
-      orbFrame = null;
-    };
-
-    document.addEventListener('mousemove', (event) => {
-      orbOffsetX = event.clientX / window.innerWidth - 0.5;
-      orbOffsetY = event.clientY / window.innerHeight - 0.5;
-
-      if (orbFrame === null) {
-        orbFrame = window.requestAnimationFrame(applyOrbTransform);
-      }
-    }, { passive: true });
-  }
-
   // ============================================================
   // CALENDLY
   // ============================================================
