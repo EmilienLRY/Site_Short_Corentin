@@ -4,436 +4,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Comédia - Montage Vidéo Premium</title>
+<script src="assets/js/tailwind-config.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "on-tertiary": "#ffffff",
-          "tertiary": "#79545d",
-          "surface-container-low": "#f4f3f1",
-          "primary-fixed": "#cfeace",
-          "secondary-container": "#e2dfde",
-          "on-primary-fixed": "#0a200f",
-          "surface-container-highest": "#e3e2e0",
-          "outline-variant": "#c3c8c0",
-          "surface-bright": "#faf9f7",
-          "on-primary": "#ffffff",
-          "on-surface-variant": "#434842",
-          "surface-container": "#efeeec",
-          "on-background": "#1a1c1b",
-          "inverse-primary": "#b3cdb3",
-          "surface-tint": "#4d644e",
-          "surface-variant": "#e3e2e0",
-          "secondary": "#5f5e5e",
-          "surface-container-high": "#e9e8e6",
-          "surface-container-lowest": "#ffffff",
-          "outline": "#737971",
-          "surface-dim": "#dadad8",
-          "on-secondary": "#ffffff",
-          "error-container": "#ffdad6",
-          "primary-container": "#8da68d",
-          "on-surface": "#1a1c1b",
-          "error": "#ba1a1a",
-          "surface": "#faf9f7",
-          "on-primary-container": "#263b28",
-          "background": "#faf9f7",
-          "primary": "#4d644e",
-        },
-        borderRadius: {
-          "DEFAULT": "0.125rem",
-          "lg": "0.25rem",
-          "xl": "0.5rem",
-          "2xl": "0.75rem",
-          "full": "9999px",
-        },
-        fontFamily: {
-          "headline": ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
-          "body": ["Manrope"],
-          "label": ["Manrope"],
-        }
-      }
-    }
-  }
-</script>
-<style>
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0; }
-  .material-symbols-outlined[data-weight="fill"] { font-variation-settings: 'FILL' 1; }
-
-  html { scroll-behavior: smooth; }
-  body { overflow-x: hidden; }
-
-  /* Carousel */
-  .carousel-track { display: flex; gap: 2rem; animation: marquee 30s linear infinite; width: max-content; }
-  .carousel-track:hover { animation-play-state: paused; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-  /* FAQ accordion */
-  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
-  .faq-answer.open { max-height: 500px; }
-  .faq-icon { transition: transform 0.3s ease; }
-  .faq-item.open .faq-icon { transform: rotate(45deg); }
-
-  /* Process step reveal */
-  .step-card { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .step-card.visible { opacity: 1; transform: translateY(0); }
-
-  /* Pricing toggle */
-  .pricing-option { transition: all 0.3s ease; }
-
-  /* Hide scrollbar for carousel */
-  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  .hide-scrollbar::-webkit-scrollbar { display: none; }
-
-  /* -- HOVER CARTES PORTFOLIO -- */
-  .portfolio-card {
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
-  }
-  .portfolio-card:hover {
-    transform: scale(1.04) translateY(-6px);
-    box-shadow: 0 24px 48px rgba(26,28,27,0.15);
-  }
-  .portfolio-card .play-btn {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.7;
-  }
-  .portfolio-card:hover .play-btn {
-    transform: scale(1.15);
-    opacity: 1;
-  }
-
-  /* -- HOVER PHOTOS ÉTUDES DE CAS -- */
-  .proof-card {
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
-    overflow: hidden;
-  }
-  .proof-card:hover {
-    transform: scale(1.03) translateY(-4px);
-    box-shadow: 0 20px 40px rgba(26,28,27,0.12);
-  }
-  .proof-card img {
-    transition: transform 0.5s ease;
-  }
-  .proof-card:hover img {
-    transform: scale(1.08);
-  }
-  .proof-card .proof-overlay {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .proof-card:hover .proof-overlay {
-    opacity: 1;
-  }
-
-  /* -- CARTES YOUTUBE -- */
-  .yt-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .yt-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(26,28,27,0.12); }
-
-  /* -- HOVER BOUTONS -- */
-  /* Boutons primaires remplis (fond vert) */
-  a[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]),
-  button[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]) {
-    transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease !important;
-  }
-  a[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]):hover,
-  button[class*="bg-primary"]:not([class*="bg-primary-"]):not([class*="bg-primary-fixed"]):hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 32px rgba(154,235,163,0.50) !important;
-    filter: brightness(1.08);
-  }
-
-  /* Bouton blanc sur carte offre (fond blanc, texte vert) */
-  a[class*="bg-on-primary"]:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 32px rgba(255,255,255,0.25) !important;
-    filter: brightness(0.94);
-  }
-
-  /* Boutons secondaires offres (fond surface-container) */
-  a[href="#calendly"][class*="bg-surface-container"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(26,28,27,0.12) !important;
-    filter: brightness(0.88);
-    color: #3a7a45 !important;
-  }
-
-  /* Bouton ghost (bordure outline-variant, fond transparent) */
-  a[class*="border-outline-variant"]:hover {
-    background-color: rgba(154,235,163,0.12) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(154,235,163,0.25) !important;
-    border-color: rgba(154,235,163,0.7) !important;
-  }
-
-  /* Chips de filtre portfolio */
-  button[class*="filter-btn"]:hover,
-  .filter-btn:hover {
-    background-color: #9AEBA3 !important;
-    color: #1a2b1b !important;
-    transform: translateY(-1px);
-  }
-
-  /* Boutons navigation calendrier */
-  button[onclick*="prevMonth"]:hover,
-  button[onclick*="nextMonth"]:hover {
-    background-color: rgba(154,235,163,0.20) !important;
-    color: #3a7a45;
-  }
-
-  /* FAQ toggles */
-  button[onclick*="toggleFaq"]:hover {
-    background-color: rgba(154,235,163,0.15) !important;
-    padding-left: 28px !important;
-    transition: padding-left 0.2s ease, background-color 0.2s ease !important;
-  }
-  button[onclick*="toggleFaq"] {
-    transition: padding-left 0.2s ease, background-color 0.2s ease !important;
-  }
-
-  /* Lien "retour" calendrier */
-  button[onclick*="goStep"]:hover {
-    color: #3a7a45 !important;
-    transform: translateX(-3px);
-  }
-
-  /* Lien texte souligné */
-  a[class*="underline"]:hover {
-    letter-spacing: 0.02em;
-  }
-
-  /* Nav CTA */
-  nav a[href="#calendly"]:hover,
-  header a[href="#calendly"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(154,235,163,0.40) !important;
-    filter: brightness(1.08);
-  }
-
-  /* Stars yellow */
-  .star-yellow { color: #FBBF24 !important; }
-
-  /* Reviews carousel */
-  .reviews-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
-  }
-  .review-slide {
-    flex: 0 0 100%;
-  }
-  @media (min-width: 768px) {
-    .review-slide { flex: 0 0 33.333%; }
-  }
-
-  /* -- HERO ORBES -- */
-  .hero-orb {
-    position: absolute; border-radius: 50%;
-    filter: blur(72px); pointer-events: none; z-index: 0;
-    animation: orb-float 8s ease-in-out infinite;
-  }
-  @keyframes orb-float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-28px) scale(1.06); }
-  }
-
-
-  /* -- WORD REVEAL -- */
-  .word-reveal span {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
-  }
-  .word-reveal span.show { opacity: 1; transform: translateY(0); }
-
-  /* -- HERO SECTION relative pour les orbes -- */
-  #hero { position: relative; }
-  .filter-btn { white-space: nowrap; }
-
-  @media (hover: none) {
-    .portfolio-card:hover,
-    .proof-card:hover,
-    .yt-card:hover {
-      transform: none;
-      box-shadow: none;
-    }
-  }
-
-  .mobile-scroll-row {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: 0.25rem;
-    padding: 0 0 0.5rem;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .mobile-scroll-row::-webkit-scrollbar { display: none; }
-  .mobile-scroll-card {
-    flex: 0 0 78vw;
-    max-width: 78vw;
-    min-width: 78vw;
-    scroll-snap-align: start;
-  }
-  .mobile-scroll-card-square {
-    flex-basis: 70vw;
-    max-width: 70vw;
-    min-width: 70vw;
-  }
-  .mobile-scroll-card-review {
-    flex-basis: 85vw;
-    max-width: 85vw;
-    min-width: 85vw;
-  }
-
-  @media (min-width: 768px) {
-    .mobile-scroll-row {
-      display: grid;
-      overflow: visible;
-      scroll-snap-type: none;
-      padding: 0;
-    }
-    .mobile-scroll-card,
-    .mobile-scroll-card-square,
-    .mobile-scroll-card-review {
-      min-width: 0;
-      max-width: none;
-      flex: initial;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .carousel-track { gap: 1.25rem; }
-    .hero-orb { filter: blur(56px); opacity: 0.7; }
-    #hero .hero-orb:nth-of-type(1) { width: 16rem; height: 16rem; top: -4rem; right: -3rem; }
-    #hero .hero-orb:nth-of-type(2) { width: 12rem; height: 12rem; bottom: 2rem; left: 50%; transform: translateX(-50%); }
-    #hero .hero-orb:nth-of-type(3) { width: 9rem; height: 9rem; top: 35%; left: -2.5rem; }
-    #timeline-steps .tl-step { gap: 1rem; }
-    #tl-track, #tl-progress { left: 1rem; }
-  }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-    nav .max-w-7xl {
-      padding-top: 0.85rem;
-      padding-bottom: 0.85rem;
-    }
-
-    #hero {
-      padding-top: 6.75rem;
-      padding-bottom: 3.5rem;
-    }
-    #hero h1 {
-      font-size: clamp(3rem, 4.2vw, 4.6rem);
-    }
-    #hero .font-body.text-lg,
-    #hero .font-body.text-xl {
-      font-size: 1.05rem;
-    }
-    #hero .rounded-2xl {
-      margin-top: 2.5rem;
-    }
-
-    #portfolio,
-    #process,
-    #offres,
-    #faq,
-    #calendly {
-      padding-top: 4.5rem;
-      padding-bottom: 4.5rem;
-    }
-    #avis {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
-
-    #portfolio > div:first-child,
-    #offres > div:first-child,
-    #avis > div > div:first-child,
-    #calendly > div > div:first-child {
-      margin-bottom: 2.5rem;
-    }
-
-    #portfolio h2,
-    #process h2,
-    #offres h2,
-    #calendly h2 {
-      font-size: clamp(2.4rem, 3.1vw, 3.4rem);
-    }
-    #avis h2,
-    #faq h2 {
-      font-size: clamp(2rem, 2.6vw, 2.65rem);
-    }
-
-    #process > div > div,
-    #faq > div {
-      gap: 2.5rem;
-    }
-
-    #process .tl-step {
-      padding-bottom: 2rem;
-    }
-
-    #offres > div:nth-of-type(2) {
-      gap: 1rem;
-    }
-    #offres > div:nth-of-type(2) > div {
-      padding: 1.25rem;
-    }
-    #offres > div:nth-of-type(3) {
-      margin-top: 2.5rem;
-    }
-
-    #calendly-embed {
-      min-height: 640px;
-    }
-  }
-
-  #calendly-embed {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    min-height: 620px;
-  }
-
-  #calendly-embed > div,
-  #calendly-embed iframe,
-  #calendly-embed .calendly-inline-widget {
-    display: block;
-    width: 100% !important;
-    min-width: 100% !important;
-    margin: 0 auto;
-    border: 0;
-  }
-
-  @media (min-width: 1024px) {
-    #calendly-embed {
-      min-height: 680px;
-    }
-  }
-
-  @media (min-width: 1024px) and (max-width: 1440px) and (max-height: 820px) {
-    #portfolio,
-    #process,
-    #offres,
-    #avis,
-    #faq,
-    #calendly {
-      padding-top: 3.75rem;
-      padding-bottom: 3.75rem;
-    }
-
-    #offres > div:first-child,
-    #calendly > div > div:first-child {
-      margin-bottom: 2rem;
-    }
-  }
-</style>
+<link href="assets/css/site.css" rel="stylesheet"/>
+<link href="assets/css/home.css" rel="stylesheet"/>
 </head>
 <body class="bg-surface text-on-surface font-body antialiased">
 
@@ -496,6 +73,7 @@
   <!-- VSL YouTube (horizontal 16/9) -->
   <div class="relative z-10 mt-12 sm:mt-14 max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-[0_16px_56px_rgba(26,28,27,0.13)]" style="aspect-ratio:16/9">
     <iframe
+      loading="lazy"
       src="https://www.youtube.com/embed/_9R4jvMtgG0?start=36&rel=0&modestbranding=1"
       title="Vidéo de présentation Comédia"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -531,41 +109,41 @@
     <div class="carousel-track">
       <!-- Photos réelles depuis le dossier photos/ -->
       <div class="flex gap-6 items-center">
-        <img src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
       </div>
       <!-- Duplicate for seamless loop -->
       <div class="flex gap-6 items-center">
-        <img src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
-        <img src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (1).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (2).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (3).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (4).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (5).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (6).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (7).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (8).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (9).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (10).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (11).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (12).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (13).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/channels4_profile (14).jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
+        <img loading="lazy" decoding="async" src="photos/unnamed.jpg" alt="Créateur" class="w-16 h-16 rounded-full object-cover shrink-0 transition-all duration-300 hover:scale-110"/>
       </div>
     </div>
   </div>
@@ -590,10 +168,10 @@
 
   <!-- Filter chips -->
   <div class="flex flex-wrap gap-2 sm:gap-3 mb-10 md:mb-12">
-    <button onclick="filterPortfolio('tous')" class="filter-btn active font-body text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-full bg-primary text-on-primary transition-all" data-filter="tous">Tout</button>
-    <button onclick="filterPortfolio('short')" class="filter-btn font-body text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="short">Shorts / Reels</button>
-    <button onclick="filterPortfolio('long')" class="filter-btn font-body text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="long">YouTube Long</button>
-    <button onclick="filterPortfolio('brand')" class="filter-btn font-body text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="brand">Marque Perso</button>
+    <button class="filter-btn active font-body text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-full bg-primary text-on-primary transition-all" data-filter="tous">Tout</button>
+    <button class="filter-btn font-body text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="short">Shorts / Reels</button>
+    <button class="filter-btn font-body text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="long">YouTube Long</button>
+    <button class="filter-btn font-body text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 rounded-full bg-surface-variant text-on-surface-variant hover:bg-surface-container-high transition-all" data-filter="brand">Marque Perso</button>
   </div>
 
   <!-- Video grid -->
@@ -865,27 +443,27 @@
       <p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60 mb-3">Options</p>
       <div class="space-y-2 mb-6" id="opts-starter">
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="200" onchange="updatePrice('starter')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="200"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Miniature <span class="text-primary font-semibold">+200 €</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="200" onchange="updatePrice('starter')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="200"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Optimisation SEO <span class="text-primary font-semibold">+200 €</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="0" onchange="updatePrice('starter')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="0"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Tournage partout en France <span class="text-on-surface-variant/50 text-xs">(sur devis)</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="600" onchange="updatePrice('starter')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="600"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">+10 shorts <span class="text-primary font-semibold">+600 €</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="0" onchange="updatePrice('starter')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="0"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Motion design <span class="text-on-surface-variant/50 text-xs">(sur devis)</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="500" onchange="updatePrice('starter')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="starter" data-price="500"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Livraison prioritaire <span class="text-primary font-semibold">+500 €</span></span>
         </label>
       </div>
@@ -924,27 +502,27 @@
       <p class="font-label text-[10px] uppercase tracking-widest text-on-primary/60 mb-3">Options</p>
       <div class="space-y-2 mb-6" id="opts-croissance">
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="400" onchange="updatePrice('croissance')"/>
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="400"/>
           <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Miniatures <span class="font-semibold">+400 €/mois</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="400" onchange="updatePrice('croissance')"/>
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="400"/>
           <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Optimisation SEO <span class="font-semibold">+400 €</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="0" onchange="updatePrice('croissance')"/>
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="0"/>
           <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Tournage partout en France <span class="text-on-primary/50 text-xs">(sur devis)</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="600" onchange="updatePrice('croissance')"/>
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="600"/>
           <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">+10 shorts <span class="font-semibold">+600 €</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="0" onchange="updatePrice('croissance')"/>
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="0"/>
           <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Motion design <span class="text-on-primary/50 text-xs">(sur devis)</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="500" onchange="updatePrice('croissance')"/>
+          <input type="checkbox" class="offer-opt w-4 h-4 cursor-pointer" data-pack="croissance" data-price="500"/>
           <span class="font-body text-[13px] text-on-primary/80 group-hover:text-on-primary transition-colors">Livraison prioritaire <span class="font-semibold">+500 €</span></span>
         </label>
       </div>
@@ -981,23 +559,23 @@
       <p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60 mb-3">Options</p>
       <div class="space-y-2 mb-6" id="opts-performance">
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="0" onchange="updatePrice('performance')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="0"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Acteur <span class="text-on-surface-variant/50 text-xs">(sur devis)</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="2800" onchange="updatePrice('performance')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="2800"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">+10 shorts <span class="text-primary font-semibold">+2 800 €</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="5200" onchange="updatePrice('performance')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="5200"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">+20 shorts <span class="text-primary font-semibold">+5 200 €</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="7500" onchange="updatePrice('performance')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="7500"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">+30 shorts <span class="text-primary font-semibold">+7 500 €</span></span>
         </label>
         <label class="flex items-center gap-3 cursor-pointer group">
-          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="0" onchange="updatePrice('performance')"/>
+          <input type="checkbox" class="offer-opt accent-primary w-4 h-4 cursor-pointer" data-pack="performance" data-price="0"/>
           <span class="font-body text-[13px] text-on-surface-variant group-hover:text-on-surface transition-colors">Gestion Meta Ads <span class="text-on-surface-variant/50 text-xs">(sur devis)</span></span>
         </label>
       </div>
@@ -1053,7 +631,7 @@
                 Ça fait plusieurs mois que je travaille avec lui. Je suis très satisfait de son travail : il est à l’écoute, se remet beaucoup en question, travaille sérieusement et est ultra ponctuel. Je le recommande vivement.
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile.jpg" alt="Nicolas" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile.jpg" alt="Nicolas" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Nicolas / Fleckinho</p>
               </div>
             </div>
@@ -1073,7 +651,7 @@
                 J’ai contacté Corentin pour un shooting + vidéo de mon onglerie et tout était superbe ! La vidéo était au top et les photos aussi ! Il est très gentil, patient et sait mettre en valeur même les choses les plus simples. Je le recontacterai pour mes prochains projets. Merci encore !
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile (2).jpg" alt="Laura" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile (2).jpg" alt="Laura" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Laura Walter</p>
               </div>
             </div>
@@ -1093,7 +671,7 @@
                 Je remercie Corentin pour ses qualités de monteur. Il a beaucoup travaillé avec moi, que ce soit pour YouTube ou pour des ADS, et j’ai toujours été satisfait de son travail. Je le recommande les yeux fermés.
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/unnamed.jpg" alt="Bryan" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/unnamed.jpg" alt="Bryan" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Bryan Parry</p>
               </div>
             </div>
@@ -1113,7 +691,7 @@
                 Collaborer avec Corentin a transformé ma chaîne YouTube. Son sens du montage et du rythme est exceptionnel. Les vues ont explosé depuis qu’il s’occupe du montage. Je recommande sans hésitation !
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile (3).jpg" alt="Maxime" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile (3).jpg" alt="Maxime" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Maxime Girard</p>
               </div>
             </div>
@@ -1133,7 +711,7 @@
                 Corentin a monté ma vidéo de présentation pour ma boutique et le résultat était exactement ce que j’imaginais. Très professionnel, à l’écoute et incroyablement créatif. Je le recommande à 99 % !
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile (4).jpg" alt="Amélie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile (4).jpg" alt="Amélie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Amélie Dupont</p>
               </div>
             </div>
@@ -1153,7 +731,7 @@
                 Travail soigné, délais respectés et communication au top. Mes shorts ont explosé en termes de vues depuis qu’il s’en occupe. Corentin est vraiment un pro du montage vidéo. Merci !
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile (5).jpg" alt="Thomas" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile (5).jpg" alt="Thomas" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Thomas Laurent</p>
               </div>
             </div>
@@ -1173,7 +751,7 @@
                 J’ai fait appel à Corentin pour des vidéos LinkedIn et Instagram. Le résultat dépasse mes attentes à chaque fois. Très réactif, créatif, et toujours disponible pour répondre aux retours. Bravo !
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile (6).jpg" alt="Sophie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile (6).jpg" alt="Sophie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Sophie Renard</p>
               </div>
             </div>
@@ -1193,7 +771,7 @@
                 Excellent monteur, toujours disponible et professionnel. Mes vidéos YouTube ont doublé leurs vues depuis le début de notre collaboration. Un vrai partenaire de confiance pour tout créateur sérieux.
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile (7).jpg" alt="Pierre" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile (7).jpg" alt="Pierre" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Pierre Martin</p>
               </div>
             </div>
@@ -1213,7 +791,7 @@
                 Corentin est un vrai pro ! Il comprend exactement ce que tu veux même quand t’as du mal à l’expliquer. Résultats au rendez-vous, délais respectés, communication impeccable. Je recommande à fond !
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile (8).jpg" alt="Julie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile (8).jpg" alt="Julie" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Julie Moreau</p>
               </div>
             </div>
@@ -1233,7 +811,7 @@
                 Super expérience de bout en bout. Le travail est vraiment de qualité, le rapport qualité-prix est excellent. Corentin a su s’adapter à mon univers et livrer quelque chose qui me ressemble vraiment.
               </p>
               <div class="flex items-center gap-3 mt-auto pt-2">
-                <img src="photos/channels4_profile (9).jpg" alt="Antoine" class="w-11 h-11 rounded-full object-cover shrink-0"/>
+                <img loading="lazy" decoding="async" src="photos/channels4_profile (9).jpg" alt="Antoine" class="w-11 h-11 rounded-full object-cover shrink-0"/>
                 <p class="font-body text-sm font-semibold text-on-surface">Antoine Petit</p>
               </div>
             </div>
@@ -1244,11 +822,11 @@
 
       <!-- Controls -->
       <div class="flex items-center justify-center gap-4 mt-8">
-        <button onclick="reviewsPrev()" class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all shadow-sm" aria-label="Précédent">
+        <button data-review-nav="prev" class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all shadow-sm" aria-label="Précédent">
           <span class="material-symbols-outlined text-lg">chevron_left</span>
         </button>
         <div class="flex gap-2" id="reviews-dots"></div>
-        <button onclick="reviewsNext()" class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all shadow-sm" aria-label="Suivant">
+        <button data-review-nav="next" class="w-10 h-10 rounded-full bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all shadow-sm" aria-label="Suivant">
           <span class="material-symbols-outlined text-lg">chevron_right</span>
         </button>
       </div>
@@ -1278,7 +856,7 @@
     <div class="lg:col-span-8 space-y-3">
 
       <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
-        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
+        <button data-faq-toggle class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
           <span class="font-headline text-base font-bold text-on-surface">Quel est votre délai de livraison ?</span>
           <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
         </button>
@@ -1290,7 +868,7 @@
       </div>
 
       <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
-        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
+        <button data-faq-toggle class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
           <span class="font-headline text-base font-bold text-on-surface">Je ne sais pas ce que je veux exactement. Par où on commence ?</span>
           <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
         </button>
@@ -1302,7 +880,7 @@
       </div>
 
       <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
-        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
+        <button data-faq-toggle class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
           <span class="font-headline text-base font-bold text-on-surface">C'est trop cher, comment justifiez-vous vos tarifs ?</span>
           <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
         </button>
@@ -1323,7 +901,7 @@
       </div>
 
       <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
-        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
+        <button data-faq-toggle class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
           <span class="font-headline text-base font-bold text-on-surface">Et si je ne suis pas satisfait du résultat ?</span>
           <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
         </button>
@@ -1335,7 +913,7 @@
       </div>
 
       <div class="faq-item bg-surface-container-lowest rounded-xl overflow-hidden">
-        <button onclick="toggleFaq(this)" class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
+        <button data-faq-toggle class="w-full flex items-start justify-between gap-4 p-5 sm:p-6 text-left hover:bg-surface-container-low transition-colors">
           <span class="font-headline text-base font-bold text-on-surface">J'ai une direction artistique et un personal brand, sera-t-il respecté ?</span>
           <span class="faq-icon material-symbols-outlined text-on-surface-variant shrink-0 mt-0.5">add</span>
         </button>
@@ -1438,11 +1016,11 @@
           <!-- Colonne gauche : calendrier -->
           <div>
             <div class="flex items-center justify-between mb-4">
-              <button onclick="prevMonth()" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors">
+              <button data-cal-nav="prev" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors">
                 <span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_left</span>
               </button>
               <p class="font-headline text-base font-bold text-on-surface" id="cal-month-label"></p>
-              <button onclick="nextMonth()" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors">
+              <button data-cal-nav="next" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors">
                 <span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_right</span>
               </button>
             </div>
@@ -1476,7 +1054,7 @@
 
       <!-- STEP 2 ? Formulaire (était step 3) -->
       <div id="cal-step-2" class="p-5 md:p-8 hidden">
-        <button onclick="goStep(1)" class="flex items-center gap-2 font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-on-surface mb-6 transition-colors">
+        <button data-go-step="1" class="flex items-center gap-2 font-label text-xs uppercase tracking-widest text-on-surface-variant hover:text-on-surface mb-6 transition-colors">
           <span class="material-symbols-outlined text-base">arrow_back</span>
           Retour
         </button>
@@ -1489,7 +1067,7 @@
           </div>
         </div>
 
-        <form id="booking-form" class="space-y-5" onsubmit="submitBooking(event)">
+        <form id="booking-form" class="space-y-5" >
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">Prénom *</label>
@@ -1528,7 +1106,7 @@
         <h3 class="font-headline text-2xl font-bold text-on-surface mb-3">Réservation confirmée !</h3>
         <p class="font-body text-on-surface-variant mb-4" id="confirm-summary"></p>
         <p class="font-body text-sm text-on-surface-variant max-w-sm mx-auto mb-8">Vous allez recevoir un email de confirmation. Corentin vous contactera pour valider le créneau.</p>
-        <button onclick="resetBooking()" class="font-label text-xs uppercase tracking-widest text-primary underline underline-offset-4 hover:opacity-70 transition-opacity">
+        <button data-reset-booking class="font-label text-xs uppercase tracking-widest text-primary underline underline-offset-4 hover:opacity-70 transition-opacity">
           Faire une nouvelle réservation
         </button>
       </div>
@@ -1583,7 +1161,7 @@
           <span class="material-symbols-outlined text-base text-primary">phone</span>
           07 69 05 20 75
         </a>
-        <button type="button" onclick="copyFooterEmail()" class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2 text-left">
+        <button type="button" data-copy-email class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2 text-left">
           <span class="material-symbols-outlined text-base text-primary">mail</span>
           corentindemange02@gmail.com
         </button>
@@ -1614,609 +1192,8 @@
 <!-- ============================================================ -->
 <!-- JS -->
 <!-- ============================================================ -->
-<script src="https://assets.calendly.com/assets/external/widget.js"></script>
-<script>
-  const CALENDLY_URL = 'https://calendly.com/corentindemange02/30min';
-
-  // ============================================================
-  // WORD REVEAL HERO TITLE
-  // ============================================================
-  const heroTitle = document.getElementById('hero-title');
-  const heroWords = ['Comédia,', 'la', 'référence', 'n°1', 'pour', 'vos', 'contenus', 'longs', 'et', 'courts.'];
-  const greenFrom = 7; // index de "longs"
-
-  heroWords.forEach((word, i) => {
-    const span = document.createElement('span');
-    span.textContent = word;
-    span.style.marginRight = '0.28em';
-    if (i >= greenFrom) span.style.color = '#4d644e';
-    heroTitle.appendChild(span);
-    setTimeout(() => span.classList.add('show'), 100 + i * 75);
-  });
-
-
-  // ============================================================
-  // COMPTEURS ANIMÉS
-  // ============================================================
-  const counters = document.querySelectorAll('.counter');
-  const counterObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el     = entry.target;
-      const target = +el.dataset.target;
-      const suffix = el.dataset.suffix || '';
-      const duration = 1600;
-      const step = target / (duration / 16);
-      let current = 0;
-      const tick = () => {
-        current = Math.min(current + step, target);
-        el.innerHTML = Math.floor(current) + suffix;
-        if (current < target) requestAnimationFrame(tick);
-      };
-      tick();
-      counterObs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => counterObs.observe(c));
-
-  // ============================================================
-  // ORBES - PARALLAX SOURIS LÉGER
-  // ============================================================
-  const orbs = document.querySelectorAll('.hero-orb');
-  document.addEventListener('mousemove', e => {
-    const xPct = (e.clientX / window.innerWidth  - 0.5);
-    const yPct = (e.clientY / window.innerHeight - 0.5);
-    orbs.forEach((orb, i) => {
-      const factor = (i + 1) * 14;
-      orb.style.transform = `translate(${xPct * factor}px, ${yPct * factor}px)`;
-    });
-  });
-
-  // ============================================================
-  // CALENDLY
-  // ============================================================
-  function getCalendlyWidgetUrl() {
-    if (!CALENDLY_URL) return '';
-    const params = [
-      'hide_event_type_details=1',
-      'hide_gdpr_banner=1',
-      'background_color=faf9f7',
-      'text_color=1a1c1b',
-      'primary_color=4d644e'
-    ];
-    return CALENDLY_URL + (CALENDLY_URL.includes('?') ? '&' : '?') + params.join('&');
-  }
-
-  function renderCalendlyFallback(message) {
-    const embed = document.getElementById('calendly-embed');
-    if (!embed) return;
-
-    embed.innerHTML = `
-      <div class="min-h-[720px] flex items-center justify-center p-8 sm:p-10 text-center bg-surface-container-lowest">
-        <div class="max-w-md">
-          <span class="material-symbols-outlined text-primary text-5xl mb-4">calendar_month</span>
-          <p class="font-headline text-2xl font-bold text-on-surface mb-3">Calendly est presque prêt.</p>
-          <p class="font-body text-sm sm:text-base text-on-surface-variant leading-relaxed">${message}</p>
-        </div>
-      </div>
-    `;
-  }
-
-  function initCalendlySection() {
-    const embed = document.getElementById('calendly-embed');
-    const directLink = document.getElementById('calendly-direct-link');
-    const setupNote = document.getElementById('calendly-setup-note');
-
-    if (!embed) return;
-
-    const isConfigured =
-      /^https:\/\/calendly\.com\/.+/i.test(CALENDLY_URL) &&
-      !CALENDLY_URL.includes('votre-identifiant');
-
-    if (!isConfigured) {
-      if (directLink) {
-        directLink.href = '#calendly';
-        directLink.classList.add('opacity-50', 'pointer-events-none');
-      }
-      if (setupNote) setupNote.classList.remove('hidden');
-      renderCalendlyFallback("Remplacez simplement l'URL Calendly dans le script pour afficher vos vrais créneaux ici.");
-      return;
-    }
-
-    const widgetUrl = getCalendlyWidgetUrl();
-    if (directLink) {
-      directLink.href = widgetUrl;
-      directLink.classList.remove('opacity-50', 'pointer-events-none');
-    }
-    if (setupNote) setupNote.classList.add('hidden');
-
-    if (typeof window.Calendly === 'undefined') {
-      renderCalendlyFallback("Le widget n'a pas pu se charger ici, mais vous pouvez toujours ouvrir Calendly dans un nouvel onglet.");
-      return;
-    }
-
-    embed.innerHTML = '';
-    window.Calendly.initInlineWidget({
-      url: widgetUrl,
-      parentElement: embed,
-      resize: true
-    });
-
-    window.setTimeout(() => window.dispatchEvent(new Event('resize')), 150);
-    window.setTimeout(() => window.dispatchEvent(new Event('resize')), 900);
-  }
-
-  // ============================================================
-  // CALENDRIER DE RÉSERVATION
-  // ============================================================
-  const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-  const DAYS_FR = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
-  const SLOTS = ['09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
-  // Créneaux déjà pris (simulés) - jours: YYYY-MM-DD -> tableau d'heures bloquées
-  const BOOKED = {};
-
-  let calDate = new Date();
-  calDate.setDate(1);
-  let selectedDate = null;
-  let selectedSlot = null;
-  let currentStep = 1;
-
-  function renderCalendar() {
-    const y = calDate.getFullYear();
-    const m = calDate.getMonth();
-    document.getElementById('cal-month-label').textContent = MONTHS_FR[m] + ' ' + y;
-
-    const grid = document.getElementById('cal-grid');
-    grid.innerHTML = '';
-
-    const firstDay = new Date(y, m, 1);
-    // getDay() returns 0=Sunday, convert to Monday-first
-    let startDow = firstDay.getDay(); // 0=Sun
-    startDow = startDow === 0 ? 6 : startDow - 1; // 0=Mon now
-
-    const daysInMonth = new Date(y, m + 1, 0).getDate();
-    const today = new Date();
-    today.setHours(0,0,0,0);
-
-    // Empty cells before first day
-    for (let i = 0; i < startDow; i++) {
-      const empty = document.createElement('div');
-      grid.appendChild(empty);
-    }
-
-    for (let d = 1; d <= daysInMonth; d++) {
-      const date = new Date(y, m, d);
-      const dow = date.getDay(); // 0=Sun, 6=Sat
-      const isWeekend = dow === 0 || dow === 6;
-      const isPast = date < today;
-      const isoStr = date.toISOString().split('T')[0];
-      const isSelected = selectedDate === isoStr;
-
-      const btn = document.createElement('button');
-      btn.textContent = d;
-      btn.className = 'aspect-square rounded-lg text-sm font-body transition-all duration-150 ';
-
-      if (isWeekend || isPast) {
-        btn.className += 'text-on-surface-variant/20 cursor-not-allowed';
-        btn.disabled = true;
-      } else if (isSelected) {
-        btn.className += 'bg-primary text-on-primary font-bold';
-      } else {
-        btn.className += 'hover:bg-surface-container text-on-surface cursor-pointer font-medium';
-        btn.onclick = () => selectDate(isoStr, d, m, y);
-      }
-
-      grid.appendChild(btn);
-    }
-  }
-
-  function selectDate(iso, d, m, y) {
-    selectedDate = iso;
-    selectedSlot = null;
-    renderCalendar();
-    const dow = new Date(y, m, d).getDay();
-    const label = DAYS_FR[dow === 0 ? 6 : dow - 1] + ' ' + d + ' ' + MONTHS_FR[m] + ' ' + y;
-    document.getElementById('slot-date-label').textContent = label;
-    document.getElementById('slots-placeholder').classList.add('hidden');
-    document.getElementById('slots-panel').classList.remove('hidden');
-    renderSlots(iso);
-  }
-
-  function renderSlots(iso) {
-    const grid = document.getElementById('slots-grid');
-    grid.innerHTML = '';
-    const booked = BOOKED[iso] || [];
-
-    SLOTS.forEach(slot => {
-      const taken = booked.includes(slot);
-      const btn = document.createElement('button');
-      btn.textContent = slot;
-      btn.className = 'py-3 rounded-xl font-label text-sm uppercase tracking-widest font-semibold transition-all duration-150 ';
-
-      if (taken) {
-        btn.className += 'bg-surface-container-high text-on-surface-variant/30 cursor-not-allowed line-through';
-        btn.disabled = true;
-      } else if (selectedSlot === slot) {
-        btn.className += 'bg-primary text-on-primary';
-      } else {
-        btn.className += 'bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary cursor-pointer';
-        btn.onclick = () => selectSlot(slot, iso);
-      }
-      grid.appendChild(btn);
-    });
-  }
-
-  function selectSlot(slot, iso) {
-    selectedSlot = slot;
-    renderSlots(iso);
-    const dateLabel = document.getElementById('slot-date-label').textContent;
-    document.getElementById('booking-summary').textContent = dateLabel + ' - ' + slot;
-    goStep(2);
-  }
-
-  function prevMonth() {
-    calDate.setMonth(calDate.getMonth() - 1);
-    renderCalendar();
-  }
-
-  function nextMonth() {
-    calDate.setMonth(calDate.getMonth() + 1);
-    renderCalendar();
-  }
-
-  function goStep(n) {
-    [1, 2, 3].forEach(i => {
-      const el = document.getElementById('cal-step-' + i);
-      if (el) el.classList.add('hidden');
-      const ind = document.getElementById('step-ind-' + i);
-      if (ind) ind.classList.add('opacity-40');
-    });
-    const target = document.getElementById('cal-step-' + n);
-    if (target) target.classList.remove('hidden');
-    currentStep = n;
-    const ind = document.getElementById('step-ind-' + n);
-    if (ind) ind.classList.remove('opacity-40');
-  }
-
-  function setBookingFeedback(message, isError) {
-    const feedback = document.getElementById('booking-feedback');
-    if (!feedback) return;
-
-    feedback.textContent = message;
-    feedback.classList.remove('hidden', 'text-primary', 'text-red-600');
-    feedback.classList.add(isError ? 'text-red-600' : 'text-primary');
-  }
-
-  function clearBookingFeedback() {
-    const feedback = document.getElementById('booking-feedback');
-    if (!feedback) return;
-
-    feedback.textContent = '';
-    feedback.classList.add('hidden');
-    feedback.classList.remove('text-primary', 'text-red-600');
-  }
-
-  function submitBookingFallback(details) {
-    const subject = encodeURIComponent('Reservation appel Comedia - ' + details.dateLabel + ' ' + details.slot);
-    const body = encodeURIComponent(
-      'Nouvelle reservation\n\nNom : ' + details.prenom + ' ' + details.nom +
-      '\nEmail : ' + details.email +
-      '\nDate : ' + details.dateLabel + ' - ' + details.slot +
-      '\nProjet : ' + details.projet
-    );
-
-    setBookingFeedback("EmailJS n'est pas encore configuré, ouverture de votre messagerie.", false);
-    setTimeout(() => {
-      window.location.href = 'mailto:corentindemange02@gmail.com?subject=' + subject + '&body=' + body;
-    }, 500);
-  }
-
-  async function sendBookingEmail(details) {
-    if (!EMAILJS_READY) {
-      submitBookingFallback(details);
-      return;
-    }
-
-    await window.emailjs.send(
-      EMAILJS_CONFIG.serviceId,
-      EMAILJS_CONFIG.templateId,
-      {
-        prenom: details.prenom,
-        nom: details.nom,
-        from_name: details.prenom + ' ' + details.nom,
-        reply_to: details.email,
-        email: details.email,
-        projet: details.projet || 'Non renseigné',
-        booking_date: details.dateLabel,
-        booking_slot: details.slot,
-        booking_datetime: details.dateLabel + ' - ' + details.slot
-      }
-    );
-  }
-
-  async function submitBooking(e) {
-    e.preventDefault();
-    const submitBtn = document.getElementById('booking-submit-btn');
-    const prenom = document.getElementById('f-prenom').value.trim();
-    const nom = document.getElementById('f-nom').value.trim();
-    const email = document.getElementById('f-email').value.trim();
-    const projet = document.getElementById('f-projet').value.trim();
-
-    if (!selectedDate || !selectedSlot) {
-      setBookingFeedback("Sélectionnez d'abord une date et un créneau.", true);
-      return;
-    }
-
-    const [y, m, d] = selectedDate.split('-');
-    const dateLabel = DAYS_FR[new Date(+y, +m-1, +d).getDay() === 0 ? 6 : new Date(+y, +m-1, +d).getDay() - 1] + ' ' + d + ' ' + MONTHS_FR[+m-1] + ' ' + y;
-    const bookingDetails = {
-      prenom,
-      nom,
-      email,
-      projet,
-      dateLabel,
-      slot: selectedSlot
-    };
-
-    clearBookingFeedback();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours...';
-
-    try {
-      await sendBookingEmail(bookingDetails);
-
-      if (!BOOKED[selectedDate]) BOOKED[selectedDate] = [];
-      if (!BOOKED[selectedDate].includes(selectedSlot)) {
-        BOOKED[selectedDate].push(selectedSlot);
-      }
-
-      document.getElementById('confirm-summary').textContent = prenom + ' ' + nom + ' - ' + dateLabel + ' - ' + selectedSlot;
-      goStep(3);
-    } catch (error) {
-      setBookingFeedback("L'envoi a échoué. Réessayez ou contactez Corentin par email.", true);
-      console.error('EmailJS booking error:', error);
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Confirmer la réservation';
-    }
-  }
-
-  function resetBooking() {
-    selectedDate = null;
-    selectedSlot = null;
-    document.getElementById('booking-form').reset();
-    clearBookingFeedback();
-    document.getElementById('slots-placeholder').classList.remove('hidden');
-    document.getElementById('slots-panel').classList.add('hidden');
-    goStep(1);
-    renderCalendar();
-  }
-
-  let footerEmailFeedbackTimeout;
-
-  function showFooterEmailFeedback(message) {
-    const feedback = document.getElementById('footer-email-feedback');
-    if (!feedback) return;
-
-    feedback.textContent = message;
-    feedback.classList.remove('hidden');
-    clearTimeout(footerEmailFeedbackTimeout);
-    footerEmailFeedbackTimeout = setTimeout(() => {
-      feedback.classList.add('hidden');
-    }, 1800);
-  }
-
-  function copyFooterEmail() {
-    const email = 'corentindemange02@gmail.com';
-
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(email)
-        .then(() => showFooterEmailFeedback('Copié !'))
-        .catch(() => showFooterEmailFeedback(email));
-      return;
-    }
-
-    const input = document.createElement('input');
-    input.value = email;
-    document.body.appendChild(input);
-    input.select();
-
-    try {
-      document.execCommand('copy');
-      showFooterEmailFeedback('Copié !');
-    } catch (error) {
-      showFooterEmailFeedback(email);
-    }
-
-    document.body.removeChild(input);
-  }
-
-  // Init booking blocks
-  renderCalendar();
-  initCalendlySection();
-
-  // ============================================================
-  // Mobile menu
-  const mobileBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-
-  // Navbar scroll effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('shadow-[0_1px_24px_rgba(26,28,27,0.06)]');
-    } else {
-      navbar.classList.remove('shadow-[0_1px_24px_rgba(26,28,27,0.06)]');
-    }
-  });
-
-  // FAQ toggle
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const answer = item.querySelector('.faq-answer');
-    const isOpen = item.classList.contains('open');
-
-    // Close all
-    document.querySelectorAll('.faq-item.open').forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.faq-answer').classList.remove('open');
-    });
-
-    if (!isOpen) {
-      item.classList.add('open');
-      answer.classList.add('open');
-    }
-  }
-
-  // Portfolio filter
-  function filterPortfolio(cat) {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.classList.remove('bg-primary', 'text-on-primary');
-      btn.classList.add('bg-surface-variant', 'text-on-surface-variant');
-    });
-    const activeBtn = document.querySelector(`[data-filter="${cat}"]`);
-    activeBtn.classList.add('bg-primary', 'text-on-primary');
-    activeBtn.classList.remove('bg-surface-variant', 'text-on-surface-variant');
-
-    document.querySelectorAll('.portfolio-card').forEach(card => {
-      if (cat === 'tous' || card.dataset.cat === cat) {
-        card.style.display = '';
-        setTimeout(() => card.style.opacity = '1', 10);
-      } else {
-        card.style.opacity = '0';
-        setTimeout(() => card.style.display = 'none', 300);
-      }
-    });
-  }
-
-  // ============================================================
-  // TIMELINE ANIMÉE
-  // ============================================================
-  const tlSteps = document.querySelectorAll('.tl-step');
-  const tlProgress = document.getElementById('tl-progress');
-
-  const tlObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('opacity-0', 'translate-y-4');
-      }
-    });
-  }, { threshold: 0.2 });
-
-  tlSteps.forEach(step => tlObserver.observe(step));
-
-  // Progress line grows as user scrolls through the timeline
-  const tlSection = document.getElementById('process');
-  if (tlSection && tlProgress) {
-    window.addEventListener('scroll', () => {
-      const rect = tlSection.getBoundingClientRect();
-      const sectionH = tlSection.offsetHeight;
-      // Progress grows as soon as the section starts entering the viewport
-      const windowH = window.innerHeight;
-      const visibleStart = windowH - rect.top;
-      const total = sectionH + windowH;
-      const pct = Math.min(100, Math.max(0, (visibleStart / total) * 100));
-      tlProgress.style.height = pct + '%';
-    });
-  }
-
-  // ============================================================
-  // REVIEWS CAROUSEL
-  // ============================================================
-  (function() {
-    const track     = document.getElementById('reviews-track');
-    const dotsEl    = document.getElementById('reviews-dots');
-    if (!track || !dotsEl) return;
-
-    const slides    = track.querySelectorAll('.review-slide');
-    const total     = slides.length;
-    let current     = 0;
-    let slidesVisible = window.innerWidth >= 768 ? 3 : 1;
-    let maxIndex    = total - slidesVisible;
-    let autoTimer;
-
-    function buildDots() {
-      dotsEl.innerHTML = '';
-      const numDots = Math.ceil(total / slidesVisible);
-      for (let i = 0; i < numDots; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'w-2 h-2 rounded-full transition-all duration-300 ' + (i === 0 ? 'bg-primary w-5' : 'bg-outline-variant');
-        dot.setAttribute('aria-label', 'Avis ' + (i + 1));
-        const idx = i;
-        dot.onclick = () => goToReview(idx * slidesVisible);
-        dotsEl.appendChild(dot);
-      }
-    }
-
-    function updateDots() {
-      const dots = dotsEl.querySelectorAll('button');
-      const activeDot = Math.floor(current / slidesVisible);
-      dots.forEach((d, i) => {
-        if (i === activeDot) {
-          d.className = 'w-5 h-2 rounded-full bg-primary transition-all duration-300';
-        } else {
-          d.className = 'w-2 h-2 rounded-full bg-outline-variant transition-all duration-300';
-        }
-      });
-    }
-
-    function goToReview(idx) {
-      current = Math.max(0, Math.min(idx, maxIndex));
-      const pct = (current / total) * 100;
-      track.style.transform = 'translateX(-' + pct + '%)';
-      updateDots();
-    }
-
-    window.reviewsNext = function() {
-      goToReview(current >= maxIndex ? 0 : current + slidesVisible);
-    };
-    window.reviewsPrev = function() {
-      goToReview(current <= 0 ? maxIndex : current - slidesVisible);
-    };
-
-    function startAuto() {
-      autoTimer = setInterval(() => reviewsNext(), 4000);
-    }
-    function stopAuto() { clearInterval(autoTimer); }
-
-    track.parentElement.addEventListener('mouseenter', stopAuto);
-    track.parentElement.addEventListener('mouseleave', startAuto);
-
-    function init() {
-      slidesVisible = window.innerWidth >= 768 ? 3 : 1;
-      maxIndex = Math.max(0, total - slidesVisible);
-      buildDots();
-      goToReview(0);
-      startAuto();
-    }
-
-    window.addEventListener('resize', () => { stopAuto(); init(); });
-    init();
-  })();
-
-  // ============================================================
-  // PRICING CHECKBOXES
-  // ============================================================
-  const BASE_PRICES = { starter: 1900, croissance: 3800, performance: 3000 };
-
-  function formatPrice(n) {
-    return n.toLocaleString('fr-FR').replace(/\s/g, '\u202F') + '\u202F€';
-  }
-
-  function updatePrice(pack) {
-    let total = BASE_PRICES[pack];
-    document.querySelectorAll('#opts-' + pack + ' input[type=checkbox]:checked').forEach(cb => {
-      total += parseInt(cb.dataset.price, 10);
-    });
-    const el = document.getElementById('total-' + pack);
-    const suffix = '<span class="font-body text-xs font-normal ' + (pack === 'croissance' ? 'text-on-primary/70' : 'text-on-surface-variant') + '">/mois</span>';
-    el.innerHTML = formatPrice(total) + suffix;
-  }
-  window.updatePrice = updatePrice;
-
-</script>
+<script defer src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script defer src="assets/js/home.js"></script>
 
 </body>
 </html>

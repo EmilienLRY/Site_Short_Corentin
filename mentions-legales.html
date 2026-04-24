@@ -4,53 +4,17 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Mentions légales — Comédia</title>
+<script src="assets/js/tailwind-config.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "surface-container-low": "#f4f3f1",
-          "primary-fixed": "#cfeace",
-          "surface-container-highest": "#e3e2e0",
-          "outline-variant": "#c3c8c0",
-          "on-primary": "#ffffff",
-          "on-surface-variant": "#434842",
-          "surface-container": "#efeeec",
-          "surface-container-high": "#e9e8e6",
-          "surface-container-lowest": "#ffffff",
-          "outline": "#737971",
-          "on-surface": "#1a1c1b",
-          "surface": "#faf9f7",
-          "primary": "#4d644e",
-          "primary-container": "#8da68d",
-        },
-        fontFamily: {
-          "headline": ["Noto Serif"],
-          "body": ["Manrope"],
-          "label": ["Manrope"],
-        }
-      }
-    }
-  }
-</script>
-<style>
-  html { scroll-behavior: smooth; }
-  .legal-section h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
-  .legal-section h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; }
-  .legal-section p { margin-bottom: 0.875rem; }
-  .legal-section a { color: #4d644e; text-decoration: underline; text-underline-offset: 3px; }
-  .legal-section a:hover { opacity: 0.75; }
-</style>
+<link href="assets/css/site.css" rel="stylesheet"/>
 </head>
 <body class="bg-surface text-on-surface antialiased">
 
 <!-- NAV -->
 <nav class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20">
   <div class="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-    <a href="index.html" class="font-headline text-xl font-bold italic text-on-surface hover:opacity-80 transition-opacity">Comédia</a>
+    <a href="index.html" class="font-legal text-xl font-bold italic text-on-surface hover:opacity-80 transition-opacity">Comédia</a>
     <a href="index.html" class="inline-flex items-center gap-2 font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
       Retour au site
@@ -62,7 +26,7 @@
 <header class="bg-surface-container-low py-20 border-b border-outline-variant/10">
   <div class="max-w-3xl mx-auto px-6 md:px-12">
     <p class="font-label text-xs uppercase tracking-widest text-primary mb-4">Documents légaux</p>
-    <h1 class="font-headline text-5xl font-bold text-on-surface leading-tight">Mentions légales</h1>
+    <h1 class="font-legal text-5xl font-bold text-on-surface leading-tight">Mentions légales</h1>
     <p class="font-body text-sm text-on-surface-variant mt-4">Dernière mise à jour : avril 2025</p>
   </div>
 </header>
@@ -70,7 +34,7 @@
 <!-- CONTENT -->
 <main class="max-w-3xl mx-auto px-6 md:px-12 py-20 legal-section">
 
-  <h2 class="font-headline text-2xl font-bold text-on-surface">1. Éditeur du site</h2>
+  <h2 class="font-legal text-2xl font-bold text-on-surface">1. Éditeur du site</h2>
   <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/20">
     <p class="font-body text-sm text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Nom commercial :</strong> Comédia</p>
     <p class="font-body text-sm text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Responsable de la publication :</strong> Corentin Demange</p>
@@ -79,12 +43,12 @@
     <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-0"><strong class="text-on-surface">Statut :</strong> Auto-entrepreneur / Freelance</p>
   </div>
 
-  <h2 class="font-headline text-2xl font-bold text-on-surface">2. Hébergement</h2>
+  <h2 class="font-legal text-2xl font-bold text-on-surface">2. Hébergement</h2>
   <p class="font-body text-sm text-on-surface-variant leading-relaxed">
     Ce site est hébergé par un prestataire tiers. Pour toute question relative à l'hébergement, vous pouvez contacter l'éditeur du site à l'adresse email mentionnée ci-dessus.
   </p>
 
-  <h2 class="font-headline text-2xl font-bold text-on-surface">3. Propriété intellectuelle</h2>
+  <h2 class="font-legal text-2xl font-bold text-on-surface">3. Propriété intellectuelle</h2>
   <p class="font-body text-sm text-on-surface-variant leading-relaxed">
     L'ensemble du contenu de ce site (textes, images, vidéos, graphismes, logotypes, icônes) est la propriété exclusive de Comédia, sauf mention contraire. Toute reproduction, distribution, modification ou utilisation sans autorisation préalable et écrite est strictement interdite.
   </p>
@@ -92,7 +56,7 @@
     Les vidéos présentées dans la section portfolio appartiennent à leurs créateurs respectifs. Elles sont présentées avec leur accord dans le cadre d'une relation contractuelle avec Comédia.
   </p>
 
-  <h2 class="font-headline text-2xl font-bold text-on-surface">4. Données personnelles</h2>
+  <h2 class="font-legal text-2xl font-bold text-on-surface">4. Données personnelles</h2>
   <p class="font-body text-sm text-on-surface-variant leading-relaxed">
     Ce site ne collecte aucune donnée personnelle sans votre consentement. Les informations transmises via le formulaire de réservation (nom, email, message) sont utilisées uniquement pour répondre à votre demande et ne sont pas transmises à des tiers.
   </p>
@@ -100,22 +64,22 @@
     Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ce droit, contactez-nous à <a href="mailto:corentindemange02@gmail.com">corentindemange02@gmail.com</a>.
   </p>
 
-  <h2 class="font-headline text-2xl font-bold text-on-surface">5. Cookies</h2>
+  <h2 class="font-legal text-2xl font-bold text-on-surface">5. Cookies</h2>
   <p class="font-body text-sm text-on-surface-variant leading-relaxed">
     Ce site n'utilise pas de cookies de tracking ou publicitaires. Des cookies techniques strictement nécessaires au bon fonctionnement du site peuvent être utilisés. Ils ne permettent pas d'identifier personnellement les utilisateurs.
   </p>
 
-  <h2 class="font-headline text-2xl font-bold text-on-surface">6. Liens hypertextes</h2>
+  <h2 class="font-legal text-2xl font-bold text-on-surface">6. Liens hypertextes</h2>
   <p class="font-body text-sm text-on-surface-variant leading-relaxed">
     Le site peut contenir des liens vers des sites tiers (YouTube, Instagram, LinkedIn, Facebook). Comédia n'est pas responsable du contenu ou des pratiques de ces sites externes. La consultation de ces sites tiers se fait sous votre propre responsabilité.
   </p>
 
-  <h2 class="font-headline text-2xl font-bold text-on-surface">7. Limitation de responsabilité</h2>
+  <h2 class="font-legal text-2xl font-bold text-on-surface">7. Limitation de responsabilité</h2>
   <p class="font-body text-sm text-on-surface-variant leading-relaxed">
     Comédia s'efforce de maintenir les informations publiées sur ce site aussi précises et à jour que possible. Toutefois, nous ne pouvons garantir l'exactitude, l'exhaustivité ou l'actualité des informations diffusées. L'utilisation des informations contenues sur ce site se fait sous votre seule responsabilité.
   </p>
 
-  <h2 class="font-headline text-2xl font-bold text-on-surface">8. Droit applicable</h2>
+  <h2 class="font-legal text-2xl font-bold text-on-surface">8. Droit applicable</h2>
   <p class="font-body text-sm text-on-surface-variant leading-relaxed">
     Le présent site et ses mentions légales sont régis par le droit français. En cas de litige, les tribunaux français seront seuls compétents.
   </p>
@@ -135,7 +99,7 @@
 <!-- FOOTER minimal -->
 <footer class="bg-surface-container border-t border-outline-variant/20 py-8">
   <div class="max-w-3xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <a href="index.html" class="font-headline text-lg font-bold italic text-on-surface hover:opacity-80 transition-opacity">Comédia</a>
+    <a href="index.html" class="font-legal text-lg font-bold italic text-on-surface hover:opacity-80 transition-opacity">Comédia</a>
     <p class="font-body text-xs text-on-surface-variant/50">© 2025 Comédia. Tous droits réservés.</p>
   </div>
 </footer>
