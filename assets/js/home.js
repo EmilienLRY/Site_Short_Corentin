@@ -430,7 +430,22 @@ const CALENDLY_URL = 'https://calendly.com/corentindemange02/30min';
 
   // Init booking blocks
   renderCalendar();
-  initCalendlySection();
+
+  // Lazy-load Calendly : initialisation uniquement quand la section est visible
+  const calendlySection = document.getElementById('calendly');
+  if (calendlySection) {
+    let calendlyLoaded = false;
+    const calendlyObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !calendlyLoaded) {
+        calendlyLoaded = true;
+        initCalendlySection();
+        calendlyObserver.disconnect();
+      }
+    }, { threshold: 0.1 });
+    calendlyObserver.observe(calendlySection);
+  } else {
+    initCalendlySection();
+  }
 
   // ============================================================
   // Mobile menu
